@@ -30,7 +30,6 @@ namespace BulletParadise.Entities
             position = transform.position;
         }
         public abstract void FixedUpdate();
-        public abstract void TakeDamage(int damage);
 
         public abstract void Draw();
     }

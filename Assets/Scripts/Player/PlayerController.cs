@@ -9,6 +9,7 @@ using BulletParadise.Visual.Drawing;
 using BulletParadise.Visual;
 using BulletParadise.Constants;
 using BulletParadise.Misc;
+using UnityEngine.Pool;
 /*using GamePlay.Phone;
 using Engine.Equipment;
 using Engine.UI.Console;
@@ -16,7 +17,7 @@ using Player.Inputs;*/
 
 namespace BulletParadise.Player
 {
-    public sealed class PlayerController : Entity
+    public sealed class PlayerController : Entity, IDamageable
     {
         public static PlayerController Instance { get; private set; }
 
@@ -35,6 +36,7 @@ namespace BulletParadise.Player
         [Header("Obiekty")]
         public Transform body;
         public Transform shootingOffset;
+        public Transform healthBar;
 
         [Header("UI")]
         public Image healthFill;
@@ -68,8 +70,8 @@ namespace BulletParadise.Player
 
             base.Awake();
 
-            gameManager.drawDebug.AddDrawable(this);
-            gameManager.worldManager.enabled = true; //TODO 9999 WTF to musi tu byc poniewaz po buildzie worldmanager script enabled jest ustawione na false?????? unity moment
+            gameManager.AddDrawableDebug(this);
+            //gameManager.worldManager.enabled = true; //TODO 9999 WTF to musi tu byc poniewaz po buildzie worldmanager script enabled jest ustawione na false?????? unity moment
 
             /*healthValue.SetText(health.ToString());
             maxHealthValue.SetText(maxHealth.ToString());*/
@@ -163,7 +165,7 @@ namespace BulletParadise.Player
             projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);
         }
 
-        public override void TakeDamage(int damage)
+        public void TakeDamage(int damage)
         {
             if (damage <= 0 || isInvulnerable) return;
 
@@ -174,7 +176,11 @@ namespace BulletParadise.Player
         }
         private void UpdateHealthBar()
         {
-            healthFill.fillAmount = health / maxHealth;
+            Vector3 barScale = healthBar.localScale;
+            barScale.x = health / maxHealth;
+            healthBar.localScale = barScale;
+
+            //healthFill.fillAmount = health / maxHealth;
             //healthValue.SetText(health.ToString());
         }
 

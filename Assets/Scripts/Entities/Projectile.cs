@@ -31,7 +31,7 @@ namespace BulletParadise.Entities
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.transform.parent.TryGetComponent<Entity>(out var entity))
+            if (collision.transform.parent.TryGetComponent<IDamageable>(out var entity))
             {
                 entity.TakeDamage(damage);
                 Destroy(gameObject);

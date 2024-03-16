@@ -42,6 +42,15 @@ public class GameManager : MonoBehaviour
         //Application.targetFrameRate = 60;
     }
 
+    public void AddDrawableDebug(IDrawable drawable)
+    {
+        drawDebug.AddDrawable(drawable);
+    }
+    public static void AddDrawable(IDrawable drawable)
+    {
+        Instance.AddDrawableDebug(drawable);
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR

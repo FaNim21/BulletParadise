@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace BulletParadise.Entities
 {
-    public class MobController : Entity
+    public class MobController : Entity, IDamageable
     {
         public static List<MobController> mobs = new();
 
@@ -19,6 +19,7 @@ namespace BulletParadise.Entities
         [Header("Obiekty")]
         public Transform target;
         public Transform body;
+        public Transform healthBar;
 
         [Header("Wartosci")]
         public float chaseRange;
@@ -30,6 +31,7 @@ namespace BulletParadise.Entities
         public int exp;
 
         [Header("Debug")]
+        [SerializeField, ReadOnly] private bool isInvulnerable;
         [SerializeField, ReadOnly] private bool isShooting;
         [SerializeField, ReadOnly] private Vector2 direction;
         [SerializeField, ReadOnly] private float toTargetAngle;
@@ -44,7 +46,9 @@ namespace BulletParadise.Entities
         }
         public override void Start()
         {
+            GameManager.AddDrawable(this);
             target = PlayerController.Instance.transform;
+            isInvulnerable = true;
         }
 
         public override void Update()
@@ -79,12 +83,17 @@ namespace BulletParadise.Entities
             GLDraw.DrawBox((Vector2)body.position + boxCollider.offset, boxCollider.size, Color.green, 0.01f);
         }
 
-        public override void TakeDamage(int damage)
+        public void TakeDamage(int damage)
         {
             //Narazie jest to bazowa metoda do przyjmowania dmg
+            if (isInvulnerable) return;
 
             Popup.Create(transform.position, damage.ToString(), Color.red);
             health -= damage;
+
+            Vector3 barScale = healthBar.localScale;
+            barScale.x = health / maxHealth;
+            healthBar.localScale = barScale;
         }
         public virtual IEnumerator Shooting()
         {
@@ -92,6 +101,32 @@ namespace BulletParadise.Entities
 
             var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, toTargetAngle));
             projectile.Setup(_layerMask, Quaternion.Euler(0, 0, toTargetAngle) * Vector2.right, projectileSpeed, damage);
+
+            /*for (int i = 1; i <= data.shots; i++)
+            {
+                if (isArc)
+                {
+                    if (data.shots % 2 == 0) degree = (data.degree * (j - (i - 1))) - (data.degree / 2);
+                    else degree = data.degree * (j - (i - 1));
+                }
+                else if (isParametric && data.shots > 1)
+                {
+                    if (i % 2 == 0) degree = -33.75f + 22.5f * (j - (i - 1)) + ((i <= j) ? 90f : 0);
+                    else degree = -33.75f + 22.5f * (j - (i - 1)) + ((i <= j) ? 0 : -90f);
+                }
+
+                var bullet = Instantiate(AdventureManager.ProjectilePrefab, mousePosition, Quaternion.Euler(0, 0, degree));
+                bullet.Setup(projectileMask, data.projectileSprite, (i % 2 == 0) ? 1 : -1, Random.Range(data.minDamage, data.maxDamage),
+                    Quaternion.AngleAxis(degree, Vector3.forward) * Vector3.right,
+                    0,
+                    data.speed,
+                    data.lifetime,
+                    data.frequency,
+                    (i % 2 == 0) ? -data.amplitude : data.amplitude,
+                    data.magnitude,
+                    data.shootType[0],
+                    isParametric ? ProjectileEffect.tracking : ProjectileEffect.none);
+            }*/
 
             yield return new WaitForSeconds(shootingCooldown);
 
