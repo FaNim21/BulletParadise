@@ -93,6 +93,7 @@ MonoBehaviour:
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
+  currentAngle: 0
 --- !u!1 &5703352632125171161
 GameObject:
   m_ObjectHideFlags: 0

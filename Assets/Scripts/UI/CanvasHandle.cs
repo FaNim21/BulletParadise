@@ -15,6 +15,7 @@ namespace BulletParadise.UI
         public Canvas canvas;
         public PlayerController playerController;
         public CameraController cameraController;
+        public EnterInformationWindow enterWindow;
 
         [Header("Layers")]
         public int worldItemsLayer;

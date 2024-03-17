@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
 
     public WorldManager worldManager;
     public DrawDebug drawDebug;
-
-
     public static Popup Popup => Instance.prefabPopup;
     public Popup prefabPopup;
 
@@ -49,6 +47,15 @@ public class GameManager : MonoBehaviour
     public static void AddDrawable(IDrawable drawable)
     {
         Instance.AddDrawableDebug(drawable);
+    }
+
+    public void RemoveDrawableDebug(IDrawable drawable)
+    {
+        drawDebug.RemoveDrawable(drawable);
+    }
+    public static void RemoveDrawable(IDrawable drawable)
+    {
+        Instance.RemoveDrawableDebug(drawable);
     }
 
     public void Quit()

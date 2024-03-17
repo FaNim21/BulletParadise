@@ -35,6 +35,7 @@ namespace BulletParadise.Entities
         [SerializeField, ReadOnly] private bool isShooting;
         [SerializeField, ReadOnly] private Vector2 direction;
         [SerializeField, ReadOnly] private float toTargetAngle;
+        [SerializeField, ReadOnly] private float currentAngle;
 
         private readonly string _layerMask = "ProjectileMob";
 
@@ -46,7 +47,7 @@ namespace BulletParadise.Entities
         }
         public override void Start()
         {
-            GameManager.AddDrawable(this);
+            //GameManager.AddDrawable(this);
             target = PlayerController.Instance.transform;
             isInvulnerable = true;
         }
@@ -99,8 +100,24 @@ namespace BulletParadise.Entities
         {
             isShooting = true;
 
-            var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, toTargetAngle));
-            projectile.Setup(_layerMask, Quaternion.Euler(0, 0, toTargetAngle) * Vector2.right, projectileSpeed, damage);
+            /*var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, toTargetAngle));
+            projectile.Setup(_layerMask, Quaternion.Euler(0, 0, toTargetAngle) * Vector2.right, projectileSpeed, damage);*/
+
+            float degree = 0;
+            int j = 6;
+            float differenceDegree = 30;
+
+            currentAngle += 10;
+
+            for (int i = 1; i <= 12; i++)
+            {
+                degree = (differenceDegree * (j - (i - 1))) - (differenceDegree / 2);
+                degree += currentAngle;
+
+                Quaternion eulerAngle = Quaternion.Euler(0, 0, degree);
+                var projectile = Instantiate(GameManager.Projectile, transform.position, eulerAngle);
+                projectile.Setup(_layerMask, eulerAngle * Vector2.right, projectileSpeed, damage);
+            }
 
             /*for (int i = 1; i <= data.shots; i++)
             {

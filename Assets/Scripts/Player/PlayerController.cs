@@ -10,6 +10,7 @@ using BulletParadise.Visual;
 using BulletParadise.Constants;
 using BulletParadise.Misc;
 using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
 /*using GamePlay.Phone;
 using Engine.Equipment;
 using Engine.UI.Console;
@@ -28,9 +29,8 @@ namespace BulletParadise.Player
         //public InputsHandler inputHandler;
         //public Inventory inventory;
         public CanvasHandle canvasHandle;
-        //public LevelSystem levelSystem;
         [SerializeField] private Rigidbody2D rb;
-        //[SerializeField] private Animator animator;
+        [SerializeField] private Animator animator;
         [SerializeField] private BoxCollider2D boxCollider;
 
         [Header("Obiekty")]
@@ -56,7 +56,6 @@ namespace BulletParadise.Player
         [ReadOnly] public Vector2 mousePosition;
         [ReadOnly] public Vector2 aimDirection;
 
-        private readonly float _lerpBetweenSpeed = 2f;
         private readonly string _layerMask = "ProjectilePlayer";
 
 
@@ -78,7 +77,7 @@ namespace BulletParadise.Player
             //healthFill.fillAmount = health / maxHealth;
 
             currentSpeed = speed;
-            //animator.SetFloat("Horizontal", 1);
+            animator.SetFloat("moveX", 1);
         }
         public override void Update()
         {
@@ -91,13 +90,27 @@ namespace BulletParadise.Player
             aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
             if (Mouse.current.leftButton.wasPressedThisFrame && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject()) Shoot();
-
-            if (health <= 0f) Respawn();
         }
 
         public override void FixedUpdate()
         {
             rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * inputDirection);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out IEnterable portal))
+            {
+                canvasHandle.enterWindow.Setup(portal.GetSceneName());
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out IEnterable _))
+            {
+                canvasHandle.enterWindow.Exit();
+            }
         }
 
         public override void Draw()
@@ -116,22 +129,15 @@ namespace BulletParadise.Player
 
         private void HandleInput()
         {
-            //canvasHandle.console.InputHandle();
-
             if (Consts.IsFocusedOnUI) return;
-
-            Sprint();
-
             if (Keyboard.current.escapeKey.wasPressedThisFrame) canvasHandle.CloseUIWindow();
-
             if (Consts.IsFocusedOnMainMenu) return;
-            /*if (Keyboard.current.iKey.wasPressedThisFrame) canvasHandle.ToggleWindow<Inventory>();
-            if (Keyboard.current.oKey.wasPressedThisFrame) canvasHandle.ToggleWindow<PhoneController>();*/
+            if (Keyboard.current.rKey.wasPressedThisFrame) SceneManager.LoadScene(0);
         }
 
         public void HandleMovement(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Started) return;
+            if (context.phase == InputActionPhase.Started && !(context.phase == InputActionPhase.Performed || context.phase == InputActionPhase.Canceled)) return;
             if (Consts.IsFocusedOnUI || Consts.IsFocusedOnMainMenu) return;
 
             Vector2 _input = context.ReadValue<Vector2>();
@@ -139,26 +145,23 @@ namespace BulletParadise.Player
             inputDirection.y = _input.y;
             inputDirection = inputDirection.normalized;
 
-            if (context.phase == InputActionPhase.Canceled) return;
+            animator.SetFloat("Speed", inputDirection.magnitude);
 
-            if (canvasHandle.isCanvasEnabled) return;
-
-            /*if (inputDirection != Vector2.zero)
+            if (context.phase == InputActionPhase.Performed)
             {
-                animator.SetFloat("Horizontal", inputDirection.x);
-                animator.SetFloat("Vertical", inputDirection.y);
+
+                if (context.phase == InputActionPhase.Canceled) return;
+
+                if (canvasHandle.isCanvasEnabled) return;
+
+                if (inputDirection != Vector2.zero)
+                {
+                    animator.SetFloat("moveX", inputDirection.x);
+                    animator.SetFloat("moveY", inputDirection.y);
+                }
             }
-
-            animator.SetFloat("Speed", inputDirection.magnitude);*/
         }
 
-        private void Sprint()
-        {
-            if (Keyboard.current.leftShiftKey.value != 0)
-                currentSpeed = Mathf.Lerp(currentSpeed, sprintSpeed, _lerpBetweenSpeed * Time.deltaTime);
-            else
-                currentSpeed = Mathf.Lerp(currentSpeed, speed, _lerpBetweenSpeed * Time.deltaTime);
-        }
         private void Shoot()
         {
             var projectile = Instantiate(GameManager.Projectile, shootingOffset.position, Quaternion.Euler(0, 0, aimAngle));
@@ -173,6 +176,8 @@ namespace BulletParadise.Player
 
             Popup.Create(transform.position, damage.ToString(), Color.red);
             UpdateHealthBar();
+
+            if (health <= 0f) Respawn();
         }
         private void UpdateHealthBar()
         {
