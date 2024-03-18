@@ -121,8 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 9138905865971246951}
+  body: {fileID: 9138905867443915670}
   damage: 0
   speed: 0
+  rotationSpeed: 500
 --- !u!1 &9138905867443915671
 GameObject:
   m_ObjectHideFlags: 0

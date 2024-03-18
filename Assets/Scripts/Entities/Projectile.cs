@@ -5,9 +5,11 @@ namespace BulletParadise.Entities
     public class Projectile : MonoBehaviour
     {
         public Rigidbody2D rb;
+        public Transform body;
 
         public int damage;
         public float speed;
+        public float rotationSpeed;
 
         private Vector2 velocity;
 
@@ -21,6 +23,13 @@ namespace BulletParadise.Entities
             this.damage = damage;
 
             Destroy(gameObject, 3f);
+        }
+
+        private void Update()
+        {
+            Vector3 childAngle = body.eulerAngles;
+            childAngle.z += rotationSpeed * Time.deltaTime;
+            body.eulerAngles = childAngle;
         }
 
         private void FixedUpdate()

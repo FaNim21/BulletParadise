@@ -11,9 +11,10 @@ namespace BulletParadise.World
     {
         private PlayerController player;
 
-        [Header("Components")]
+        [Header("Objects")]
         [SerializeField] private TextMeshProUGUI loadingText;
         [SerializeField] private Slider loadingSlider;
+        [SerializeField] private GameObject background;
 
 
         private void Start()
@@ -21,14 +22,15 @@ namespace BulletParadise.World
             player = PlayerController.Instance;
         }
 
-        public void LoadScene(int sceneNumber)
+        public void LoadScene(string sceneName)
         {
-            StartCoroutine(LoadSceneAsync(sceneNumber));
+            background.SetActive(true);
+            StartCoroutine(LoadSceneAsync(sceneName));
         }
 
-        private IEnumerator LoadSceneAsync(int sceneIndex)
+        private IEnumerator LoadSceneAsync(string sceneName)
         {
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 
             while (!operation.isDone)
             {
@@ -39,6 +41,11 @@ namespace BulletParadise.World
 
                 yield return new WaitForEndOfFrame();
             }
+
+            //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
+            yield return new WaitForSeconds(0.25f);
+
+            background.SetActive(false);
         }
     }
 }
