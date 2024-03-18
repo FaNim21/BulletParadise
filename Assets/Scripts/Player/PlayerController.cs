@@ -11,10 +11,6 @@ using BulletParadise.Constants;
 using BulletParadise.Misc;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
-/*using GamePlay.Phone;
-using Engine.Equipment;
-using Engine.UI.Console;
-using Player.Inputs;*/
 
 namespace BulletParadise.Player
 {
@@ -70,14 +66,13 @@ namespace BulletParadise.Player
             base.Awake();
 
             gameManager.AddDrawableDebug(this);
-            //gameManager.worldManager.enabled = true; //TODO 9999 WTF to musi tu byc poniewaz po buildzie worldmanager script enabled jest ustawione na false?????? unity moment
 
             /*healthValue.SetText(health.ToString());
             maxHealthValue.SetText(maxHealth.ToString());*/
             //healthFill.fillAmount = health / maxHealth;
 
             currentSpeed = speed;
-            animator.SetFloat("moveX", 1);
+            animator.SetFloat("moveY", -1);
         }
         public override void Update()
         {

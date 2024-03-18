@@ -1,10 +1,11 @@
+using BulletParadise.World;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnterInformationWindow : MonoBehaviour
 {
     [Header("Componenets")]
+    public LevelLoader levelLoader;
     public GameObject background;
     public TextMeshProUGUI titleText;
 
@@ -27,6 +28,6 @@ public class EnterInformationWindow : MonoBehaviour
     public void OnEnter()
     {
         background.SetActive(false);
-        SceneManager.LoadScene(sceneName);
+        levelLoader.LoadScene(sceneName);
     }
 }
