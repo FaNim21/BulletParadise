@@ -65259,6 +65259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1021948129}
   - component: {fileID: 1021948130}
+  - component: {fileID: 1021948131}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -65297,6 +65298,20 @@ MonoBehaviour:
   drawDebug: {fileID: 519420034}
   prefabPopup: {fileID: 3934579647951817699, guid: cf3e26b5e2f16e04581d505e7c50c7a6, type: 3}
   prefabProjectile: {fileID: 3940089762791619608, guid: 43cde02bfe8b67c4baa3c0ad149e51c7, type: 3}
+--- !u!114 &1021948131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021948128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41d825cc0e7c2e4db6a15469b298115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingText: {fileID: 0}
+  loadingSlider: {fileID: 0}
 --- !u!1 &1391721293
 GameObject:
   m_ObjectHideFlags: 0

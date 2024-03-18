@@ -940,7 +940,7 @@ MonoBehaviour:
   shootingOffset: {fileID: 485283292785785696}
   healthBar: {fileID: 8113172731535335571}
   healthFill: {fileID: 0}
-  speed: 5
+  speed: 4
   sprintSpeed: 8
   projectileSpeed: 7
   isInvulnerable: 0
