@@ -10,7 +10,6 @@ namespace BulletParadise.UI
         private readonly List<IWindowControl> _escapeUIObjects = new();
         private readonly List<IWindowControl> _windowControls = new();
 
-
         [Header("Components")]
         public Canvas canvas;
         public PlayerController playerController;
@@ -40,7 +39,7 @@ namespace BulletParadise.UI
             _windowControls.Add(window);
         }
 
-        public void CloseUIWindow(/*bool forceMainMenu = true*/)
+        public void CloseUIWindow(bool forceMainMenu = true)
         {
             for (int i = 0; i < _escapeUIObjects.Count; i++)
             {
@@ -52,7 +51,7 @@ namespace BulletParadise.UI
                     return;
                 }
             }
-            //if (forceMainMenu) ToggleWindow<MainMenu>();
+            if (forceMainMenu) ToggleWindow<MainMenu>();
         }
 
         public void ToggleWindow<T>() where T : IWindowControl
@@ -60,7 +59,36 @@ namespace BulletParadise.UI
             for (int i = 0; i < _windowControls.Count; i++)
             {
                 var current = _windowControls[i];
-                if (current is T) current.ToggleWindow();
+                if (current is T)
+                {
+                    current.ToggleWindow();
+                    break;
+                }
+            }
+        }
+
+        public void OpenWindow<T>() where T : IWindowControl
+        {
+            for (int i = 0; i < _windowControls.Count; i++)
+            {
+                var current = _windowControls[i];
+                if (current is T)
+                {
+                    current.Open();
+                    break;
+                }
+            }
+        }
+        public void CloseWindow<T>() where T : IWindowControl
+        {
+            for (int i = 0; i < _windowControls.Count; i++)
+            {
+                var current = _windowControls[i];
+                if (current is T)
+                {
+                    current.Close();
+                    break;
+                }
             }
         }
     }

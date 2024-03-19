@@ -11,6 +11,8 @@ using BulletParadise.Constants;
 using BulletParadise.Misc;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
+using BulletParadise.World;
+using BulletParadise.UI.Windows;
 
 namespace BulletParadise.Player
 {
@@ -24,7 +26,10 @@ namespace BulletParadise.Player
         [Header("Komponenty")]
         //public InputsHandler inputHandler;
         //public Inventory inventory;
+        public CameraController cameraController;
         public CanvasHandle canvasHandle;
+        public LevelLoader levelLoader;
+
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Animator animator;
         [SerializeField] private BoxCollider2D boxCollider;
@@ -45,6 +50,9 @@ namespace BulletParadise.Player
         public float projectileSpeed;
 
         [Header("Debug")]
+        [ReadOnly] public bool isInLobby;
+        [ReadOnly] public bool isResponding;
+        [ReadOnly] public bool isDead;
         [ReadOnly] public bool isInvulnerable;
         [ReadOnly] public float currentSpeed;
         [ReadOnly] public float aimAngle;
@@ -66,6 +74,9 @@ namespace BulletParadise.Player
             base.Awake();
 
             gameManager.AddDrawableDebug(this);
+            SetNewSceneCamera();
+            isInLobby = true;
+            isResponding = true;
 
             /*healthValue.SetText(health.ToString());
             maxHealthValue.SetText(maxHealth.ToString());*/
@@ -79,6 +90,8 @@ namespace BulletParadise.Player
             base.Update();
 
             HandleInput();
+
+            if (!isResponding) return;
 
             mousePosition = Utils.GetMouseWorldPosition();
             aimDirection = (mousePosition - (Vector2)shootingOffset.position).normalized;
@@ -125,14 +138,20 @@ namespace BulletParadise.Player
         private void HandleInput()
         {
             if (Consts.IsFocusedOnUI) return;
-            if (Keyboard.current.escapeKey.wasPressedThisFrame) canvasHandle.CloseUIWindow();
+
+            if (isInLobby)
+            {
+                if (Keyboard.current.escapeKey.wasPressedThisFrame) canvasHandle.CloseUIWindow();
+            }
+            if (Keyboard.current.rKey.wasPressedThisFrame) ReturnToLobby();
+
             if (Consts.IsFocusedOnMainMenu) return;
-            if (Keyboard.current.rKey.wasPressedThisFrame) SceneManager.LoadScene(0);
+            //TU BINDY KTORE NIE MOGE DZIALAC NA MAIN MENU
         }
 
         public void HandleMovement(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Started && !(context.phase == InputActionPhase.Performed || context.phase == InputActionPhase.Canceled)) return;
+            if (context.phase == InputActionPhase.Started && !(context.phase == InputActionPhase.Performed || context.phase == InputActionPhase.Canceled) || !isResponding) return;
             if (Consts.IsFocusedOnUI || Consts.IsFocusedOnMainMenu) return;
 
             Vector2 _input = context.ReadValue<Vector2>();
@@ -167,31 +186,61 @@ namespace BulletParadise.Player
         {
             if (damage <= 0 || isInvulnerable) return;
 
+            if (isDead) return;
+            if (health <= 0f) OnDeath();
             health -= damage;
 
             Popup.Create(transform.position, damage.ToString(), Color.red);
             UpdateHealthBar();
-
-            if (health <= 0f) Respawn();
         }
         private void UpdateHealthBar()
         {
             Vector3 barScale = healthBar.localScale;
-            barScale.x = health / maxHealth;
+            barScale.x = Mathf.Clamp01(health / maxHealth);
             healthBar.localScale = barScale;
 
             //healthFill.fillAmount = health / maxHealth;
             //healthValue.SetText(health.ToString());
         }
 
-        public void Respawn()
+        private void OnDeath()
         {
+            StopMovement();
+            isDead = true;
+            isResponding = false;
+            boxCollider.enabled = false;
+            canvasHandle.OpenWindow<DeathScreen>();
+            animator.SetBool("died", true);
+            Utils.Log("DEATH");
+        }
+
+        public void Restart()
+        {
+            transform.position = Vector2.zero;
             health = maxHealth;
+            isDead = false;
+            boxCollider.enabled = true;
+            UpdateHealthBar();
+        }
+
+        public void ReturnToLobby()
+        {
+            levelLoader.LoadScene("Lobby");
+            animator.SetBool("died", false);
+            canvasHandle.CloseWindow<DeathScreen>();
+            isInLobby = true;
+        }
+
+        public void SetNewSceneCamera()
+        {
+            cameraController = Camera.main.GetComponent<CameraController>();
+            cameraController.transform.position = transform.position;
         }
 
         public void StopMovement()
         {
             inputDirection = Vector2.zero;
+            animator.SetFloat("Speed", 0);
         }
     }
 }

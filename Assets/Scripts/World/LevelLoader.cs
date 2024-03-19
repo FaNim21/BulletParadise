@@ -9,21 +9,15 @@ namespace BulletParadise.World
 {
     public class LevelLoader : MonoBehaviour
     {
-        private PlayerController player;
-
         [Header("Objects")]
         [SerializeField] private TextMeshProUGUI loadingText;
         [SerializeField] private Slider loadingSlider;
         [SerializeField] private GameObject background;
 
 
-        private void Start()
-        {
-            player = PlayerController.Instance;
-        }
-
         public void LoadScene(string sceneName)
         {
+            PlayerController.Instance.isResponding = false;
             background.SetActive(true);
             StartCoroutine(LoadSceneAsync(sceneName));
         }
@@ -44,6 +38,10 @@ namespace BulletParadise.World
 
             //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
             yield return new WaitForSeconds(0.25f);
+
+            PlayerController.Instance.Restart();
+            PlayerController.Instance.SetNewSceneCamera();
+            PlayerController.Instance.isResponding = true;
 
             background.SetActive(false);
         }

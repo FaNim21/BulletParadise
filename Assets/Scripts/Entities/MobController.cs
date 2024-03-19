@@ -49,7 +49,7 @@ namespace BulletParadise.Entities
         {
             //GameManager.AddDrawable(this);
             target = PlayerController.Instance.transform;
-            isInvulnerable = true;
+            //isInvulnerable = true;
         }
 
         public override void Update()

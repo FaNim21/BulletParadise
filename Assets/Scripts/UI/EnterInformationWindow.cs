@@ -1,3 +1,4 @@
+using BulletParadise.Player;
 using BulletParadise.World;
 using TMPro;
 using UnityEngine;
@@ -28,6 +29,7 @@ public class EnterInformationWindow : MonoBehaviour
     public void OnEnter()
     {
         background.SetActive(false);
+        PlayerController.Instance.isInLobby = false;
         levelLoader.LoadScene(sceneName);
     }
 }
