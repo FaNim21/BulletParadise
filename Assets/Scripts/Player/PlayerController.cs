@@ -13,6 +13,7 @@ using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using BulletParadise.World;
 using BulletParadise.UI.Windows;
+using System.Collections;
 
 namespace BulletParadise.Player
 {
@@ -52,9 +53,9 @@ namespace BulletParadise.Player
         [Header("Debug")]
         [ReadOnly] public bool isInLobby;
         [ReadOnly] public bool isResponding;
-        [ReadOnly] public bool isDead;
-        [ReadOnly] public bool isInvulnerable;
-        [ReadOnly] public float currentSpeed;
+        [ReadOnly, SerializeField] private bool isDead;
+        [ReadOnly, SerializeField] private bool isInvulnerable;
+        [ReadOnly, SerializeField] private bool isShooting;
         [ReadOnly] public float aimAngle;
         [ReadOnly] public Vector2 inputDirection;
         [ReadOnly] public Vector2 mousePosition;
@@ -82,8 +83,8 @@ namespace BulletParadise.Player
             maxHealthValue.SetText(maxHealth.ToString());*/
             //healthFill.fillAmount = health / maxHealth;
 
-            currentSpeed = speed;
             animator.SetFloat("moveY", -1);
+            animator.SetFloat("shootSpeed", 3f);
         }
         public override void Update()
         {
@@ -96,13 +97,15 @@ namespace BulletParadise.Player
             mousePosition = Utils.GetMouseWorldPosition();
             aimDirection = (mousePosition - (Vector2)shootingOffset.position).normalized;
             aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+            animator.SetFloat("aimDirX", aimDirection.x);
+            animator.SetFloat("aimDirY", aimDirection.y);
 
-            if (Mouse.current.leftButton.wasPressedThisFrame && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject()) Shoot();
+            if (Mouse.current.leftButton.isPressed && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject() && !isShooting) StartCoroutine(Shoot());
         }
 
         public override void FixedUpdate()
         {
-            rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * inputDirection);
+            rb.MovePosition(rb.position + speed * Time.deltaTime * inputDirection);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -176,10 +179,16 @@ namespace BulletParadise.Player
             }
         }
 
-        private void Shoot()
+        private IEnumerator Shoot()
         {
+            isShooting = true;
+            animator.SetTrigger("shoots");
+
             var projectile = Instantiate(GameManager.Projectile, shootingOffset.position, Quaternion.Euler(0, 0, aimAngle));
             projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);
+
+            yield return new WaitForSeconds(0.1f);
+            isShooting = false;
         }
 
         public void TakeDamage(int damage)
@@ -210,7 +219,7 @@ namespace BulletParadise.Player
             isResponding = false;
             boxCollider.enabled = false;
             canvasHandle.OpenWindow<DeathScreen>();
-            animator.SetBool("died", true);
+            animator.SetTrigger("died");
             Utils.Log("DEATH");
         }
 
@@ -226,7 +235,7 @@ namespace BulletParadise.Player
         public void ReturnToLobby()
         {
             levelLoader.LoadScene("Lobby");
-            animator.SetBool("died", false);
+            animator.Rebind();
             canvasHandle.CloseWindow<DeathScreen>();
             isInLobby = true;
         }

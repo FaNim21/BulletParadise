@@ -107,7 +107,7 @@ namespace BulletParadise.Entities
             int j = 6;
             float differenceDegree = 30;
 
-            currentAngle += 10;
+            currentAngle += 8;
 
             for (int i = 1; i <= 12; i++)
             {
