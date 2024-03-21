@@ -3,10 +3,6 @@ using BulletParadise.World;
 using BulletParadise.Visual.Drawing;
 using BulletParadise.Visual;
 using BulletParadise.Entities;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 
 public class GameManager : MonoBehaviour
 {
@@ -19,12 +15,6 @@ public class GameManager : MonoBehaviour
 
     public static Projectile Projectile => Instance.prefabProjectile;
     public Projectile prefabProjectile;
-
-    /*public static InventorySlot InventorySlot => Instance.inventorySlot;
-    public InventorySlot inventorySlot;
-
-    public static Bag Bag => Instance.bag;
-    public Bag bag;*/
 
 
     private void Awake()
@@ -42,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void AddDrawableDebug(IDrawable drawable)
     {
-        drawDebug.AddDrawable(drawable);
+        drawDebug.AddSceneDrawable(drawable);
     }
     public static void AddDrawable(IDrawable drawable)
     {
@@ -51,18 +41,15 @@ public class GameManager : MonoBehaviour
 
     public void RemoveDrawableDebug(IDrawable drawable)
     {
-        drawDebug.RemoveDrawable(drawable);
+        drawDebug.RemoveSceneDrawable(drawable);
     }
     public static void RemoveDrawable(IDrawable drawable)
     {
         Instance.RemoveDrawableDebug(drawable);
     }
 
-    public void Quit()
+    public void FindWorldManager()
     {
-#if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
-#endif
-        Application.Quit();
+        worldManager = GameObject.Find("WorldManager").GetComponent<WorldManager>();
     }
 }

@@ -48,7 +48,7 @@ namespace BulletParadise.Components
 
         private void Start()
         {
-            GameManager.Instance.worldManager.AddDynamicObjectToWorld(this);
+            //GameManager.Instance.worldManager.AddDynamicObjectToWorld(this);
 
             target = PlayerController.Instance;
             currentTime = timeBetweenSpawn;

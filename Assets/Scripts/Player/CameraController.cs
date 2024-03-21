@@ -4,6 +4,8 @@ namespace BulletParadise.Player
 {
     public class CameraController : MonoBehaviour
     {
+        public static CameraController Instance { get; private set; }
+
         public Transform target;
         public bool isTargeting;
 
@@ -14,6 +16,14 @@ namespace BulletParadise.Player
         private Vector3 _velocity = Vector3.zero;
 
 
+        public void Awake()
+        {
+            DontDestroyOnLoad(this);
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+        }
         private void Start()
         {
             target = PlayerController.Instance.transform;

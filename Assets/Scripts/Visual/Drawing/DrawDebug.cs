@@ -7,41 +7,68 @@ namespace BulletParadise.Visual.Drawing
     public class DrawDebug : MonoBehaviour
     {
         private readonly List<IDrawable> _drawables = new();
+        private IReadOnlyList<IDrawable> _drawablesReadOnly => _drawables;
+
+        private readonly List<IDrawable> _sceneDrawables = new();
+        private IReadOnlyList<IDrawable> _sceneDrawablesReadOnly => _sceneDrawables;
+
 
         [Header("Values")]
-        public Material material;
+        [SerializeField] private Material material;
 
         [Header("Debug")]
-        public bool isDebugMode;
+        [SerializeField] private bool isDebugMode;
 
 
         private void OnPostRender()
         {
-            if (!isDebugMode || (_drawables == null || _drawables.Count == 0)) return;
+            if (!isDebugMode || _drawables == null || _drawables.Count == 0) return;
 
             Draw();
         }
 
-        public void Draw()
+        private void Draw()
         {
             material.SetPass(0);
 
-            for (int i = 0; i < _drawables.Count; i++)
+            for (int i = 0; i < _drawablesReadOnly.Count; i++)
             {
-                var current = _drawables[i];
+                var current = _drawablesReadOnly[i];
+                if (!current.CanDraw) continue;
+
+                current.Draw();
+            }
+
+            for (int i = 0; i < _sceneDrawablesReadOnly.Count; i++)
+            {
+                var current = _sceneDrawablesReadOnly[i];
                 if (!current.CanDraw) continue;
 
                 current.Draw();
             }
         }
 
-        public void AddDrawable(IDrawable drawable)
+        public void AddGlobalDrawable(IDrawable drawable)
         {
             _drawables.Add(drawable);
         }
-        public void RemoveDrawable(IDrawable drawable)
+        public void RemoveGlobalDrawable(IDrawable drawable)
         {
             _drawables.Remove(drawable);
+        }
+
+        public void AddSceneDrawable(IDrawable drawable)
+        {
+            _sceneDrawables.Add(drawable);
+        }
+        public void RemoveSceneDrawable(IDrawable drawable)
+        {
+            _sceneDrawables.Remove(drawable);
+        }
+
+        public void SwitchDebugMode()
+        {
+            isDebugMode = !isDebugMode;
         }
     }
 }

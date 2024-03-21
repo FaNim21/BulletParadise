@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using TMPro;
 using UnityEngine.InputSystem;
 using BulletParadise.Entities;
 using BulletParadise.UI;
@@ -9,8 +8,6 @@ using BulletParadise.Visual.Drawing;
 using BulletParadise.Visual;
 using BulletParadise.Constants;
 using BulletParadise.Misc;
-using UnityEngine.Pool;
-using UnityEngine.SceneManagement;
 using BulletParadise.World;
 using BulletParadise.UI.Windows;
 using System.Collections;
@@ -74,8 +71,7 @@ namespace BulletParadise.Player
 
             base.Awake();
 
-            gameManager.AddDrawableDebug(this);
-            SetNewSceneCamera();
+            gameManager.drawDebug.AddGlobalDrawable(this);
             isInLobby = true;
             isResponding = true;
 
@@ -85,6 +81,12 @@ namespace BulletParadise.Player
 
             animator.SetFloat("moveY", -1);
             animator.SetFloat("shootSpeed", 3f);
+        }
+        public override void Start()
+        {
+            base.Start();
+
+            cameraController = CameraController.Instance;
         }
         public override void Update()
         {
@@ -128,8 +130,7 @@ namespace BulletParadise.Player
         {
             if (transform == null) return;
 
-            GLDraw.DrawCircle(shootingOffset.position, gameManager.worldManager.renderingRadius, Color.yellow);
-            GLDraw.DrawCircle(shootingOffset.position, gameManager.worldManager.detectBagsRadius, Color.cyan);
+            //GLDraw.DrawCircle(shootingOffset.position, gameManager.worldManager.renderingRadius, Color.yellow);
 
             //kierunek patrzenia
             GLDraw.DrawRay(shootingOffset.position, aimDirection * 1.5f, Color.blue);
@@ -147,6 +148,7 @@ namespace BulletParadise.Player
                 if (Keyboard.current.escapeKey.wasPressedThisFrame) canvasHandle.CloseUIWindow();
             }
             if (Keyboard.current.rKey.wasPressedThisFrame) ReturnToLobby();
+            if (Keyboard.current.f1Key.wasPressedThisFrame) gameManager.drawDebug.SwitchDebugMode();
 
             if (Consts.IsFocusedOnMainMenu) return;
             //TU BINDY KTORE NIE MOGE DZIALAC NA MAIN MENU
@@ -229,6 +231,8 @@ namespace BulletParadise.Player
             health = maxHealth;
             isDead = false;
             boxCollider.enabled = true;
+            transform.position = Vector2.zero;
+            cameraController.transform.position = Vector2.zero;
             UpdateHealthBar();
         }
 
@@ -238,12 +242,6 @@ namespace BulletParadise.Player
             animator.Rebind();
             canvasHandle.CloseWindow<DeathScreen>();
             isInLobby = true;
-        }
-
-        public void SetNewSceneCamera()
-        {
-            cameraController = Camera.main.GetComponent<CameraController>();
-            cameraController.transform.position = transform.position;
         }
 
         public void StopMovement()
