@@ -145,13 +145,21 @@ namespace BulletParadise.Player
 
             if (isInLobby)
             {
-                if (Keyboard.current.escapeKey.wasPressedThisFrame) canvasHandle.CloseUIWindow();
+                if (Keyboard.current.escapeKey.wasPressedThisFrame)
+                {
+                    StopMovement();
+                    canvasHandle.CloseUIWindow();
+                }
             }
-            if (Keyboard.current.rKey.wasPressedThisFrame) ReturnToLobby();
+            else
+            {
+                if (Keyboard.current.rKey.wasPressedThisFrame && isResponding) ReturnToLobby();
+            }
+
             if (Keyboard.current.f1Key.wasPressedThisFrame) gameManager.drawDebug.SwitchDebugMode();
 
             if (Consts.IsFocusedOnMainMenu) return;
-            //TU BINDY KTORE NIE MOGE DZIALAC NA MAIN MENU
+            //TU BINDY KTORE NIE MOGA DZIALAC NA MAIN MENU
         }
 
         public void HandleMovement(InputAction.CallbackContext context)

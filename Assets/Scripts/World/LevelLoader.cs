@@ -39,22 +39,22 @@ namespace BulletParadise.World
 
                 yield return new WaitForEndOfFrame();
             }
-            Utils.Log("Szukanie world managera");
-            GameManager.Instance.FindWorldManager();
-
-            //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
             loadingText.SetText("100%");
             loadingSlider.value = 1;
-            yield return new WaitForSecondsRealtime(0.25f);
+
+            yield return null;
+            Utils.Log("Szukanie world managera");
+            GameManager.Instance.FindWorldManager();
 
             Utils.Log("Resetowanie gracza");
             PlayerController.Instance.Restart();
             PlayerController.Instance.isResponding = true;
 
-            background.SetActive(false);
-            yield return new WaitForSecondsRealtime(0.1f);
             Utils.Log("Startowanie sceny");
             Time.timeScale = 1f;
+            background.SetActive(false);
+
+            //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
         }
     }
 }
