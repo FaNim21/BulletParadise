@@ -1,5 +1,6 @@
 using BulletParadise.Misc;
 using BulletParadise.Player;
+using BulletParadise.Shooting;
 using BulletParadise.Visual;
 using BulletParadise.Visual.Drawing;
 using System.Collections;
@@ -22,6 +23,7 @@ namespace BulletParadise.Entities
         public Transform healthBar;
 
         [Header("Wartosci")]
+        public Weapon weapon;
         public float chaseRange;
         public float moveSpeed;
 
@@ -57,7 +59,7 @@ namespace BulletParadise.Entities
         {
             base.Update();
 
-            direction = (target.position - transform.position).normalized;
+            direction = ((Vector2)target.position - position).normalized;
             toTargetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             if (IsTargetInDistance(chaseRange) && !isShooting) StartCoroutine(Shooting());
@@ -90,7 +92,7 @@ namespace BulletParadise.Entities
             //Narazie jest to bazowa metoda do przyjmowania dmg
             if (isInvulnerable) return;
 
-            Popup.Create(transform.position, damage.ToString(), Color.red);
+            Popup.Create(position, damage.ToString(), Color.red);
             health -= damage;
 
             Vector3 barScale = healthBar.localScale;
@@ -101,10 +103,13 @@ namespace BulletParadise.Entities
         {
             isShooting = true;
 
+            if (weapon != null)
+                weapon.Shoot(_layerMask, position, toTargetAngle);
+
             /*var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, toTargetAngle));
             projectile.Setup(_layerMask, Quaternion.Euler(0, 0, toTargetAngle) * Vector2.right, projectileSpeed, damage);*/
 
-            float degree = 0;
+            /*float degree = 0;
             int j = 6;
             float differenceDegree = 30;
 
@@ -116,9 +121,9 @@ namespace BulletParadise.Entities
                 degree += currentAngle;
 
                 Quaternion eulerAngle = Quaternion.Euler(0, 0, degree);
-                var projectile = Instantiate(GameManager.Projectile, transform.position, eulerAngle);
-                projectile.Setup(_layerMask, eulerAngle * Vector2.right, projectileSpeed, damage);
-            }
+                *//*var projectile = Instantiate(GameManager.Projectile, position, eulerAngle);
+                projectile.Setup(_layerMask, eulerAngle * Vector2.right, projectileSpeed, damage);*//*
+            }*/
 
             /*for (int i = 1; i <= data.shots; i++)
             {
@@ -153,7 +158,7 @@ namespace BulletParadise.Entities
 
         public bool IsTargetInDistance(float distance)
         {
-            float sqrDistance = (target.position - transform.position).sqrMagnitude;
+            float sqrDistance = ((Vector2)target.position - position).sqrMagnitude;
             return sqrDistance < distance * distance;
         }
 

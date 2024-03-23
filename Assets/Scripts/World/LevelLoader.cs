@@ -25,8 +25,6 @@ namespace BulletParadise.World
 
         private IEnumerator LoadSceneAsync(string sceneName)
         {
-            //TODO: 0 before loading new scene clear the drawdebug sceneDrawables as from previous scene objects draws
-
             Time.timeScale = 0f;
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 
@@ -43,18 +41,21 @@ namespace BulletParadise.World
             loadingSlider.value = 1;
 
             yield return null;
-            Utils.Log("Szukanie world managera");
-            GameManager.Instance.FindWorldManager();
 
-            Utils.Log("Resetowanie gracza");
-            PlayerController.Instance.Restart();
-            PlayerController.Instance.isResponding = true;
+            SetUpOnNewScene();
 
-            Utils.Log("Startowanie sceny");
             Time.timeScale = 1f;
-            background.SetActive(false);
 
             //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
+            background.SetActive(false);
+        }
+
+        private void SetUpOnNewScene()
+        {
+            GameManager.Instance.FindWorldManager();
+
+            PlayerController.Instance.Restart();
+            PlayerController.Instance.isResponding = true;
         }
     }
 }

@@ -15711,7 +15711,6 @@ MonoBehaviour:
   dynamicObjects: []
   entities: []
   _drawDebug: {fileID: 519420034}
-  detectBagsRadius: 0
   renderingRadius: 0
   mobsRenderingRadius: 0
   isWorldUpdating: 0
@@ -15762,6 +15761,10 @@ PrefabInstance:
     - target: {fileID: 2041738044547988209, guid: 2fab4411d33ab0c4790faa0002eb93be, type: 3}
       propertyPath: m_Name
       value: Mob
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041738044547988209, guid: 2fab4411d33ab0c4790faa0002eb93be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6664624333444446303, guid: 2fab4411d33ab0c4790faa0002eb93be, type: 3}
       propertyPath: m_LocalPosition.x

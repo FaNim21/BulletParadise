@@ -11,6 +11,7 @@ using BulletParadise.Misc;
 using BulletParadise.World;
 using BulletParadise.UI.Windows;
 using System.Collections;
+using BulletParadise.Shooting;
 
 namespace BulletParadise.Player
 {
@@ -43,6 +44,7 @@ namespace BulletParadise.Player
         public TextMeshProUGUI maxHealthValue;*/
 
         [Header("G³ówne wartoœci")]
+        public Weapon weapon;
         public float speed;
         public float sprintSpeed;
         public float projectileSpeed;
@@ -153,7 +155,7 @@ namespace BulletParadise.Player
             }
             else
             {
-                if (Keyboard.current.rKey.wasPressedThisFrame && isResponding) ReturnToLobby();
+                if (Keyboard.current.rKey.wasPressedThisFrame) ReturnToLobby();
             }
 
             if (Keyboard.current.f1Key.wasPressedThisFrame) gameManager.drawDebug.SwitchDebugMode();
@@ -194,8 +196,11 @@ namespace BulletParadise.Player
             isShooting = true;
             animator.SetTrigger("shoots");
 
-            var projectile = Instantiate(GameManager.Projectile, shootingOffset.position, Quaternion.Euler(0, 0, aimAngle));
-            projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);
+            if (weapon != null)
+                weapon.Shoot(_layerMask, shootingOffset.position, aimAngle);
+
+            /*var projectile = Instantiate(GameManager.Projectile, shootingOffset.position, Quaternion.Euler(0, 0, aimAngle));
+            projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);*/
 
             yield return new WaitForSeconds(0.2f);
             isShooting = false;
@@ -209,7 +214,7 @@ namespace BulletParadise.Player
             if (health <= 0f) OnDeath();
             health -= damage;
 
-            Popup.Create(transform.position, damage.ToString(), Color.red);
+            Popup.Create(position, damage.ToString(), Color.red);
             UpdateHealthBar();
         }
         private void UpdateHealthBar()
@@ -239,7 +244,6 @@ namespace BulletParadise.Player
             health = maxHealth;
             isDead = false;
             boxCollider.enabled = true;
-            transform.position = Vector2.zero;
             cameraController.transform.position = Vector2.zero;
             UpdateHealthBar();
         }

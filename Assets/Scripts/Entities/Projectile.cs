@@ -1,48 +1,57 @@
+using BulletParadise.Shooting;
 using UnityEngine;
 
 namespace BulletParadise.Entities
 {
     public class Projectile : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer spriteRenderer;
         public Rigidbody2D rb;
         public Transform body;
 
-        public int damage;
-        public float speed;
-        public float rotationSpeed;
+        public ProjectileBehavior behavior;
 
-        private Vector2 velocity;
+        /*public int damage;
+        public float speed;*/
+        //public float rotationSpeed;
 
-        public void Setup(string layerMask, Vector2 velocity, float speed, int damage)
+        //private Vector2 velocity;
+
+        public void Setup(string layerMask, ProjectileBehavior behavior)
         {
             gameObject.layer = LayerMask.NameToLayer(layerMask);
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer(layerMask);
 
-            this.velocity = velocity;
-            this.speed = speed;
-            this.damage = damage;
+            this.behavior = behavior;
+            spriteRenderer.sprite = behavior.data.sprite;
 
-            Destroy(gameObject, 3f);
+            /*this.velocity = velocity;
+            this.speed = speed;
+            this.damage = damage;*/
+
+            Destroy(gameObject, behavior.data.timeAlive);
         }
 
         private void Update()
         {
-            Vector3 childAngle = body.eulerAngles;
+            /*Vector3 childAngle = body.eulerAngles;
             childAngle.z += rotationSpeed * Time.deltaTime;
-            body.eulerAngles = childAngle;
+            body.eulerAngles = childAngle;*/
+            behavior.UpdateLogic();
         }
 
         private void FixedUpdate()
         {
             //TODO: 0 tu zrobic system, ktory mialem w glowie odnosnie interfejsu do tego zeby robic DI w setupie dla patternow
-            rb.MovePosition(rb.position + speed * Time.deltaTime * velocity);
+            //rb.MovePosition(rb.position + speed * Time.deltaTime * velocity);
+            behavior.UpdatePhysics();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.transform.parent.TryGetComponent<IDamageable>(out var entity))
             {
-                entity.TakeDamage(damage);
+                entity.TakeDamage(behavior.data.damage);
                 Destroy(gameObject);
             }
         }

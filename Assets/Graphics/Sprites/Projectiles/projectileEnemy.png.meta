@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3e86254662d705f4c93c922ca47a580b
+guid: 809ed85ea9899814d91eeba32b2c6f7a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 602027010143938834
-    second: SpoonBullet_0
+      213: 180906386586989584
+    second: projectileENEMY_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -76,8 +76,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
-    compressionQuality: 100
-    crunchedCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -113,22 +113,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpoonBullet_0
+      name: WoodenSpoon
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
+        y: 0
         width: 8
-        height: 6
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 219e1d44064da5800800000000000000
-      internalID: 602027010143938834
+      spriteID: 99ab8bab9f85c264782d5f6ae50e482e
+      internalID: 945663313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalicSpoon
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d0f4daec6a053442a56e6625560cfde
+      internalID: 33093609
       vertices: []
       indices: 
       edges: []
@@ -136,7 +157,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 68f4391166c0078418bcb0f9cd65f812
     internalID: 0
     vertices: []
     indices: 
@@ -144,7 +165,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpoonBullet_0: 602027010143938834
+      MetalicSpoon: 33093609
+      WoodenSpoon: 945663313
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

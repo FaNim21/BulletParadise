@@ -1305,7 +1305,7 @@ Transform:
   m_GameObject: {fileID: 4760818867038567653}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.193, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1794,6 +1794,7 @@ MonoBehaviour:
   shootingOffset: {fileID: 485283292785785696}
   healthBar: {fileID: 8113172731535335571}
   healthFill: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 47bd2e800d16da44da40621016408034, type: 2}
   speed: 4
   sprintSpeed: 8
   projectileSpeed: 7
