@@ -1794,7 +1794,7 @@ MonoBehaviour:
   shootingOffset: {fileID: 485283292785785696}
   healthBar: {fileID: 8113172731535335571}
   healthFill: {fileID: 0}
-  weapon: {fileID: 11400000, guid: 47bd2e800d16da44da40621016408034, type: 2}
+  weapon: {fileID: 11400000, guid: 992f47c307c259d4aa0dc0a3f673d7aa, type: 2}
   speed: 4
   sprintSpeed: 8
   projectileSpeed: 7

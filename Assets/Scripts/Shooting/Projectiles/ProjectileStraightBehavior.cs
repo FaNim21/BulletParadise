@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BulletParadise.Shooting
+namespace BulletParadise.Shooting.Projectiles
 {
     public class ProjectileStraightBehavior : ProjectileBehavior
     {
@@ -8,7 +8,7 @@ namespace BulletParadise.Shooting
 
         public override void UpdatePhysics()
         {
-            rb.MovePosition(rb.position + data.speed * Time.deltaTime * velocity);
+            rb.MovePosition(rb.position + data.speed * Time.deltaTime * _velocity);
         }
     }
 }

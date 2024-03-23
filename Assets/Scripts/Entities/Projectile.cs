@@ -29,7 +29,7 @@ namespace BulletParadise.Entities
             this.speed = speed;
             this.damage = damage;*/
 
-            Destroy(gameObject, behavior.data.timeAlive);
+            Destroy(gameObject, behavior.data.lifeTime);
         }
 
         private void Update()

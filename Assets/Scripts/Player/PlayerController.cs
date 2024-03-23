@@ -48,6 +48,7 @@ namespace BulletParadise.Player
         public float speed;
         public float sprintSpeed;
         public float projectileSpeed;
+        public bool autoFire;
 
         [Header("Debug")]
         [ReadOnly] public bool isInLobby;
@@ -103,8 +104,14 @@ namespace BulletParadise.Player
             aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
             animator.SetFloat("aimDirX", aimDirection.x);
             animator.SetFloat("aimDirY", aimDirection.y);
-
-            if (Mouse.current.leftButton.isPressed && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject() && !isShooting) StartCoroutine(Shoot());
+            if (autoFire)
+            {
+                if (!isShooting) StartCoroutine(Shoot());
+            }
+            else
+            {
+                if (Mouse.current.leftButton.isPressed && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject() && !isShooting) StartCoroutine(Shoot());
+            }
         }
 
         public override void FixedUpdate()
@@ -199,10 +206,7 @@ namespace BulletParadise.Player
             if (weapon != null)
                 weapon.Shoot(_layerMask, shootingOffset.position, aimAngle);
 
-            /*var projectile = Instantiate(GameManager.Projectile, shootingOffset.position, Quaternion.Euler(0, 0, aimAngle));
-            projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);*/
-
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(1f / weapon.frequency);
             isShooting = false;
         }
 

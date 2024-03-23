@@ -65430,6 +65430,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420033}
     - target: {fileID: 3393361983977888684, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: a0ea6e2bf87e1cd4a9e0093412633eeb, type: 2}
+    - target: {fileID: 3393361983977888684, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1021948130}

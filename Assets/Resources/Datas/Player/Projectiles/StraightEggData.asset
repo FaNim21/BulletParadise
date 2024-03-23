@@ -15,5 +15,8 @@ MonoBehaviour:
   behaviourData:
     sprite: {fileID: -1546843765, guid: 3fd52ccb8f3e0bf4b832690599510bc4, type: 3}
     damage: 25
-    timeAlive: 3
+    lifeTime: 4
     speed: 4
+    frequency: 0
+    amplitude: 0
+    magnitude: 0

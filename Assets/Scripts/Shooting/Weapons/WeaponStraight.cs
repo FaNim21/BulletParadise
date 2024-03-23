@@ -7,7 +7,7 @@ namespace BulletParadise.Shooting.Weapons
     {
         public override void Shoot(string layerMask, Vector2 shootingPosition, float shootingAngle)
         {
-            //throw new System.NotImplementedException();
+            //TODO: 0 nie wiem co tu zrobic, bo mozna niby arc wykorzystac jako strzelanie prosto bez ustalania kata strzalu
         }
     }
 }

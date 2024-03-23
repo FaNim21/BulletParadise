@@ -2,14 +2,19 @@ using UnityEngine;
 
 namespace BulletParadise.Shooting
 {
-    //[CreateAssetMenu(fileName = "new Projectile Behavior Data", menuName = "Weapons/Projectile Data/Straight")]
     [System.Serializable]
-    public class ProjectileBehaviorData// : ScriptableObject
+    public class ProjectileBehaviorData
     {
         public Sprite sprite;
 
+        [Header("General")]
         public int damage;
-        public int timeAlive;
-        public int speed;
+        public float lifeTime;
+        public float speed;
+
+        [Header("Trigonometry")]
+        public float frequency;
+        public float amplitude;
+        public float magnitude;
     }
 }

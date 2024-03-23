@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d08bf166b9ede74190c04824aaa1231, type: 3}
-  m_Name: StraightEgg2Data
+  m_Script: {fileID: 11500000, guid: ce536a2ad59388d4ab68f4c2acd4fc79, type: 3}
+  m_Name: WaveBroccoliData
   m_EditorClassIdentifier: 
   behaviourData:
-    sprite: {fileID: -483643079, guid: 3fd52ccb8f3e0bf4b832690599510bc4, type: 3}
-    damage: 30
-    lifeTime: 3
-    speed: 6
-    frequency: 0
-    amplitude: 0
+    sprite: {fileID: 802465016, guid: 3fd52ccb8f3e0bf4b832690599510bc4, type: 3}
+    damage: 75
+    lifeTime: 0.5
+    speed: 18
+    frequency: 2
+    amplitude: -0.5
     magnitude: 0

@@ -18,13 +18,7 @@ namespace BulletParadise.Shooting.Weapons
             {
                 var current = projectiles[i - 1];
 
-                //degree += angle;
-
-                //to mozna uproscic jednym dzialaniem bez ifa
-                //degree = shootingAngle + (angle * (halfLength - (i - 1))) - (angle / 2) ;
                 degree = shootingAngle + (angle * (halfLength - (i - 1))) - (angle / 2) - (angle / 2 * (length % 2 * -1));
-                /*if (length % 2 == 0) degree = shootingAngle + (angle * (halfLength - (i - 1))) - (angle / 2);
-                else degree = shootingAngle + (angle * (halfLength - (i - 1)));*/
 
                 Quaternion quaternionAngle = Quaternion.Euler(0, 0, degree);
                 var projectile = Instantiate(GameManager.Projectile, shootingPosition, quaternionAngle);
