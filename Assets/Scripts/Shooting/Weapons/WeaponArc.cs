@@ -22,7 +22,7 @@ namespace BulletParadise.Shooting.Weapons
 
                 Quaternion quaternionAngle = Quaternion.Euler(0, 0, degree);
                 var projectile = Instantiate(GameManager.Projectile, shootingPosition, quaternionAngle);
-                ProjectileBehavior behavior = current.GenerateBehavior(projectile.rb, quaternionAngle * Vector2.right);
+                ProjectileBehavior behavior = current.GetBehaviorWithMultiplier(projectile.rb, quaternionAngle * Vector2.right);
                 projectile.Setup(layerMask, behavior);
             }
         }

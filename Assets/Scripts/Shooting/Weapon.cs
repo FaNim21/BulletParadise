@@ -4,7 +4,7 @@ namespace BulletParadise.Shooting
 {
     public abstract class Weapon : ScriptableObject
     {
-        public ProjectileBehaviorFactory[] projectiles;
+        public ProjectileData[] projectiles;
 
         public int frequency = 1;
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace BulletParadise.Shooting
 {
@@ -16,5 +17,23 @@ namespace BulletParadise.Shooting
         public float frequency;
         public float amplitude;
         public float magnitude;
+
+
+        public static ProjectileBehaviorData operator *(ProjectileBehaviorData a, ProjectileDataMultiplier b)
+        {
+            ProjectileBehaviorData newData = new()
+            {
+                sprite = a.sprite,
+
+                damage = a.damage * b.damageMultiplier,
+                lifeTime = a.lifeTime * b.lifeTimeMultiplier,
+                speed = a.speed * b.speedMultiplier,
+
+                frequency = a.frequency * b.frequencyMultiplier,
+                amplitude = a.amplitude * b.amplitudeMultiplier,
+                magnitude = a.magnitude * b.magnitudeMultiplier
+            };
+            return newData;
+        }
     }
 }

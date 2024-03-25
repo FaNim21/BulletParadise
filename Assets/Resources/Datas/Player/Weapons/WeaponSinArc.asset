@@ -13,7 +13,53 @@ MonoBehaviour:
   m_Name: WeaponSinArc
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 11400000, guid: 3f31245f22bf1a64cbafe3b280d0d2e0, type: 2}
-  - {fileID: 11400000, guid: e68cfdcaffb784a41bd3632ef7f0773b, type: 2}
-  frequency: 100
-  angle: 0
+  - behaviorFactory: {fileID: 11400000, guid: 3f31245f22bf1a64cbafe3b280d0d2e0, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+      frequencyMultiplier: 1
+      amplitudeMultiplier: 1
+      magnitudeMultiplier: 1
+  - behaviorFactory: {fileID: 11400000, guid: 3f31245f22bf1a64cbafe3b280d0d2e0, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+      frequencyMultiplier: 1
+      amplitudeMultiplier: -1
+      magnitudeMultiplier: 1
+  - behaviorFactory: {fileID: 11400000, guid: 3f31245f22bf1a64cbafe3b280d0d2e0, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+      frequencyMultiplier: 1
+      amplitudeMultiplier: 1
+      magnitudeMultiplier: 1
+  - behaviorFactory: {fileID: 11400000, guid: 3f31245f22bf1a64cbafe3b280d0d2e0, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+      frequencyMultiplier: 1
+      amplitudeMultiplier: -1
+      magnitudeMultiplier: 1
+  - behaviorFactory: {fileID: 11400000, guid: 3f31245f22bf1a64cbafe3b280d0d2e0, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+      frequencyMultiplier: 1
+      amplitudeMultiplier: 1
+      magnitudeMultiplier: 1
+  - behaviorFactory: {fileID: 11400000, guid: 3f31245f22bf1a64cbafe3b280d0d2e0, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+      frequencyMultiplier: 1
+      amplitudeMultiplier: -1
+      magnitudeMultiplier: 1
+  frequency: 500
+  angle: 20

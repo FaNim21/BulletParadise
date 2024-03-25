@@ -65425,6 +65425,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 318415668716812852, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318415668716812852, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138887442909851989, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 3303889451010081638, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
       propertyPath: cameraController
       value: 
@@ -65432,7 +65444,7 @@ PrefabInstance:
     - target: {fileID: 3393361983977888684, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 11400000, guid: a0ea6e2bf87e1cd4a9e0093412633eeb, type: 2}
+      objectReference: {fileID: 11400000, guid: 992f47c307c259d4aa0dc0a3f673d7aa, type: 2}
     - target: {fileID: 3393361983977888684, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
       propertyPath: gameManager
       value: 
@@ -65485,10 +65497,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7494655331607894236, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494655331607894236, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494655331607894236, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494655331607894236, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494655331607894236, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494655331607894236, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494655331607894236, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494655331607894236, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8810312031106832159, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 8810312031106832159, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
