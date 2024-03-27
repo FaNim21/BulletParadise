@@ -12,6 +12,8 @@ using BulletParadise.World;
 using BulletParadise.UI.Windows;
 using System.Collections;
 using BulletParadise.Shooting;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace BulletParadise.Player
 {
@@ -60,6 +62,8 @@ namespace BulletParadise.Player
         [ReadOnly] public Vector2 inputDirection;
         [ReadOnly] public Vector2 mousePosition;
         [ReadOnly] public Vector2 aimDirection;
+
+        private readonly List<IInteractable> interactables = new();
 
         private readonly string _layerMask = "ProjectilePlayer";
 
@@ -125,6 +129,15 @@ namespace BulletParadise.Player
             {
                 canvasHandle.enterWindow.Setup(portal.GetSceneName());
             }
+
+            if (collision.TryGetComponent(out IInteractable interactable))
+            {
+                foreach (var interaction in interactables)
+                    interaction.LostFocus();
+
+                interactable.Focus();
+                interactables.Add(interactable);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -132,6 +145,12 @@ namespace BulletParadise.Player
             if (collision.TryGetComponent(out IEnterable _))
             {
                 canvasHandle.enterWindow.Exit();
+            }
+
+            if (collision.TryGetComponent(out IInteractable interactable))
+            {
+                interactable.LostFocus();
+                interactables.Remove(interactable);
             }
         }
 
@@ -169,6 +188,13 @@ namespace BulletParadise.Player
 
             if (Consts.IsFocusedOnMainMenu) return;
             //TU BINDY KTORE NIE MOGA DZIALAC NA MAIN MENU
+        }
+
+        public void Interact(InputAction.CallbackContext context)
+        {
+            if (context.phase != InputActionPhase.Performed || interactables == null || interactables.Count == 0) return;
+
+            interactables[^1].Interact();
         }
 
         public void HandleMovement(InputAction.CallbackContext context)
