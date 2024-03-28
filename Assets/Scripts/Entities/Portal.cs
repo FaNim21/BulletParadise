@@ -1,21 +1,39 @@
-﻿using BulletParadise.Misc;
+﻿using BulletParadise.Player;
 using UnityEngine;
 
 namespace BulletParadise.Entities
 {
-    public class Portal : MonoBehaviour, IEnterable
+    public class Portal : MonoBehaviour, IInteractable
     {
+        public bool IsFocused { get; set; }
+
+
         public new string name;
 
+        [Header("Components")]
+        public EnterInformationWindow enterInformationWindow;
 
-        public void Enter()
+
+        private void Start()
         {
-            Utils.Log($"Wszedl w portal: {name}");
+            enterInformationWindow = PlayerController.Instance.canvasHandle.enterWindow;
         }
 
-        public string GetSceneName()
+        public void Interact()
         {
-            return name;
+            enterInformationWindow.OnEnter();
+        }
+
+        public void Focus()
+        {
+            IsFocused = true;
+            enterInformationWindow.Setup(name);
+        }
+
+        public void LostFocus()
+        {
+            IsFocused = false;
+            enterInformationWindow.Exit();
         }
     }
 }

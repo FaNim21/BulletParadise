@@ -4,7 +4,7 @@ namespace BulletParadise.Shooting
 {
     public abstract class ProjectileBehavior
     {
-        public ProjectileBehaviorData data;
+        public ProjectileData data;
         protected Rigidbody2D rb;
 
         protected Vector2 _velocity;
@@ -15,7 +15,7 @@ namespace BulletParadise.Shooting
 
         protected float timeAlive = 0.04f;
 
-        public ProjectileBehavior(ProjectileBehaviorData data, Rigidbody2D rb, Vector2 velocity)
+        public ProjectileBehavior(ProjectileData data, Rigidbody2D rb, Vector2 velocity)
         {
             this.data = data;
             this.rb = rb;

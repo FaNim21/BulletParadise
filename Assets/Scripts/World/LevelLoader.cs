@@ -18,7 +18,7 @@ namespace BulletParadise.World
 
         public void LoadScene(string sceneName)
         {
-            PlayerController.Instance.isResponding = false;
+            PlayerController.Instance.SetResponding(false);
             background.SetActive(true);
             StartCoroutine(LoadSceneAsync(sceneName));
         }
@@ -55,7 +55,7 @@ namespace BulletParadise.World
             GameManager.Instance.FindWorldManager();
 
             PlayerController.Instance.Restart();
-            PlayerController.Instance.isResponding = true;
+            PlayerController.Instance.SetResponding(true);
         }
     }
 }

@@ -2,31 +2,36 @@ using UnityEngine;
 
 namespace BulletParadise.Shooting
 {
-    [System.Serializable]
-    public class ProjectileDataMultiplier
+    [CreateAssetMenu(fileName = "new Projectile Data", menuName = "Weapons/Projectile/Data")]
+    public class ProjectileData : ScriptableObject
     {
+        public Sprite sprite;
+
         [Header("General")]
-        public int damageMultiplier = 1;
-        public float lifeTimeMultiplier = 1;
-        public float speedMultiplier = 1;
+        public int damage;
+        public float lifeTime;
+        public float speed;
 
         [Header("Trigonometry")]
-        public float frequencyMultiplier = 1;
-        public float amplitudeMultiplier = 1;
-        public float magnitudeMultiplier = 1;
-    }
+        public float frequency;
+        public float amplitude;
+        public float magnitude;
 
-    [System.Serializable]
-    public class ProjectileData
-    {
-        public ProjectileBehaviorFactory behaviorFactory;
-        public ProjectileDataMultiplier dataMultiplier;
 
-        public ProjectileBehavior GetBehaviorWithMultiplier(Rigidbody2D rb, Vector2 velocity)
+        public static ProjectileData operator *(ProjectileData a, ProjectileDataMultiplier b)
         {
-            ProjectileBehavior behavior = behaviorFactory.GenerateBehavior(rb, velocity);
-            behavior.data *= dataMultiplier;
-            return behavior;
+            ProjectileData newData = (ProjectileData)CreateInstance("ProjectileData");
+
+            newData.sprite = a.sprite;
+
+            newData.damage = a.damage * b.damageMultiplier;
+            newData.lifeTime = a.lifeTime * b.lifeTimeMultiplier;
+            newData.speed = a.speed * b.speedMultiplier;
+
+            newData.frequency = a.frequency * b.frequencyMultiplier;
+            newData.amplitude = a.amplitude * b.amplitudeMultiplier;
+            newData.magnitude = a.magnitude * b.magnitudeMultiplier;
+            return newData;
         }
     }
 }

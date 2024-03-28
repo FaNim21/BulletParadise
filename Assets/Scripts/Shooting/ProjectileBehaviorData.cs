@@ -1,39 +1,36 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace BulletParadise.Shooting
 {
     [System.Serializable]
-    public class ProjectileBehaviorData
+    public class ProjectileDataMultiplier
     {
-        public Sprite sprite;
-
         [Header("General")]
-        public int damage;
-        public float lifeTime;
-        public float speed;
+        public int damageMultiplier = 1;
+        public float lifeTimeMultiplier = 1;
+        public float speedMultiplier = 1;
 
         [Header("Trigonometry")]
-        public float frequency;
-        public float amplitude;
-        public float magnitude;
+        public float frequencyMultiplier = 1;
+        public float amplitudeMultiplier = 1;
+        public float magnitudeMultiplier = 1;
+    }
 
+    [System.Serializable]
+    public class ProjectileBehaviorData
+    {
+        [Header("Components")]
+        public ProjectileData data;
+        public ProjectileBehaviorFactory behaviorFactory;
 
-        public static ProjectileBehaviorData operator *(ProjectileBehaviorData a, ProjectileDataMultiplier b)
+        [Header("Multiplier")]
+        public ProjectileDataMultiplier dataMultiplier;
+
+        public ProjectileBehavior GetBehavior(Rigidbody2D rb, Vector2 velocity)
         {
-            ProjectileBehaviorData newData = new()
-            {
-                sprite = a.sprite,
-
-                damage = a.damage * b.damageMultiplier,
-                lifeTime = a.lifeTime * b.lifeTimeMultiplier,
-                speed = a.speed * b.speedMultiplier,
-
-                frequency = a.frequency * b.frequencyMultiplier,
-                amplitude = a.amplitude * b.amplitudeMultiplier,
-                magnitude = a.magnitude * b.magnitudeMultiplier
-            };
-            return newData;
+            ProjectileBehavior behavior = behaviorFactory.GenerateBehavior(data, rb, velocity);
+            behavior.data *= dataMultiplier;
+            return behavior;
         }
     }
 }

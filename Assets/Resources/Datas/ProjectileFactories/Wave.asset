@@ -10,13 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce536a2ad59388d4ab68f4c2acd4fc79, type: 3}
-  m_Name: WaveBroccoliData
+  m_Name: Wave
   m_EditorClassIdentifier: 
-  behaviourData:
-    sprite: {fileID: 802465016, guid: 3fd52ccb8f3e0bf4b832690599510bc4, type: 3}
-    damage: 75
-    lifeTime: 1
-    speed: 18
-    frequency: 2
-    amplitude: 0.5
-    magnitude: 0
+  behaviourData: {fileID: 0}

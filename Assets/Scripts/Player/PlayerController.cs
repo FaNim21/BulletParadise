@@ -12,7 +12,6 @@ using BulletParadise.World;
 using BulletParadise.UI.Windows;
 using System.Collections;
 using BulletParadise.Shooting;
-using NUnit.Framework;
 using System.Collections.Generic;
 
 namespace BulletParadise.Player
@@ -24,7 +23,7 @@ namespace BulletParadise.Player
         [Header("Globals")]
         public GameManager gameManager;
 
-        [Header("Komponenty")]
+        [Header("Components")]
         //public InputsHandler inputHandler;
         //public Inventory inventory;
         public CameraController cameraController;
@@ -125,11 +124,6 @@ namespace BulletParadise.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out IEnterable portal))
-            {
-                canvasHandle.enterWindow.Setup(portal.GetSceneName());
-            }
-
             if (collision.TryGetComponent(out IInteractable interactable))
             {
                 foreach (var interaction in interactables)
@@ -139,14 +133,8 @@ namespace BulletParadise.Player
                 interactables.Add(interactable);
             }
         }
-
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out IEnterable _))
-            {
-                canvasHandle.enterWindow.Exit();
-            }
-
             if (collision.TryGetComponent(out IInteractable interactable))
             {
                 interactable.LostFocus();
@@ -276,6 +264,15 @@ namespace BulletParadise.Player
             boxCollider.enabled = true;
             cameraController.transform.position = Vector2.zero;
             UpdateHealthBar();
+        }
+
+        public void SetResponding(bool option)
+        {
+            isResponding = option;
+            if (!option)
+            {
+                StopMovement();
+            }
         }
 
         public void ReturnToLobby()
