@@ -29,7 +29,7 @@ namespace BulletParadise.Entities
 
         public int damage;
         public float projectileSpeed;
-        public float shootingCooldown;
+        //public float shootingCooldown;
         public int exp;
 
         [Header("Debug")]
@@ -103,8 +103,9 @@ namespace BulletParadise.Entities
         {
             isShooting = true;
 
+            currentAngle += 5f;
             if (weapon != null)
-                weapon.Shoot(_layerMask, position, toTargetAngle);
+                weapon.Shoot(_layerMask, position, currentAngle);
 
             /*var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, toTargetAngle));
             projectile.Setup(_layerMask, Quaternion.Euler(0, 0, toTargetAngle) * Vector2.right, projectileSpeed, damage);*/
@@ -151,7 +152,7 @@ namespace BulletParadise.Entities
                     isParametric ? ProjectileEffect.tracking : ProjectileEffect.none);
             }*/
 
-            yield return new WaitForSeconds(shootingCooldown);
+            yield return new WaitForSeconds(1f / weapon.frequency);
 
             isShooting = false;
         }

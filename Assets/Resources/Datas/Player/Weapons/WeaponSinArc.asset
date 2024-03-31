@@ -22,6 +22,7 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: 847c844fd46331842a0e3ea015a6c945, type: 2}
     behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
@@ -31,7 +32,8 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: -1
       magnitudeMultiplier: 1
-  sprite: {fileID: 0}
+    angle: 0
+  sprite: {fileID: 871398409806312582, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   frequency: 10
   useShootingAngle: 1
   angle: 0

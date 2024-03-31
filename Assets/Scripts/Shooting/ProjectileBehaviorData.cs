@@ -3,17 +3,17 @@ using UnityEngine;
 namespace BulletParadise.Shooting
 {
     [System.Serializable]
-    public class ProjectileDataMultiplier
+    public struct ProjectileDataMultiplier
     {
         [Header("General")]
-        public int damageMultiplier = 1;
-        public float lifeTimeMultiplier = 1;
-        public float speedMultiplier = 1;
+        public float damageMultiplier;
+        public float lifeTimeMultiplier;
+        public float speedMultiplier;
 
         [Header("Trigonometry")]
-        public float frequencyMultiplier = 1;
-        public float amplitudeMultiplier = 1;
-        public float magnitudeMultiplier = 1;
+        public float frequencyMultiplier;
+        public float amplitudeMultiplier;
+        public float magnitudeMultiplier;
     }
 
     [System.Serializable]
@@ -25,6 +25,9 @@ namespace BulletParadise.Shooting
 
         [Header("Multiplier")]
         public ProjectileDataMultiplier dataMultiplier;
+
+        [Header("Additional Data")]
+        public float angle;
 
         public ProjectileBehavior GetBehavior(Rigidbody2D rb, Vector2 velocity)
         {

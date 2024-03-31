@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f39a95c82bcc6140832f485dad89322, type: 3}
+  m_Script: {fileID: 11500000, guid: f3aad649b09415a4b97839ab3f052cb9, type: 3}
   m_Name: WeaponCircleSpoon
   m_EditorClassIdentifier: 
   projectiles:
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -22,8 +22,9 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -31,8 +32,9 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -40,8 +42,9 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -49,8 +52,9 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -58,8 +62,9 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -67,8 +72,9 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -76,8 +82,9 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -85,8 +92,9 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -94,8 +102,9 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
+    angle: 0
   - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -103,7 +112,26 @@ MonoBehaviour:
       frequencyMultiplier: 1
       amplitudeMultiplier: 1
       magnitudeMultiplier: 1
-  sprite: {fileID: 0}
-  frequency: 10
-  useShootingAngle: 1
-  angle: 34
+    angle: 0
+  - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+      frequencyMultiplier: 1
+      amplitudeMultiplier: 1
+      magnitudeMultiplier: 1
+    angle: 0
+  - data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+      frequencyMultiplier: 1
+      amplitudeMultiplier: 1
+      magnitudeMultiplier: 1
+    angle: 0
+  sprite: {fileID: 3304971761699023241, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
+  frequency: 5

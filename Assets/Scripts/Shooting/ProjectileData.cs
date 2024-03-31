@@ -24,7 +24,7 @@ namespace BulletParadise.Shooting
 
             newData.sprite = a.sprite;
 
-            newData.damage = a.damage * b.damageMultiplier;
+            newData.damage = (int)(a.damage * b.damageMultiplier);
             newData.lifeTime = a.lifeTime * b.lifeTimeMultiplier;
             newData.speed = a.speed * b.speedMultiplier;
 

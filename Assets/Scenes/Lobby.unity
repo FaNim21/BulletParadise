@@ -65301,6 +65301,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8558116634083389263, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 47bd2e800d16da44da40621016408034, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -65541,6 +65545,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420033}
     - target: {fileID: 3393361983977888684, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: eacc8254f0962814d926e198ef83627c, type: 2}
+    - target: {fileID: 3393361983977888684, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1021948130}
@@ -65639,8 +65647,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2518949151976146385, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2503945354875910681}
   m_SourcePrefab: {fileID: 100100000, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+--- !u!1 &2503945354875910680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2518949151976146385, guid: c32ee0dc5154a7145b1cb9d5a64b505d, type: 3}
+  m_PrefabInstance: {fileID: 2503945354875910679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2503945354875910681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2503945354875910680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2082b74149a1445ad7f3caf36ca29f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5651269883495828967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65693,6 +65721,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8558116634083389263, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 992f47c307c259d4aa0dc0a3f673d7aa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
