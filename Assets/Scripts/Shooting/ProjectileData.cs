@@ -12,12 +12,6 @@ namespace BulletParadise.Shooting
         public float lifeTime;
         public float speed;
 
-        [Header("Trigonometry")]
-        public float frequency;
-        public float amplitude;
-        public float magnitude;
-
-
         public static ProjectileData operator *(ProjectileData a, ProjectileDataMultiplier b)
         {
             ProjectileData newData = (ProjectileData)CreateInstance("ProjectileData");
@@ -28,9 +22,6 @@ namespace BulletParadise.Shooting
             newData.lifeTime = a.lifeTime * b.lifeTimeMultiplier;
             newData.speed = a.speed * b.speedMultiplier;
 
-            newData.frequency = a.frequency * b.frequencyMultiplier;
-            newData.amplitude = a.amplitude * b.amplitudeMultiplier;
-            newData.magnitude = a.magnitude * b.magnitudeMultiplier;
             return newData;
         }
     }

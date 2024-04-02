@@ -13,56 +13,17 @@ MonoBehaviour:
   m_Name: WeaponEggArc
   m_EditorClassIdentifier: 
   projectiles:
-  - data: {fileID: 0}
+  - name: ' () - 1'
+    data: {fileID: 0}
     behaviorFactory: {fileID: 11400000, guid: 8f2ff436ef1f2084abf4c01169cc4f0a, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
-      frequencyMultiplier: 1
-      amplitudeMultiplier: 1
-      magnitudeMultiplier: 1
     angle: 0
-  - data: {fileID: 0}
-    behaviorFactory: {fileID: 11400000, guid: 9580f61a83abf6c4ba3c6ba76d0ac67e, type: 2}
-    dataMultiplier:
-      damageMultiplier: 1
-      lifeTimeMultiplier: 1
-      speedMultiplier: 1
-      frequencyMultiplier: 1
-      amplitudeMultiplier: 1
-      magnitudeMultiplier: 1
-    angle: 0
-  - data: {fileID: 0}
-    behaviorFactory: {fileID: 11400000, guid: 6298a6f6354d07d439d6d988f11955c9, type: 2}
-    dataMultiplier:
-      damageMultiplier: 1
-      lifeTimeMultiplier: 1
-      speedMultiplier: 1
-      frequencyMultiplier: 1
-      amplitudeMultiplier: 1
-      magnitudeMultiplier: 1
-    angle: 0
-  - data: {fileID: 0}
-    behaviorFactory: {fileID: 11400000, guid: 9580f61a83abf6c4ba3c6ba76d0ac67e, type: 2}
-    dataMultiplier:
-      damageMultiplier: 1
-      lifeTimeMultiplier: 1
-      speedMultiplier: 1
-      frequencyMultiplier: 1
-      amplitudeMultiplier: 1
-      magnitudeMultiplier: 1
-    angle: 0
-  - data: {fileID: 0}
-    behaviorFactory: {fileID: 11400000, guid: 8f2ff436ef1f2084abf4c01169cc4f0a, type: 2}
-    dataMultiplier:
-      damageMultiplier: 1
-      lifeTimeMultiplier: 1
-      speedMultiplier: 1
-      frequencyMultiplier: 1
-      amplitudeMultiplier: 1
-      magnitudeMultiplier: 1
-    angle: 0
+    frequency: 0
+    amplitude: 0
+    magnitude: 0
   sprite: {fileID: 183075426328126886, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   frequency: 1
   useShootingAngle: 1

@@ -15,6 +15,8 @@ namespace BulletParadise.Shooting
 
         protected float timeAlive = 0.04f;
 
+        public ProjectileAdditionalData additionalData;
+
         public ProjectileBehavior(ProjectileData data, Rigidbody2D rb, Vector2 velocity)
         {
             this.data = data;

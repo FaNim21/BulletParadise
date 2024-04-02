@@ -5,7 +5,7 @@ namespace BulletParadise.Shooting.Weapons
     [CreateAssetMenu(fileName = "new WeaponArc", menuName = "Weapons/WeaponType/Arc")]
     public class WeaponArc : Weapon
     {
-        [SerializeField] private bool useShootingAngle = true;
+        public bool useShootingAngle = true;
         [SerializeField] private float angle;
 
 

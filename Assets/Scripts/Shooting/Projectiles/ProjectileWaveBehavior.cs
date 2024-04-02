@@ -12,7 +12,7 @@ namespace BulletParadise.Shooting.Projectiles
             //Vector2 nextPosition = new(Mathf.Cos(timeAlive * (data.frequency * 13.75f)) * data.amplitude, Mathf.Sin(timeAlive * (data.frequency * 13.75f)) * data.amplitude);
 
 
-            Vector2 nextPosition = new(data.speed * timeAlive, Mathf.Sin(timeAlive * (data.frequency * 13.75f)) * data.amplitude);
+            Vector2 nextPosition = new(data.speed * timeAlive, Mathf.Sin(timeAlive * (additionalData.frequency * 13.75f)) * additionalData.amplitude);
             _nextGlobalPosition = (Vector2)(_startRotation * nextPosition) + _startPosition;
 
             rb.MovePosition(_nextGlobalPosition);
