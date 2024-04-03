@@ -98,5 +98,25 @@ namespace BulletParadise.Misc
             }
             return true;
         }
+
+        public static Key GetKey(string path)
+        {
+            string[] parts = path.Split('/');
+            string keyName = parts[^1].Trim(']');
+
+            Key key;
+            try
+            {
+                if (int.TryParse(keyName, out int index))
+                {
+                    key = (Key)System.Enum.Parse(typeof(Key), "Digit" + keyName);
+                    return key;
+                }
+            }
+            catch { }
+
+            key = (Key)System.Enum.Parse(typeof(Key), keyName, true);
+            return key;
+        }
     }
 }

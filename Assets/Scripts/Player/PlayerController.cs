@@ -13,7 +13,6 @@ using BulletParadise.UI.Windows;
 using System.Collections;
 using BulletParadise.Shooting;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace BulletParadise.Player
 {
@@ -25,8 +24,7 @@ namespace BulletParadise.Player
         public GameManager gameManager;
 
         [Header("Components")]
-        //public InputsHandler inputHandler;
-        //public Inventory inventory;
+        public QuickBar quickBar;
         public CameraController cameraController;
         public CanvasHandle canvasHandle;
         public LevelLoader levelLoader;
@@ -46,26 +44,26 @@ namespace BulletParadise.Player
         public TextMeshProUGUI maxHealthValue;*/
 
         [Header("G³ówne wartoœci")]
-        public Weapon weapon;
         public float speed;
-        public float sprintSpeed;
-        public float projectileSpeed;
-        public bool autoFire;
 
         [Header("Debug")]
+        public bool autoFire;
         [ReadOnly] public bool isInLobby;
         [ReadOnly] public bool isResponding;
         [ReadOnly, SerializeField] private bool isDead;
         [ReadOnly, SerializeField] private bool isInvulnerable;
         [ReadOnly, SerializeField] private bool isShooting;
+        [ReadOnly, SerializeField] private bool canShoot;
         [ReadOnly] public float aimAngle;
         [ReadOnly] public Vector2 inputDirection;
         [ReadOnly] public Vector2 mousePosition;
         [ReadOnly] public Vector2 aimDirection;
 
         private readonly List<IInteractable> interactables = new();
-
         private readonly string _layerMask = "ProjectilePlayer";
+
+        private Coroutine _shootingCoroutine;
+        private Coroutine _restartShootingCoroutine;
 
 
         public override void Awake()
@@ -108,14 +106,8 @@ namespace BulletParadise.Player
             aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
             animator.SetFloat("aimDirX", aimDirection.x);
             animator.SetFloat("aimDirY", aimDirection.y);
-            if (autoFire)
-            {
-                if (!isShooting) StartCoroutine(Shoot());
-            }
-            else
-            {
-                if (Mouse.current.leftButton.isPressed && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject() && !isShooting) StartCoroutine(Shoot());
-            }
+
+            HandleShooting();
         }
 
         public override void FixedUpdate()
@@ -178,6 +170,21 @@ namespace BulletParadise.Player
             if (Consts.IsFocusedOnMainMenu) return;
             //TU BINDY KTORE NIE MOGA DZIALAC NA MAIN MENU
         }
+        private void HandleShooting()
+        {
+            if (!canShoot) return;
+
+            if (autoFire)
+            {
+                if (!isShooting)
+                    _shootingCoroutine = StartCoroutine(Shoot());
+            }
+            else
+            {
+                if (Mouse.current.leftButton.isPressed && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject() && !isShooting)
+                    _shootingCoroutine = StartCoroutine(Shoot());
+            }
+        }
 
         public void Interact(InputAction.CallbackContext context)
         {
@@ -215,13 +222,14 @@ namespace BulletParadise.Player
 
         private IEnumerator Shoot()
         {
+            if (quickBar.weapon == null) yield break;
+
             isShooting = true;
             animator.SetTrigger("shoots");
 
-            if (weapon != null)
-                weapon.Shoot(_layerMask, shootingOffset.position, aimAngle);
+            quickBar.weapon.Shoot(_layerMask, shootingOffset.position, aimAngle);
 
-            yield return new WaitForSeconds(1f / weapon.frequency);
+            yield return new WaitForSeconds(1f / quickBar.weapon.frequency);
             isShooting = false;
         }
 
@@ -288,6 +296,26 @@ namespace BulletParadise.Player
         {
             inputDirection = Vector2.zero;
             animator.SetFloat("Speed", 0);
+        }
+
+        public void SetWeapon(Weapon weapon)
+        {
+            quickBar.SetWeaponToSlot(weapon);
+            RestartShooting();
+        }
+
+        public void RestartShooting()
+        {
+            canShoot = false;
+            if (_restartShootingCoroutine != null) StopCoroutine(_restartShootingCoroutine);
+            _restartShootingCoroutine = StartCoroutine(RestartShootingCoroutine());
+        }
+        private IEnumerator RestartShootingCoroutine()
+        {
+            yield return new WaitForSeconds(0.5f);
+            if (_shootingCoroutine != null) StopCoroutine(_shootingCoroutine);
+            isShooting = false;
+            canShoot = true;
         }
     }
 }

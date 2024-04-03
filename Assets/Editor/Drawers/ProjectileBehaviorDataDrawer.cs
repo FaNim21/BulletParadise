@@ -33,7 +33,7 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
             singleLineRect.y += EditorGUIUtility.singleLineHeight * 1f;
 
             SerializedProperty dataProperty = property.FindPropertyRelative("data");
-            string propertyName = dataProperty.objectReferenceValue?.name;
+            string propertyName = dataProperty.objectReferenceValue != null ? dataProperty.objectReferenceValue.name : null;
             EditorGUI.PropertyField(singleLineRect, dataProperty);
             singleLineRect.y += EditorGUIUtility.singleLineHeight * 1.1f;
 

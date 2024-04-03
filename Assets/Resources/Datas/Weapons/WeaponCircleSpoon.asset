@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3aad649b09415a4b97839ab3f052cb9, type: 3}
   m_Name: WeaponCircleSpoon
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   projectiles:
   - name: WoodenSpoon (Wave) - 1
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
@@ -157,5 +158,4 @@ MonoBehaviour:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  sprite: {fileID: 3304971761699023241, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   frequency: 5

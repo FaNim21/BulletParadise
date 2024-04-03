@@ -1,4 +1,5 @@
 using BulletParadise.Entities;
+using BulletParadise.Player;
 using BulletParadise.Shooting;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ namespace BulletParadise
         {
             if (!IsFocused) return;
             standSpriteRenderer.color = Color.green;
+            PlayerController.Instance.SetWeapon(weapon);
         }
 
         public void Focus()

@@ -13,17 +13,30 @@ MonoBehaviour:
   m_Name: WeaponEggArc
   m_EditorClassIdentifier: 
   projectiles:
-  - name: ' () - 1'
-    data: {fileID: 0}
-    behaviorFactory: {fileID: 11400000, guid: 8f2ff436ef1f2084abf4c01169cc4f0a, type: 2}
+  - name: Egg (Straight) - 1
+    data: {fileID: 11400000, guid: 984a528a26d87654aa1701a9dfe98e5c, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
     angle: 0
-    frequency: 0
-    amplitude: 0
-    magnitude: 0
+    additionalData:
+      frequency: 0
+      amplitude: 0
+      magnitude: 0
+  - name: Egg (Straight) - 2
+    data: {fileID: 11400000, guid: 984a528a26d87654aa1701a9dfe98e5c, type: 2}
+    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+    angle: 0
+    additionalData:
+      frequency: 0
+      amplitude: 0
+      magnitude: 0
   sprite: {fileID: 183075426328126886, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   frequency: 1
   useShootingAngle: 1
