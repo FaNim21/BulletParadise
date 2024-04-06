@@ -1,7 +1,6 @@
 using BulletParadise.Misc;
 using BulletParadise.Player;
 using BulletParadise.Shooting;
-using BulletParadise.Visual;
 using BulletParadise.Visual.Drawing;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using UnityEngine;
 
 namespace BulletParadise.Entities
 {
-    public class MobController : Entity, IDamageable
+    public class MobController : Entity
     {
         public static List<MobController> mobs = new();
 
@@ -20,7 +19,6 @@ namespace BulletParadise.Entities
         [Header("Obiekty")]
         public Transform target;
         public Transform body;
-        public Transform healthBar;
 
         [Header("Wartosci")]
         public Weapon weapon;
@@ -33,7 +31,6 @@ namespace BulletParadise.Entities
         public int exp;
 
         [Header("Debug")]
-        [SerializeField, ReadOnly] private bool isInvulnerable;
         [SerializeField, ReadOnly] private bool isShooting;
         [SerializeField, ReadOnly] private Vector2 direction;
         [SerializeField, ReadOnly] private float toTargetAngle;
@@ -49,10 +46,8 @@ namespace BulletParadise.Entities
         }
         public override void Start()
         {
-            //GameManager.AddDrawable(this);
             target = PlayerController.Instance.transform;
             GameManager.AddDrawable(this);
-            //isInvulnerable = true;
         }
 
         public override void Update()
@@ -63,13 +58,6 @@ namespace BulletParadise.Entities
             toTargetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             if (IsTargetInDistance(chaseRange) && !isShooting) StartCoroutine(Shooting());
-
-            if (health <= 0)
-            {
-                mobs.Remove(this);
-                //PlayerController.Instance.levelSystem.AddExp(exp);
-                Destroy(gameObject);
-            }
         }
         public override void FixedUpdate()
         {
@@ -87,18 +75,13 @@ namespace BulletParadise.Entities
             GLDraw.DrawBox((Vector2)body.position + boxCollider.offset, boxCollider.size, Color.green, 0.01f);
         }
 
-        public void TakeDamage(int damage)
+        public override void OnDeath()
         {
-            //Narazie jest to bazowa metoda do przyjmowania dmg
-            if (isInvulnerable) return;
-
-            Popup.Create(position, damage.ToString(), Color.red);
-            health -= damage;
-
-            Vector3 barScale = healthBar.localScale;
-            barScale.x = health / maxHealth;
-            healthBar.localScale = barScale;
+            mobs.Remove(this);
+            //PlayerController.Instance.levelSystem.AddExp(exp);
+            Destroy(gameObject);
         }
+
         public virtual IEnumerator Shooting()
         {
             isShooting = true;

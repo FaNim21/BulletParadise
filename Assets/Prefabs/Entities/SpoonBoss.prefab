@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6664624333444446303}
   - component: {fileID: 8442639554408698583}
   - component: {fileID: 2844182718031636012}
+  - component: {fileID: 8796588801899197927}
   m_Layer: 9
   m_Name: SpoonBoss
   m_TagString: Untagged
@@ -74,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aedd50d4b3d5714d91fb79cc3d52752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthManager: {fileID: 8796588801899197927}
   transform: {fileID: 0}
   position: {x: 0, y: 0}
   health: 0
@@ -82,19 +84,34 @@ MonoBehaviour:
   boxCollider: {fileID: 9187392669498484355}
   target: {fileID: 0}
   body: {fileID: 3535236541765372716}
-  healthBar: {fileID: 3613598628129364827}
   weapon: {fileID: 11400000, guid: eacc8254f0962814d926e198ef83627c, type: 2}
   chaseRange: 25
   moveSpeed: 0
   damage: 100
   projectileSpeed: 5
-  shootingCooldown: 0.25
   exp: 0
-  isInvulnerable: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
   currentAngle: 0
+--- !u!114 &8796588801899197927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041738044547988209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb10d79aeda246c42b2f30997b8d8010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 2844182718031636012}
+  healthBar: {fileID: 3613598628129364827}
+  useHealthBar: 0
+  isDead: 0
+  isInvulnerable: 0
+  isSick: 0
 --- !u!1 &5703352632125171161
 GameObject:
   m_ObjectHideFlags: 0

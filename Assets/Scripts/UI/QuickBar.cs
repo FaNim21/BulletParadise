@@ -43,7 +43,7 @@ namespace BulletParadise.UI
                 var current = weaponSlots[i];
                 if (current.key == key)
                 {
-                    weapon = current.item is Weapon item ? item : null;
+                    weapon = current.weapon;
                     currentChosen = i;
 
                     selectTransform.position = current.transform.position;
@@ -69,6 +69,14 @@ namespace BulletParadise.UI
         {
             if (currentChosen == -1) return null;
             return weaponSlots[currentChosen];
+        }
+
+        public void ResetSlots()
+        {
+            for (int i = 0; i < consumableSlots.Length; i++)
+            {
+                consumableSlots[i].Restart();
+            }
         }
     }
 }

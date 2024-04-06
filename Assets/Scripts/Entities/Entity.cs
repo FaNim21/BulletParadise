@@ -5,6 +5,8 @@ namespace BulletParadise.Entities
 {
     public abstract class Entity : MonoBehaviour, IDrawable
     {
+        public HealthManager healthManager;
+
         [HideInInspector] public new Transform transform;
 
         [ReadOnly] public Vector2 position;
@@ -20,11 +22,7 @@ namespace BulletParadise.Entities
             transform = GetComponent<Transform>();
             health = maxHealth;
         }
-        public virtual void Start()
-        {
-            //TODO: 0 to mozlwie ze w awake zeby zrobic tez dodawania w world managerze rzeczy do draw debug
-            //GameManager.Instance.worldManager.AddEntityToWorld(this);
-        }
+        public virtual void Start() { }
         public virtual void Update()
         {
             position = transform.position;
@@ -32,5 +30,9 @@ namespace BulletParadise.Entities
         public abstract void FixedUpdate();
 
         public abstract void Draw();
+
+        public virtual void OnDeath() { }
+
+        public float GetHealthToMaxProportion() => Mathf.Clamp01(health / maxHealth);
     }
 }

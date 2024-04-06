@@ -1,4 +1,4 @@
-﻿using BulletParadise.Entities;
+﻿using BulletParadise.Entities.Items;
 using UnityEngine;
 
 namespace BulletParadise.Shooting

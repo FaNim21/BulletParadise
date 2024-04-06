@@ -1,6 +1,6 @@
-using BulletParadise.Entities;
+using BulletParadise.Entities.Items;
 using BulletParadise.Misc;
-using BulletParadise.Shooting;
+using BulletParadise.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,21 +10,22 @@ namespace BulletParadise.UI
 {
     public abstract class Slot : MonoBehaviour
     {
+        protected PlayerController player;
         protected QuickBar quickBar;
 
+        [Header("Components")]
         [SerializeField] private Image imageItem;
         [SerializeField] private TextMeshProUGUI keybindText;
+        [SerializeField] protected TextMeshProUGUI amountText;
 
-        public Item item;
+        [Header("Values")]
         public Key key;
 
 
-        private void Start()
+        protected virtual void Start()
         {
             quickBar = GetComponentInParent<QuickBar>();
-
-            if (item != null)
-                SetItem(item);
+            player = PlayerController.Instance;
         }
 
         public void SetupKeybind(string path)
@@ -36,19 +37,19 @@ namespace BulletParadise.UI
             keybindText.SetText(keyName.ToUpper());
         }
 
-        public void SetItem(Item item)
-        {
-            if (quickBar.GetCurrentSelectedSlot().Equals(this) && item is Weapon weapon)
-                quickBar.weapon = weapon;
+        public abstract void Use();
 
-            this.item = item;
+        public virtual void SetItem(Item item)
+        {
             imageItem.color = Color.white;
             imageItem.sprite = item.sprite;
         }
-
-        public abstract void Use();
-
         public virtual void Restart() { }
+
+        protected void UpdateAmountText(int amount)
+        {
+            amountText.SetText(amount.ToString());
+        }
 
         public void Clear()
         {

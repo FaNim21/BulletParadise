@@ -51,5 +51,6 @@ public class GameManager : MonoBehaviour
     public void FindWorldManager()
     {
         worldManager = GameObject.Find("WorldManager").GetComponent<WorldManager>();
+        Popup.InitializePooling();
     }
 }

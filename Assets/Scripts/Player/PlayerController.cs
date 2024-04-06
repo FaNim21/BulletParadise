@@ -1,11 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using BulletParadise.Entities;
 using BulletParadise.UI;
 using BulletParadise.Visual.Drawing;
-using BulletParadise.Visual;
 using BulletParadise.Constants;
 using BulletParadise.Misc;
 using BulletParadise.World;
@@ -16,7 +14,7 @@ using System.Collections.Generic;
 
 namespace BulletParadise.Player
 {
-    public sealed class PlayerController : Entity, IDamageable
+    public sealed class PlayerController : Entity
     {
         public static PlayerController Instance { get; private set; }
 
@@ -36,12 +34,6 @@ namespace BulletParadise.Player
         [Header("Obiekty")]
         public Transform body;
         public Transform shootingOffset;
-        public Transform healthBar;
-
-        [Header("UI")]
-        public Image healthFill;
-        /*public TextMeshProUGUI healthValue;
-        public TextMeshProUGUI maxHealthValue;*/
 
         [Header("G³ówne wartoœci")]
         public float speed;
@@ -50,8 +42,6 @@ namespace BulletParadise.Player
         public bool autoFire;
         [ReadOnly] public bool isInLobby;
         [ReadOnly] public bool isResponding;
-        [ReadOnly, SerializeField] private bool isDead;
-        [ReadOnly, SerializeField] private bool isInvulnerable;
         [ReadOnly, SerializeField] private bool isShooting;
         [ReadOnly, SerializeField] private bool canShoot;
         [ReadOnly] public float aimAngle;
@@ -138,8 +128,6 @@ namespace BulletParadise.Player
         public override void Draw()
         {
             if (transform == null) return;
-
-            //GLDraw.DrawCircle(shootingOffset.position, gameManager.worldManager.renderingRadius, Color.yellow);
 
             //kierunek patrzenia
             GLDraw.DrawRay(shootingOffset.position, aimDirection * 1.5f, Color.blue);
@@ -233,32 +221,9 @@ namespace BulletParadise.Player
             isShooting = false;
         }
 
-        public void TakeDamage(int damage)
+        public override void OnDeath()
         {
-            if (damage <= 0 || isInvulnerable) return;
-
-            if (isDead) return;
-            if (health <= 0f) OnDeath();
-            health -= damage;
-
-            Popup.Create(position, damage.ToString(), Color.red);
-            UpdateHealthBar();
-        }
-        private void UpdateHealthBar()
-        {
-            Vector3 barScale = healthBar.localScale;
-            barScale.x = Mathf.Clamp01(health / maxHealth);
-            healthBar.localScale = barScale;
-
-            //healthFill.fillAmount = health / maxHealth;
-            //healthValue.SetText(health.ToString());
-        }
-
-        private void OnDeath()
-        {
-            StopMovement();
-            isDead = true;
-            isResponding = false;
+            SetResponding(false);
             boxCollider.enabled = false;
             canvasHandle.OpenWindow<DeathScreen>();
             animator.SetTrigger("died");
@@ -268,11 +233,10 @@ namespace BulletParadise.Player
         public void Restart()
         {
             transform.position = Vector2.zero;
-            health = maxHealth;
-            isDead = false;
             boxCollider.enabled = true;
-            cameraController.transform.position = Vector2.zero;
-            UpdateHealthBar();
+            cameraController.Restart();
+            healthManager.Restart();
+            quickBar.ResetSlots();
         }
 
         public void SetResponding(bool option)

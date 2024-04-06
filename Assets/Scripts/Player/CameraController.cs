@@ -44,5 +44,16 @@ namespace BulletParadise.Player
         {
             target = newTarget;
         }
+
+        public void Restart()
+        {
+            if (target != null)
+            {
+                transform.position = target.position;
+                return;
+            }
+
+            transform.position = Vector2.zero;
+        }
     }
 }

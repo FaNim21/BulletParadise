@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BulletParadise.Entities
+namespace BulletParadise.Entities.Items
 {
     public class Item : ScriptableObject
     {
