@@ -33,16 +33,13 @@ namespace BulletParadise.UI
             float avgDamage = 0f;
             float sumDamage;
             for (int i = 0; i < weapon.projectiles.Length; i++)
-            {
-                var current = weapon.projectiles[i];
-                avgDamage += current.data.damage;
-            }
+                avgDamage += weapon.projectiles[i].data.damage;
             sumDamage = avgDamage;
             avgDamage /= weapon.projectiles.Length;
 
             _mainInfoSb.AppendLine($"Avg Damage: {Mathf.Round(avgDamage * 100f) / 100f}");
             _mainInfoSb.AppendLine($"Sum Damage: {sumDamage}");
-            _mainInfoSb.AppendLine($"DPS: {sumDamage / (1f / weapon.frequency)}");
+            _mainInfoSb.AppendLine($"DPS: {Mathf.Round(sumDamage * weapon.frequency * 100f) / 100f}");
             _mainInfoSb.AppendLine($"Frequency: {weapon.frequency} per sec");
             mainInfoText.SetText(_mainInfoSb);
 
