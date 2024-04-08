@@ -51,14 +51,10 @@ namespace BulletParadise
         {
             if (health <= 0 || isSick || entity.health >= entity.maxHealth) return false;
 
-            //int needed = entity.maxHealth - health;
             int needed = (int)(entity.health + health) - entity.maxHealth;
             if (needed > 0) health -= needed;
-            //if (needed <= 0) return false;
-
-            Debug.Log($"Healed: {health}HP");
-
             entity.health += health;
+
             Popup.Create(entity.position, health.ToString(), Color.green);
             UpdateHealthBar();
             return true;

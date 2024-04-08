@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f39a95c82bcc6140832f485dad89322, type: 3}
   m_Name: WeaponEggArc
   m_EditorClassIdentifier: 
+  name: Egg shotgun lul
+  sprite: {fileID: 183075426328126886, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   projectiles:
   - name: Egg (Straight) - 1
     data: {fileID: 11400000, guid: 984a528a26d87654aa1701a9dfe98e5c, type: 2}
@@ -37,7 +39,6 @@ MonoBehaviour:
       frequency: 0
       amplitude: 0
       magnitude: 0
-  sprite: {fileID: 183075426328126886, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   frequency: 1
   useShootingAngle: 1
   angle: 5

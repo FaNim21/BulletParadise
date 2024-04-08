@@ -3,6 +3,7 @@ using BulletParadise.Shooting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using static Codice.CM.Common.CmCallContext;
 
 namespace BulletParadise.UI
 {
@@ -30,6 +31,8 @@ namespace BulletParadise.UI
 
             consumableSlots[0].SetupKeybind(playerInput.actionMaps[0].actions[5].ToString());
             consumableSlots[1].SetupKeybind(playerInput.actionMaps[0].actions[6].ToString());
+
+            SelectSlot(0);
         }
 
         public void SetSelection(InputAction.CallbackContext context)
@@ -40,24 +43,26 @@ namespace BulletParadise.UI
 
             for (int i = 0; i < weaponSlots.Length; i++)
             {
-                var current = weaponSlots[i];
-                if (current.key == key)
-                {
-                    weapon = current.weapon;
-                    currentChosen = i;
-
-                    selectTransform.position = current.transform.position;
-                    selectTransform.gameObject.SetActive(true);
-                    PlayerController.Instance.RestartShooting();
-                }
+                if (weaponSlots[i].key == key) SelectSlot(i);
             }
 
             for (int i = 0; i < consumableSlots.Length; i++)
             {
                 var current = consumableSlots[i];
-                if (current.key == key)
-                    current.Use();
+                if (current.key == key) current.Use();
             }
+        }
+
+        private void SelectSlot(int index)
+        {
+            var slot = weaponSlots[index];
+
+            weapon = slot.weapon;
+            currentChosen = index;
+
+            selectTransform.position = slot.transform.position;
+            selectTransform.gameObject.SetActive(true);
+            PlayerController.Instance.RestartShooting();
         }
 
         public void SetWeaponToSlot(Weapon weapon)

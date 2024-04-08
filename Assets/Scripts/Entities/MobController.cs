@@ -1,4 +1,3 @@
-using BulletParadise.Misc;
 using BulletParadise.Player;
 using BulletParadise.Shooting;
 using BulletParadise.Visual.Drawing;
@@ -25,9 +24,6 @@ namespace BulletParadise.Entities
         public float chaseRange;
         public float moveSpeed;
 
-        public int damage;
-        public float projectileSpeed;
-        //public float shootingCooldown;
         public int exp;
 
         [Header("Debug")]
@@ -105,8 +101,8 @@ namespace BulletParadise.Entities
                 degree += currentAngle;
 
                 Quaternion eulerAngle = Quaternion.Euler(0, 0, degree);
-                *//*var projectile = Instantiate(GameManager.Projectile, position, eulerAngle);
-                projectile.Setup(_layerMask, eulerAngle * Vector2.right, projectileSpeed, damage);*//*
+                var projectile = Instantiate(GameManager.Projectile, position, eulerAngle);
+                projectile.Setup(_layerMask, eulerAngle * Vector2.right, projectileSpeed, damage);
             }*/
 
             /*for (int i = 1; i <= data.shots; i++)
@@ -161,7 +157,6 @@ namespace BulletParadise.Entities
             foreach (var mob in mobList)
                 avoidVector += RunAway(mob.position);
 
-            Utils.Log(avoidVector);
             return avoidVector.normalized * Time.deltaTime;
         }
 
@@ -203,14 +198,10 @@ namespace BulletParadise.Entities
                 var currentMob = mobs[i];
                 float distance = Vector2.Distance(position, currentMob.position);
 
-                if (distance > range)
-                    continue;
+                if (distance > range) continue;
 
-                if (closestMob == null)
+                if (closestMob == null || distance < Vector2.Distance(position, closestMob.position))
                     closestMob = currentMob;
-                else if (Vector2.Distance(position, currentMob.position) < Vector2.Distance(position, closestMob.position))
-                    closestMob = currentMob;
-
             }
             return closestMob;
         }

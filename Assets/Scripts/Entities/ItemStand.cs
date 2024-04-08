@@ -9,6 +9,8 @@ namespace BulletParadise
     {
         public bool IsFocused { get; set; }
 
+        private StandController standController;
+
         [Header("Componenets")]
         public SpriteRenderer standSpriteRenderer;
         public SpriteRenderer itemSpriteRenderer;
@@ -19,6 +21,8 @@ namespace BulletParadise
 
         private void Start()
         {
+            standController = GetComponentInParent<StandController>();
+
             itemSpriteRenderer.color = Color.white;
             itemSpriteRenderer.sprite = weapon.sprite;
         }
@@ -36,6 +40,8 @@ namespace BulletParadise
             IsFocused = true;
 
             standSpriteRenderer.color = Color.yellow;
+
+            standController.ShowWeaponInfo(weapon);
         }
 
         public void LostFocus()
@@ -44,6 +50,8 @@ namespace BulletParadise
             IsFocused = false;
 
             standSpriteRenderer.color = Color.white;
+
+            standController.CloseWeaponInfo();
         }
     }
 }
