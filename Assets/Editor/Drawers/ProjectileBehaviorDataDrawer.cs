@@ -46,6 +46,7 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
             EditorGUI.LabelField(singleLineRect, "Multipliers", headerStyle);
             singleLineRect.y += EditorGUIUtility.singleLineHeight * 1f;
 
+            #region Data Multipliers
             SerializedProperty dataMultiplierProperty = property.FindPropertyRelative("dataMultiplier");
             Rect dataFoldoutRect = new(singleLineRect.x, singleLineRect.y, singleLineRect.width, EditorGUIUtility.singleLineHeight);
             dataMultiplierProperty.isExpanded = EditorGUI.Foldout(dataFoldoutRect, dataMultiplierProperty.isExpanded, dataMultiplierProperty.displayName);
@@ -63,6 +64,7 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
                 singleLineRect.y += EditorGUIUtility.singleLineHeight * 1.1f;
                 EditorGUI.indentLevel--;
             }
+            #endregion
 
             singleLineRect.y += EditorGUIUtility.singleLineHeight * 0.5f;
             EditorGUI.LabelField(singleLineRect, "Data", headerStyle);
@@ -76,7 +78,7 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
                     EditorGUI.PropertyField(singleLineRect, property.FindPropertyRelative("angle"));
                     singleLineRect.y += EditorGUIUtility.singleLineHeight * 1.1f;
                 }
-                
+
                 SerializedProperty additionalDataProperty = property.FindPropertyRelative("additionalData");
 
                 if (behaviorFactory is ProjectileWaveBehaviorFactory)

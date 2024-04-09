@@ -1,4 +1,3 @@
-using BulletParadise.Player;
 using BulletParadise.Shooting;
 using System.Text;
 using TMPro;
@@ -40,6 +39,7 @@ namespace BulletParadise.UI
             _mainInfoSb.AppendLine($"Avg Damage: {Mathf.Round(avgDamage * 100f) / 100f}");
             _mainInfoSb.AppendLine($"Sum Damage: {sumDamage}");
             _mainInfoSb.AppendLine($"DPS: {Mathf.Round(sumDamage * weapon.frequency * 100f) / 100f}");
+            //_mainInfoSb.AppendLine($"Range: {weapon.}"); speed * lifetime
             _mainInfoSb.AppendLine($"Frequency: {weapon.frequency} per sec");
             mainInfoText.SetText(_mainInfoSb);
 

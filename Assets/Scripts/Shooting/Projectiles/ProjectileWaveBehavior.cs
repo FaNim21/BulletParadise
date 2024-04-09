@@ -4,7 +4,7 @@ namespace BulletParadise.Shooting.Projectiles
 {
     public class ProjectileWaveBehavior : ProjectileBehavior
     {
-        public ProjectileWaveBehavior(ProjectileData data, Rigidbody2D rb, Vector2 velocity) : base(data, rb, velocity) { }
+        public ProjectileWaveBehavior(ProjectileData data, Vector2 velocity) : base(data, velocity) { }
 
         public override void UpdatePhysics()
         {

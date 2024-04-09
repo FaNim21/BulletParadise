@@ -11,23 +11,16 @@ namespace BulletParadise.Entities
 
         public ProjectileBehavior behavior;
 
-        /*public int damage;
-        public float speed;*/
         //public float rotationSpeed;
-
-        //private Vector2 velocity;
 
         public void Setup(string layerMask, ProjectileBehavior behavior)
         {
             gameObject.layer = LayerMask.NameToLayer(layerMask);
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer(layerMask);
-
-            this.behavior = behavior;
             spriteRenderer.sprite = behavior.data.sprite;
 
-            /*this.velocity = velocity;
-            this.speed = speed;
-            this.damage = damage;*/
+            this.behavior = behavior;
+            this.behavior.OnInitialize(rb);
 
             Destroy(gameObject, behavior.data.lifeTime);
         }
@@ -39,13 +32,7 @@ namespace BulletParadise.Entities
             body.eulerAngles = childAngle;*/
             behavior.UpdateLogic();
         }
-
-        private void FixedUpdate()
-        {
-            //TODO: 0 tu zrobic system, ktory mialem w glowie odnosnie interfejsu do tego zeby robic DI w setupie dla patternow
-            //rb.MovePosition(rb.position + speed * Time.deltaTime * velocity);
-            behavior.UpdatePhysics();
-        }
+        private void FixedUpdate() => behavior.UpdatePhysics();
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

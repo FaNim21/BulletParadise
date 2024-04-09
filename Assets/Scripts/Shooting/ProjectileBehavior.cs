@@ -17,7 +17,7 @@ namespace BulletParadise.Shooting
 
         public ProjectileAdditionalData additionalData;
 
-        public ProjectileBehavior(ProjectileData data, Rigidbody2D rb, Vector2 velocity)
+        public ProjectileBehavior(ProjectileData data, Vector2 velocity)
         {
             this.data = data;
             this.rb = rb;
@@ -27,6 +27,10 @@ namespace BulletParadise.Shooting
             _startRotation = Quaternion.Euler(0, 0, rb.rotation);
         }
 
+        public virtual void OnInitialize(Rigidbody2D rb)
+        {
+            this.rb = rb;
+        }
         public virtual void UpdateLogic() { }
         public abstract void UpdatePhysics();
     }

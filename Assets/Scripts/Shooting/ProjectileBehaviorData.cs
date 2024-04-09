@@ -31,9 +31,9 @@ namespace BulletParadise.Shooting
         public ProjectileAdditionalData additionalData;
 
 
-        public ProjectileBehavior GetBehavior(Rigidbody2D rb, Vector2 velocity)
+        public ProjectileBehavior GetBehavior(Vector2 velocity)
         {
-            ProjectileBehavior behavior = behaviorFactory.GenerateBehavior(data, rb, velocity);
+            ProjectileBehavior behavior = behaviorFactory.GenerateBehavior(data, velocity);
             behavior.data *= dataMultiplier;
             behavior.additionalData = additionalData;
             return behavior;

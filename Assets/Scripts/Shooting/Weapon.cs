@@ -15,7 +15,7 @@ namespace BulletParadise.Shooting
         {
             Quaternion quaternionAngle = Quaternion.Euler(0, 0, degree);
             var projectile = Instantiate(GameManager.Projectile, shootingPosition, quaternionAngle);
-            ProjectileBehavior behavior = current.GetBehavior(projectile.rb, quaternionAngle * Vector2.right);
+            ProjectileBehavior behavior = current.GetBehavior(quaternionAngle * Vector2.right);
             projectile.Setup(layerMask, behavior);
         }
     }
