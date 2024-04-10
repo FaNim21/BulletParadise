@@ -15,25 +15,27 @@ MonoBehaviour:
   name: Broccoli sin
   sprite: {fileID: 871398409806312582, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   projectiles:
-  - name: Broccoli (Wave) - 1
+  - name: Broccoli - 1
     data: {fileID: 11400000, guid: 847c844fd46331842a0e3ea015a6c945, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 0
     angle: 0
     additionalData:
       frequency: 2
       amplitude: 0.5
       magnitude: 0
-  - name: Broccoli (Wave) - 2
+  - name: Broccoli - 2
     data: {fileID: 11400000, guid: 847c844fd46331842a0e3ea015a6c945, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 0
     angle: 0
     additionalData:
       frequency: 2

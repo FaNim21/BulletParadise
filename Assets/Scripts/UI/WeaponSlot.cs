@@ -1,18 +1,24 @@
 using BulletParadise.Entities.Items;
 using BulletParadise.Shooting;
+using UnityEngine;
 
 namespace BulletParadise.UI
 {
     public class WeaponSlot : Slot
     {
         public Weapon weapon;
+        [SerializeField] private int slotIndex;
 
 
         protected override void Start()
         {
             base.Start();
 
-            if (weapon != null) SetItem(weapon);
+            if (weapon != null)
+            {
+                quickBar.SetCurrentChosen(slotIndex);
+                SetItem(weapon);
+            }
         }
 
         public override void Use()
@@ -27,6 +33,8 @@ namespace BulletParadise.UI
 
             if (quickBar.GetCurrentSelectedSlot().Equals(this))
                 quickBar.weapon = weapon;
+
+            this.weapon.Initialize();
 
             base.SetItem(item);
         }

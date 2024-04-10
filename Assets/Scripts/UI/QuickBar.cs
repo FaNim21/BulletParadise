@@ -3,7 +3,6 @@ using BulletParadise.Shooting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
-using static Codice.CM.Common.CmCallContext;
 
 namespace BulletParadise.UI
 {
@@ -83,5 +82,7 @@ namespace BulletParadise.UI
                 consumableSlots[i].Restart();
             }
         }
+
+        public void SetCurrentChosen(int index) => currentChosen = index;
     }
 }

@@ -12,147 +12,160 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3aad649b09415a4b97839ab3f052cb9, type: 3}
   m_Name: WeaponCircleSpoon
   m_EditorClassIdentifier: 
+  name: 
   sprite: {fileID: -1397634407656637528, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   projectiles:
-  - name: WoodenSpoon (Wave) - 1
+  - name: WoodenSpoon - 1
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 2
+  - name: WoodenSpoon - 2
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 3
+  - name: WoodenSpoon - 3
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 4
+  - name: WoodenSpoon - 4
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 5
+  - name: WoodenSpoon - 5
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 6
+  - name: WoodenSpoon - 6
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 7
+  - name: WoodenSpoon - 7
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 8
+  - name: WoodenSpoon - 8
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 0
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 9
+  - name: WoodenSpoon - 9
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 10
+  - name: WoodenSpoon - 10
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 1
+  - name: WoodenSpoon - 1
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
-  - name: WoodenSpoon (Wave) - 2
+  - name: WoodenSpoon - 2
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
       frequency: 1

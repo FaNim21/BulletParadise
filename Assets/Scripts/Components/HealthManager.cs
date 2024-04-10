@@ -25,7 +25,7 @@ namespace BulletParadise
         [ReadOnly, SerializeField] private bool isDead;
         [ReadOnly, SerializeField] private bool isInvulnerable;
         [ReadOnly, SerializeField] private bool isSick; //TODO: 5 temp do momentu jak zrobie juz po bosach debuff system
-        [ReadOnly, SerializeField] private int vitality = 50;
+        //[ReadOnly, SerializeField] private int vitality = 50;
 
 
         private void Update()

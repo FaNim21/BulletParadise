@@ -6,7 +6,7 @@ namespace BulletParadise.Entities
     public class Projectile : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
-        public Rigidbody2D rb;
+        [SerializeField] private Rigidbody2D rb;
         public Transform body;
 
         public ProjectileBehavior behavior;
@@ -25,14 +25,12 @@ namespace BulletParadise.Entities
             Destroy(gameObject, behavior.data.lifeTime);
         }
 
-        private void Update()
-        {
-            /*Vector3 childAngle = body.eulerAngles;
-            childAngle.z += rotationSpeed * Time.deltaTime;
-            body.eulerAngles = childAngle;*/
-            behavior.UpdateLogic();
-        }
-        private void FixedUpdate() => behavior.UpdatePhysics();
+        /*Vector3 childAngle = body.eulerAngles;
+        childAngle.z += rotationSpeed * Time.deltaTime;
+        body.eulerAngles = childAngle;*/
+
+        private void Update() => behavior.logic.OnUpdate(behavior);
+        private void FixedUpdate() => behavior.physics.OnUpdate(behavior);
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

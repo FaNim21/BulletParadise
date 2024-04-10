@@ -9,6 +9,13 @@ namespace BulletParadise.Shooting
 
         public int frequency = 1;
 
+
+        public virtual void Initialize()
+        {
+            foreach (var item in projectiles)
+                item.Initialize();
+        }
+
         public abstract void Shoot(string layerMask, Vector2 shootingPosition, float shootingAngle);
 
         protected void SendProjectile(ProjectileBehaviorData current, string layerMask, Vector2 shootingPosition, float degree)

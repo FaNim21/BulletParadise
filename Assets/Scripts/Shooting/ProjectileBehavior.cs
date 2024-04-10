@@ -2,36 +2,40 @@ using UnityEngine;
 
 namespace BulletParadise.Shooting
 {
-    public abstract class ProjectileBehavior
+    public class ProjectileBehavior
     {
         public ProjectileData data;
-        protected Rigidbody2D rb;
+        public Rigidbody2D rb;
 
-        protected Vector2 _velocity;
-        protected Vector2 _nextGlobalPosition;
+        public Vector2 velocity;
+        public Vector2 nextGlobalPosition;
 
-        protected Vector2 _startPosition;
-        protected Quaternion _startRotation;
+        public Vector2 startPosition;
+        public Quaternion startRotation;
 
-        protected float timeAlive = 0.04f;
+        public float timeAlive = 0.04f;
 
         public ProjectileAdditionalData additionalData;
 
-        public ProjectileBehavior(ProjectileData data, Vector2 velocity)
+        public IProjectileUpdater logic;
+        public IProjectileUpdater physics;
+
+
+        public ProjectileBehavior(ProjectileData data, IProjectileUpdater logic, IProjectileUpdater physics, Vector2 velocity)
         {
             this.data = data;
-            this.rb = rb;
-            _velocity = velocity;
+            this.logic = logic;
+            this.physics = physics;
 
-            _startPosition = rb.position;
-            _startRotation = Quaternion.Euler(0, 0, rb.rotation);
+            this.velocity = velocity;
         }
 
-        public virtual void OnInitialize(Rigidbody2D rb)
+        public void OnInitialize(Rigidbody2D rb)
         {
             this.rb = rb;
+
+            startPosition = rb.position;
+            startRotation = Quaternion.Euler(0, 0, rb.rotation);
         }
-        public virtual void UpdateLogic() { }
-        public abstract void UpdatePhysics();
     }
 }

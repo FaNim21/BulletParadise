@@ -15,17 +15,18 @@ MonoBehaviour:
   name: Beef shotgun
   sprite: {fileID: -1397634407656637528, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   projectiles:
-  - name: Beef (Wave) - 1
+  - name: Beef - 1
     data: {fileID: 11400000, guid: 77122eee89eb44b40b7dde04a726642a, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: a2b665eaedcf9f740af452ba291ad750, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 1
     angle: 0
     additionalData:
-      frequency: 2
-      amplitude: 1
+      frequency: 0
+      amplitude: 0
       magnitude: 0
   frequency: 1
   useShootingAngle: 1

@@ -15,25 +15,27 @@ MonoBehaviour:
   name: Egg shotgun lul
   sprite: {fileID: 183075426328126886, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   projectiles:
-  - name: Egg (Straight) - 1
+  - name: Egg - 1
     data: {fileID: 11400000, guid: 984a528a26d87654aa1701a9dfe98e5c, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 0
     angle: 0
     additionalData:
       frequency: 0
       amplitude: 0
       magnitude: 0
-  - name: Egg (Straight) - 2
-    data: {fileID: 11400000, guid: 984a528a26d87654aa1701a9dfe98e5c, type: 2}
-    behaviorFactory: {fileID: 11400000, guid: 90da67dac8e83194c952eac1bc5ff70f, type: 2}
+  - name: Egg2 - 2
+    data: {fileID: 11400000, guid: 7610206d9b1feb74ab95db0f4dc1402b, type: 2}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
       speedMultiplier: 1
+    logicType: 0
+    physicsType: 0
     angle: 0
     additionalData:
       frequency: 0
