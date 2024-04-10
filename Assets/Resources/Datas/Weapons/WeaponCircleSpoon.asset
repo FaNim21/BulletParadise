@@ -23,11 +23,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 2
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -36,11 +36,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 3
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -49,11 +49,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 4
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -62,11 +62,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 5
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -75,11 +75,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 5000
   - name: WoodenSpoon - 6
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -88,11 +88,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 7
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -101,11 +101,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 8
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -113,12 +113,12 @@ MonoBehaviour:
       lifeTimeMultiplier: 1
       speedMultiplier: 1
     logicType: 0
-    physicsType: 0
-    angle: 0
+    physicsType: 1
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 9
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -127,11 +127,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 10
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -140,11 +140,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 1
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -153,11 +153,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   - name: WoodenSpoon - 2
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
     dataMultiplier:
@@ -166,9 +166,9 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 1
-    angle: 0
     additionalData:
       frequency: 1
       amplitude: 0.25
       magnitude: 0
+      rotationSpeed: 0
   frequency: 5

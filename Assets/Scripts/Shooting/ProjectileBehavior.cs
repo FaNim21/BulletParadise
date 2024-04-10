@@ -6,6 +6,7 @@ namespace BulletParadise.Shooting
     {
         public ProjectileData data;
         public Rigidbody2D rb;
+        public Transform body;
 
         public Vector2 velocity;
         public Vector2 nextGlobalPosition;
@@ -26,13 +27,13 @@ namespace BulletParadise.Shooting
             this.data = data;
             this.logic = logic;
             this.physics = physics;
-
             this.velocity = velocity;
         }
 
-        public void OnInitialize(Rigidbody2D rb)
+        public void OnInitialize(Rigidbody2D rb, Transform body)
         {
             this.rb = rb;
+            this.body = body;
 
             startPosition = rb.position;
             startRotation = Quaternion.Euler(0, 0, rb.rotation);

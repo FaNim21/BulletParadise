@@ -22,12 +22,12 @@ MonoBehaviour:
       lifeTimeMultiplier: 1
       speedMultiplier: 1
     logicType: 0
-    physicsType: 0
-    angle: 0
+    physicsType: 1
     additionalData:
       frequency: 2
       amplitude: 0.5
       magnitude: 0
+      rotationSpeed: 0
   - name: Broccoli - 2
     data: {fileID: 11400000, guid: 847c844fd46331842a0e3ea015a6c945, type: 2}
     dataMultiplier:
@@ -35,12 +35,12 @@ MonoBehaviour:
       lifeTimeMultiplier: 1
       speedMultiplier: 1
     logicType: 0
-    physicsType: 0
-    angle: 0
+    physicsType: 1
     additionalData:
       frequency: 2
       amplitude: -0.5
       magnitude: 0
+      rotationSpeed: 200
   frequency: 10
   useShootingAngle: 1
   angle: 0

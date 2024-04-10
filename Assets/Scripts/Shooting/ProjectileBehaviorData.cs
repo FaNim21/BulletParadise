@@ -30,6 +30,8 @@ namespace BulletParadise.Shooting
         public float frequency;
         public float amplitude;
         public float magnitude;
+
+        public float rotationSpeed;
     }
 
     [System.Serializable]
@@ -46,7 +48,6 @@ namespace BulletParadise.Shooting
         public ProjectilePhysicsType physicsType;
         public IProjectileUpdater physicsUpdate;
 
-        public float angle;
         public ProjectileAdditionalData additionalData;
 
 
@@ -69,6 +70,7 @@ namespace BulletParadise.Shooting
             switch (logicType)
             {
                 case ProjectileLogicType.Default: logicUpdate = new ProjectileDefaultLogic(); break;
+                case ProjectileLogicType.Rotating: logicUpdate = new ProjectileRotateLogic(); break;
             }
         }
 

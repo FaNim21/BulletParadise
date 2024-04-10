@@ -23,11 +23,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 0
-    angle: 0
     additionalData:
       frequency: 0
       amplitude: 0
       magnitude: 0
+      rotationSpeed: 0
   - name: Egg2 - 2
     data: {fileID: 11400000, guid: 7610206d9b1feb74ab95db0f4dc1402b, type: 2}
     dataMultiplier:
@@ -36,11 +36,11 @@ MonoBehaviour:
       speedMultiplier: 1
     logicType: 0
     physicsType: 0
-    angle: 0
     additionalData:
       frequency: 0
       amplitude: 0
       magnitude: 0
+      rotationSpeed: 0
   frequency: 1
   useShootingAngle: 1
   angle: 5

@@ -7,11 +7,10 @@ namespace BulletParadise.Entities
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Rigidbody2D rb;
-        public Transform body;
+        [SerializeField] private Transform body;
 
         public ProjectileBehavior behavior;
 
-        //public float rotationSpeed;
 
         public void Setup(string layerMask, ProjectileBehavior behavior)
         {
@@ -20,14 +19,10 @@ namespace BulletParadise.Entities
             spriteRenderer.sprite = behavior.data.sprite;
 
             this.behavior = behavior;
-            this.behavior.OnInitialize(rb);
+            this.behavior.OnInitialize(rb, body);
 
             Destroy(gameObject, behavior.data.lifeTime);
         }
-
-        /*Vector3 childAngle = body.eulerAngles;
-        childAngle.z += rotationSpeed * Time.deltaTime;
-        body.eulerAngles = childAngle;*/
 
         private void Update() => behavior.logic.OnUpdate(behavior);
         private void FixedUpdate() => behavior.physics.OnUpdate(behavior);
