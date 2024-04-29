@@ -25,5 +25,10 @@ namespace BulletParadise.Shooting
             ProjectileBehavior behavior = current.GetBehavior(quaternionAngle * Vector2.right);
             projectile.Setup(layerMask, behavior);
         }
+
+        public override void OnEnable()
+        {
+            Initialize();
+        }
     }
 }

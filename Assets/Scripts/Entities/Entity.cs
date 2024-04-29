@@ -1,12 +1,13 @@
+using BulletParadise.Components;
 using BulletParadise.World;
 using UnityEngine;
 
 namespace BulletParadise.Entities
 {
+    [RequireComponent(typeof(HealthManager))]
     public abstract class Entity : MonoBehaviour, IDrawable
     {
-        public HealthManager healthManager;
-
+        [HideInInspector] public HealthManager healthManager;
         [HideInInspector] public new Transform transform;
 
         [ReadOnly] public Vector2 position;
@@ -20,6 +21,7 @@ namespace BulletParadise.Entities
         public virtual void Awake()
         {
             transform = GetComponent<Transform>();
+            healthManager = GetComponent<HealthManager>();
             health = maxHealth;
         }
         public virtual void Start() { }

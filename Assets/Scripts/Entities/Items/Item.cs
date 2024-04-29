@@ -6,5 +6,7 @@ namespace BulletParadise.Entities.Items
     {
         public new string name;
         public Sprite sprite;
+
+        public virtual void OnEnable() { }
     }
 }

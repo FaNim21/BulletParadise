@@ -53,12 +53,12 @@ namespace BulletParadise.Entities
             direction = ((Vector2)target.position - position).normalized;
             toTargetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            if (IsTargetInDistance(chaseRange) && !isShooting) StartCoroutine(Shooting());
+            //if (IsTargetInDistance(chaseRange) && !isShooting) StartCoroutine(Shooting());
         }
         public override void FixedUpdate()
         {
-            if (IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
-                rb.MovePosition(rb.position + Separation() * 2f + moveSpeed * Time.deltaTime * direction);
+            /*if (IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
+                rb.MovePosition(rb.position + Separation() * 2f + moveSpeed * Time.deltaTime * direction);*/
         }
 
         public override void Draw()

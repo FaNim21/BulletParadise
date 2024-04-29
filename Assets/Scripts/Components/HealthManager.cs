@@ -1,32 +1,33 @@
 using BulletParadise.Entities;
 using BulletParadise.Visual;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-namespace BulletParadise
+namespace BulletParadise.Components
 {
     public class HealthManager : MonoBehaviour, IDamageable, IHealable
     {
-        public Entity entity;
+        private Entity entity;
 
         [Header("Obiekty")]
+        public HealthBar mainHealthBar;
         public Transform healthBar;
 
-        [Header("UI")]
-        public Image healthFill;
-        /*public TextMeshProUGUI healthValue;
-        public TextMeshProUGUI maxHealthValue;*/
-
-        [Header("Values")]
-        public bool useHealthBar;
-
         [Header("Debug")]
+        [ReadOnly, SerializeField] private bool isInvulnerable;
         [ReadOnly, SerializeField] private bool canRegenerate;
         [ReadOnly, SerializeField] private bool isDead;
-        [ReadOnly, SerializeField] private bool isInvulnerable;
         [ReadOnly, SerializeField] private bool isSick; //TODO: 5 temp do momentu jak zrobie juz po bosach debuff system
         //[ReadOnly, SerializeField] private int vitality = 50;
 
+
+        private void Awake()
+        {
+            entity = GetComponent<Entity>();
+        }
+        private void Start()
+        {
+            mainHealthBar.Initialize();
+        }
 
         private void Update()
         {
@@ -37,11 +38,10 @@ namespace BulletParadise
 
         public void TakeDamage(int damage)
         {
-            if (damage <= 0 || isInvulnerable) return;
+            if (damage <= 0 || isInvulnerable || isDead) return;
 
-            if (isDead) return;
-            if (entity.health <= 0f) OnDeath();
             entity.health -= damage;
+            if (entity.health <= 0f) OnDeath();
 
             Popup.Create(entity.position, damage.ToString(), Color.red);
             UpdateHealthBar();
@@ -62,12 +62,14 @@ namespace BulletParadise
 
         private void UpdateHealthBar()
         {
+            float healthPercent = entity.GetHealthToMaxProportion();
+
             Vector3 barScale = healthBar.localScale;
-            barScale.x = entity.GetHealthToMaxProportion();
+            barScale.x = healthPercent;
             healthBar.localScale = barScale;
 
-            //healthFill.fillAmount = health / maxHealth;
-            //healthValue.SetText(health.ToString());
+            if (mainHealthBar == null) return;
+            mainHealthBar.UpdateHealthBar(healthPercent);
         }
 
         private void OnDeath()
@@ -81,6 +83,11 @@ namespace BulletParadise
             entity.health = entity.maxHealth;
             isDead = false;
             UpdateHealthBar();
+        }
+
+        public void SetInvunerability(bool value)
+        {
+            isInvulnerable = value;
         }
     }
 }

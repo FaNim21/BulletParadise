@@ -70,10 +70,6 @@ namespace BulletParadise.Player
             isInLobby = true;
             isResponding = true;
 
-            /*healthValue.SetText(health.ToString());
-            maxHealthValue.SetText(maxHealth.ToString());*/
-            //healthFill.fillAmount = health / maxHealth;
-
             animator.SetFloat("moveY", -1);
             animator.SetFloat("shootSpeed", 3f);
         }

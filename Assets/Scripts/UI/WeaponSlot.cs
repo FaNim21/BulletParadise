@@ -34,8 +34,6 @@ namespace BulletParadise.UI
             if (quickBar.GetCurrentSelectedSlot().Equals(this))
                 quickBar.weapon = weapon;
 
-            this.weapon.Initialize();
-
             base.SetItem(item);
         }
     }
