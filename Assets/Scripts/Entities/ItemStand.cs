@@ -27,11 +27,11 @@ namespace BulletParadise
             itemSpriteRenderer.sprite = weapon.sprite;
         }
 
-        public void Interact()
+        public void Interact(PlayerController player)
         {
             if (!IsFocused) return;
             standSpriteRenderer.color = Color.green;
-            PlayerController.Instance.SetWeapon(weapon);
+            player.SetWeapon(weapon);
         }
 
         public void Focus()

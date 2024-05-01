@@ -2,15 +2,9 @@
 
 namespace BulletParadise.Shooting.Physics
 {
-    //[CreateAssetMenu(fileName = "new Projectile Wave Factory", menuName = "Weapons/Projectile Physics/Wave")]
     [System.Serializable]
     public class ProjectileWavePhysics : IProjectileUpdater
     {
-        public float cos1;
-        public float cos241;
-        public int csfdy33;
-        //public Vector2 vectorloool; vectory zle rysuje
-
         public void OnUpdate(ProjectileBehavior behavior)
         {
             //troche przypomina flaila, ale chodzi o to ze robi poprostu kolo wokol entity z ktorego jest wystrzeliwany

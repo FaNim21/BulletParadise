@@ -12,7 +12,6 @@ namespace BulletParadise.Entities
         public static List<MobController> mobs = new();
 
         [Header("Komponenty")]
-        public Rigidbody2D rb;
         public BoxCollider2D boxCollider;
 
         [Header("Obiekty")]
@@ -27,12 +26,13 @@ namespace BulletParadise.Entities
         public int exp;
 
         [Header("Debug")]
-        [SerializeField, ReadOnly] private bool isShooting;
+        //[SerializeField, ReadOnly] private bool isShooting;
         [SerializeField, ReadOnly] private Vector2 direction;
         [SerializeField, ReadOnly] private float toTargetAngle;
         [SerializeField, ReadOnly] private float currentAngle;
 
-        private readonly string _layerMask = "ProjectileMob";
+        //private readonly string _layerMask = "ProjectileMob";
+
 
         public override void Awake()
         {
@@ -57,8 +57,8 @@ namespace BulletParadise.Entities
         }
         public override void FixedUpdate()
         {
-            /*if (IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
-                rb.MovePosition(rb.position + Separation() * 2f + moveSpeed * Time.deltaTime * direction);*/
+            if (IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
+                rb.MovePosition(rb.position + Separation() * 2f + moveSpeed * Time.deltaTime * direction);
         }
 
         public override void Draw()
@@ -78,7 +78,7 @@ namespace BulletParadise.Entities
             Destroy(gameObject);
         }
 
-        public virtual IEnumerator Shooting()
+        /*public virtual IEnumerator Shooting()
         {
             isShooting = true;
 
@@ -86,7 +86,7 @@ namespace BulletParadise.Entities
             if (weapon != null)
                 weapon.Shoot(_layerMask, position, currentAngle);
 
-            /*var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, toTargetAngle));
+            *//*var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, toTargetAngle));
             projectile.Setup(_layerMask, Quaternion.Euler(0, 0, toTargetAngle) * Vector2.right, projectileSpeed, damage);*/
 
             /*float degree = 0;
@@ -129,12 +129,12 @@ namespace BulletParadise.Entities
                     data.magnitude,
                     data.shootType[0],
                     isParametric ? ProjectileEffect.tracking : ProjectileEffect.none);
-            }*/
+            }*//*
 
             yield return new WaitForSeconds(1f / weapon.frequency);
 
             isShooting = false;
-        }
+        }*/
 
         public bool IsTargetInDistance(float distance)
         {

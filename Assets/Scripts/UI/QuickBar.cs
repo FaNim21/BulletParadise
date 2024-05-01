@@ -61,7 +61,7 @@ namespace BulletParadise.UI
 
             selectTransform.position = slot.transform.position;
             selectTransform.gameObject.SetActive(true);
-            PlayerController.Instance.RestartShooting();
+            PlayerController.Instance.shootingManager.Restart();
         }
 
         public void SetWeaponToSlot(Weapon weapon)

@@ -1,4 +1,5 @@
 using BulletParadise.Entities.Bosses;
+using BulletParadise.Visual.Drawing;
 using UnityEngine;
 
 namespace BulletParadise
@@ -17,35 +18,40 @@ namespace BulletParadise
 
         public override void OnEnter()
         {
-            bossBehavior.entity.healthManager.SetInvunerability(true);
+            boss.entity.healthManager.SetInvunerability(true);
             timer = 0f;
-            target = bossBehavior.arenaCenter;
+            target = boss.arenaCenter;
         }
 
-        public override void Update()
+        public override void LogicUpdate(Vector2 targetDirection)
         {
-            direction = (target - bossBehavior.entity.position).normalized;
+            direction = (target - boss.entity.position).normalized;
             //angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            if (Vector2.Distance(bossBehavior.transform.position, target) <= 0.001f)
+            if (Vector2.Distance(boss.transform.position, target) <= 0.001f)
             {
-                bossBehavior.transform.position = target;
+                boss.transform.position = target;
 
                 if (timer >= timeForRestart)
-                    bossBehavior.GoToNextPhase();
+                    boss.GoToNextPhase();
 
                 timer += Time.deltaTime;
             }
         }
 
-        public override void FixedUpdate(Rigidbody2D rb)
+        public override void PhysicsUpdate(Rigidbody2D rb)
         {
             rb.MovePosition(rb.position + speed * Time.deltaTime * direction);
         }
 
         public override void OnExit()
         {
-            bossBehavior.entity.healthManager.SetInvunerability(false);
+            boss.entity.healthManager.SetInvunerability(false);
+        }
+
+        public override void Draw()
+        {
+            GLDraw.DrawLine(boss.position, boss.arenaCenter, Color.yellow, 0.01f);
         }
     }
 }

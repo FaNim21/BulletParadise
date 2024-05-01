@@ -1,5 +1,4 @@
 ﻿using BulletParadise.Constants;
-using BulletParadise.Player;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -38,6 +37,7 @@ namespace BulletParadise.UI
         private void ChangeTimeScale()
         {
             isCanvasEnabled = !isCanvasEnabled;
+            canvasHandle.isCanvasEnabled = isCanvasEnabled;
             Consts.IsFocusedOnMainMenu = !Consts.IsFocusedOnMainMenu;
             Time.timeScale = isCanvasEnabled ? 0 : 1;
         }

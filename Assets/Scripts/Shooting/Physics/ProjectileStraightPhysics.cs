@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace BulletParadise.Shooting.Physics
 {
-    //[CreateAssetMenu(fileName = "new Projectile Straight Factory", menuName = "Weapons/Projectile Physics/Straight")]
     [System.Serializable]
     public class ProjectileStraightPhysics : IProjectileUpdater
     {

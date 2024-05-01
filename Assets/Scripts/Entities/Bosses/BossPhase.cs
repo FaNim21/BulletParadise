@@ -12,7 +12,7 @@ namespace BulletParadise.Entities.Bosses
         [MinMaxRange(0f, 1f)] public Vector2 percentage;
 
 
-        public void Initialize(BossBehavior bossBehavior)
+        public void Initialize(Boss bossBehavior)
         {
             phase.Initialize(bossBehavior, weapon);
         }

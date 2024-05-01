@@ -9,7 +9,7 @@ namespace BulletParadise.Shooting.Weapons
         [SerializeField] private float angle;
 
 
-        public override void Shoot(string layerMask, Vector2 shootingPosition, float shootingAngle)
+        public override void Shoot(int layerMask, Vector2 shootingPosition, float shootingAngle)
         {
             float degree;
             int length = projectiles.Length;

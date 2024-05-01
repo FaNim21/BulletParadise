@@ -7,6 +7,7 @@ namespace BulletParadise.Entities
     [RequireComponent(typeof(HealthManager))]
     public abstract class Entity : MonoBehaviour, IDrawable
     {
+        [HideInInspector] public Rigidbody2D rb;
         [HideInInspector] public HealthManager healthManager;
         [HideInInspector] public new Transform transform;
 
@@ -22,6 +23,8 @@ namespace BulletParadise.Entities
         {
             transform = GetComponent<Transform>();
             healthManager = GetComponent<HealthManager>();
+            rb = GetComponent<Rigidbody2D>();
+
             health = maxHealth;
         }
         public virtual void Start() { }

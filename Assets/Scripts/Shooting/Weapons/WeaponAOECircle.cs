@@ -5,7 +5,7 @@ namespace BulletParadise.Shooting.Weapons
     [CreateAssetMenu(fileName = "new WeaponCircle", menuName = "Weapons/WeaponType/Circle")]
     public class WeaponAOECircle : Weapon
     {
-        public override void Shoot(string layerMask, Vector2 shootingPosition, float shootingAngle)
+        public override void Shoot(int layerMask, Vector2 shootingPosition, float shootingAngle)
         {
             int length = projectiles.Length;
             float degree;

@@ -5,20 +5,22 @@ namespace BulletParadise.Entities.Bosses
 {
     public abstract class Phase : ScriptableObject
     {
-        protected BossBehavior bossBehavior;
+        protected Boss boss;
         protected Weapon weapon;
 
 
-        public void Initialize(BossBehavior bossBehavior, Weapon weapon)
+        public void Initialize(Boss boss, Weapon weapon)
         {
-            this.bossBehavior = bossBehavior;
+            this.boss = boss;
             this.weapon = weapon;
         }
 
         public abstract void OnEnter();
-        public abstract void Update();
-        public abstract void FixedUpdate(Rigidbody2D rb);
+        public abstract void LogicUpdate(Vector2 targetDirection);
+        public abstract void PhysicsUpdate(Rigidbody2D rb);
         public abstract void OnExit();
+
+        public abstract void Draw();
 
         public virtual void OnReseting() { }
     }

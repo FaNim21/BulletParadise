@@ -1,6 +1,8 @@
 using BulletParadise.Entities.Bosses;
 using BulletParadise.Player;
+using BulletParadise.Visual.Drawing;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace BulletParadise
 {
@@ -19,21 +21,24 @@ namespace BulletParadise
 
         }
 
-        public override void Update()
+        public override void LogicUpdate(Vector2 targetDirection)
         {
             target = PlayerController.Instance.transform;
-            direction = ((Vector2)target.position - bossBehavior.entity.position).normalized;
+            direction = ((Vector2)target.position - boss.entity.position).normalized;
         }
 
-        public override void FixedUpdate(Rigidbody2D rb)
+        public override void PhysicsUpdate(Rigidbody2D rb)
         {
             rb.MovePosition(rb.position + speed * Time.deltaTime * direction);
         }
 
         public override void OnExit()
         {
-
         }
 
+        public override void Draw()
+        {
+            //GLDraw.DrawCircle(boss.position, chaseRange, Color.red);
+        }
     }
 }

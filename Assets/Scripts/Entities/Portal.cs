@@ -7,11 +7,10 @@ namespace BulletParadise.Entities
     {
         public bool IsFocused { get; set; }
 
-
         public new string name;
 
         [Header("Components")]
-        public EnterInformationWindow enterInformationWindow;
+        [SerializeField, ReadOnly] private EnterInformationWindow enterInformationWindow;
 
 
         private void Start()
@@ -19,7 +18,7 @@ namespace BulletParadise.Entities
             enterInformationWindow = PlayerController.Instance.canvasHandle.enterWindow;
         }
 
-        public void Interact()
+        public void Interact(PlayerController player)
         {
             enterInformationWindow.OnEnter();
         }

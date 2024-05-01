@@ -16,9 +16,9 @@ namespace BulletParadise.Shooting
                 item.Initialize();
         }
 
-        public abstract void Shoot(string layerMask, Vector2 shootingPosition, float shootingAngle);
+        public abstract void Shoot(int layerMask, Vector2 shootingPosition, float shootingAngle);
 
-        protected void SendProjectile(ProjectileBehaviorData current, string layerMask, Vector2 shootingPosition, float degree)
+        protected void SendProjectile(ProjectileBehaviorData current, int layerMask, Vector2 shootingPosition, float degree)
         {
             Quaternion quaternionAngle = Quaternion.Euler(0, 0, degree);
             var projectile = Instantiate(GameManager.Projectile, shootingPosition, quaternionAngle);

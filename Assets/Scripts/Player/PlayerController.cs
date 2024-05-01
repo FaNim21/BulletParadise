@@ -8,9 +8,9 @@ using BulletParadise.Constants;
 using BulletParadise.Misc;
 using BulletParadise.World;
 using BulletParadise.UI.Windows;
-using System.Collections;
 using BulletParadise.Shooting;
 using System.Collections.Generic;
+using BulletParadise.Components;
 
 namespace BulletParadise.Player
 {
@@ -26,10 +26,10 @@ namespace BulletParadise.Player
         public CameraController cameraController;
         public CanvasHandle canvasHandle;
         public LevelLoader levelLoader;
+        public ShootingManager shootingManager;
 
-        [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Animator animator;
-        [SerializeField] private BoxCollider2D boxCollider;
+        [SerializeField] private CircleCollider2D circleCollider;
 
         [Header("Obiekty")]
         public Transform body;
@@ -42,18 +42,12 @@ namespace BulletParadise.Player
         public bool autoFire;
         [ReadOnly] public bool isInLobby;
         [ReadOnly] public bool isResponding;
-        [ReadOnly, SerializeField] private bool isShooting;
-        [ReadOnly, SerializeField] private bool canShoot;
         [ReadOnly] public float aimAngle;
         [ReadOnly] public Vector2 inputDirection;
         [ReadOnly] public Vector2 mousePosition;
         [ReadOnly] public Vector2 aimDirection;
 
         private readonly List<IInteractable> interactables = new();
-        private readonly string _layerMask = "ProjectilePlayer";
-
-        private Coroutine _shootingCoroutine;
-        private Coroutine _restartShootingCoroutine;
 
 
         public override void Awake()
@@ -129,7 +123,7 @@ namespace BulletParadise.Player
             GLDraw.DrawRay(shootingOffset.position, aimDirection * 1.5f, Color.blue);
 
             //Kolizja gracza
-            GLDraw.DrawBox((Vector2)body.position + boxCollider.offset, boxCollider.size, Color.green);
+            GLDraw.DrawCircle((Vector2)body.position + circleCollider.offset, circleCollider.radius, Color.green);
         }
 
         private void HandleInput()
@@ -156,25 +150,15 @@ namespace BulletParadise.Player
         }
         private void HandleShooting()
         {
-            if (!canShoot) return;
-
-            if (autoFire)
-            {
-                if (!isShooting)
-                    _shootingCoroutine = StartCoroutine(Shoot());
-            }
-            else
-            {
-                if (Mouse.current.leftButton.isPressed && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject() && !isShooting)
-                    _shootingCoroutine = StartCoroutine(Shoot());
-            }
+            if ((Mouse.current.leftButton.isPressed && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject()) || autoFire)
+                shootingManager.Shoot(quickBar.weapon, aimAngle);
         }
 
         public void Interact(InputAction.CallbackContext context)
         {
             if (context.phase != InputActionPhase.Performed || interactables == null || interactables.Count == 0) return;
 
-            interactables[^1].Interact();
+            interactables[^1].Interact(this);
         }
 
         public void HandleMovement(InputAction.CallbackContext context)
@@ -204,32 +188,19 @@ namespace BulletParadise.Player
             }
         }
 
-        private IEnumerator Shoot()
-        {
-            if (quickBar.weapon == null) yield break;
-
-            isShooting = true;
-            animator.SetTrigger("shoots");
-
-            quickBar.weapon.Shoot(_layerMask, shootingOffset.position, aimAngle);
-
-            yield return new WaitForSeconds(1f / quickBar.weapon.frequency);
-            isShooting = false;
-        }
-
         public override void OnDeath()
         {
             SetResponding(false);
-            boxCollider.enabled = false;
+            circleCollider.enabled = false;
             canvasHandle.OpenWindow<DeathScreen>();
             animator.SetTrigger("died");
-            Utils.Log("DEATH");
+            Utils.Log("DIED");
         }
 
         public void Restart()
         {
             transform.position = Vector2.zero;
-            boxCollider.enabled = true;
+            circleCollider.enabled = true;
             cameraController.Restart();
             healthManager.Restart();
             quickBar.ResetSlots();
@@ -261,21 +232,7 @@ namespace BulletParadise.Player
         public void SetWeapon(Weapon weapon)
         {
             quickBar.SetWeaponToSlot(weapon);
-            RestartShooting();
-        }
-
-        public void RestartShooting()
-        {
-            canShoot = false;
-            if (_restartShootingCoroutine != null) StopCoroutine(_restartShootingCoroutine);
-            _restartShootingCoroutine = StartCoroutine(RestartShootingCoroutine());
-        }
-        private IEnumerator RestartShootingCoroutine()
-        {
-            yield return new WaitForSeconds(0.5f);
-            if (_shootingCoroutine != null) StopCoroutine(_shootingCoroutine);
-            isShooting = false;
-            canShoot = true;
+            shootingManager.Restart();
         }
     }
 }

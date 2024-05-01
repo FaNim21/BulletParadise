@@ -2700,8 +2700,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3816022654579694891}
   - component: {fileID: 4377785673712302836}
-  - component: {fileID: 3269972558233157557}
   - component: {fileID: 3849922881083930847}
+  - component: {fileID: 7880171329338642632}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -2778,8 +2778,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &3269972558233157557
-BoxCollider2D:
+--- !u!95 &3849922881083930847
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4639880364105748050}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d77681091f740e64285a9130bbb00f5d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &7880171329338642632
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2812,40 +2834,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.031151295, y: 0.025}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.065}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.4470067, y: 0.18954897}
-  m_EdgeRadius: 0
---- !u!95 &3849922881083930847
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4639880364105748050}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d77681091f740e64285a9130bbb00f5d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Offset: {x: 0.025164306, y: 0.027965054}
+  m_Radius: 0.15967141
 --- !u!1 &4700471179239679273
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,6 +3297,7 @@ GameObject:
   - component: {fileID: 5322437977032153966}
   - component: {fileID: 3393361983977888684}
   - component: {fileID: 4577884324698957312}
+  - component: {fileID: 5637474593286821040}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -3513,17 +3504,17 @@ MonoBehaviour:
   cameraController: {fileID: 0}
   canvasHandle: {fileID: 3303889451010081638}
   levelLoader: {fileID: 5204498718917967087}
+  shootingManager: {fileID: 5637474593286821040}
   rb: {fileID: 5722979027641840210}
   animator: {fileID: 3849922881083930847}
-  boxCollider: {fileID: 3269972558233157557}
+  boxCollider: {fileID: 0}
+  circleCollider: {fileID: 7880171329338642632}
   body: {fileID: 3816022654579694891}
   shootingOffset: {fileID: 485283292785785696}
   speed: 4
   autoFire: 0
   isInLobby: 0
   isResponding: 0
-  isShooting: 0
-  canShoot: 0
   aimAngle: 0
   inputDirection: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0}
@@ -3540,15 +3531,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb10d79aeda246c42b2f30997b8d8010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 3393361983977888684}
   mainHealthBar: {fileID: 6131004486775343368}
   healthBar: {fileID: 8113172731535335571}
-  healthFill: {fileID: 0}
-  useHealthBar: 0
+  isInvulnerable: 0
   canRegenerate: 0
   isDead: 0
-  isInvulnerable: 0
   isSick: 0
+--- !u!114 &5637474593286821040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5913183747222998579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614191174e6e446499b77c13ac1d4d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingOffset: {fileID: 485283292785785696}
+  layerMask: 10
+  _isShooting: 0
+  _canShoot: 0
 --- !u!1 &6037443922414915655
 GameObject:
   m_ObjectHideFlags: 0
@@ -5314,7 +5318,7 @@ MonoBehaviour:
   keybindText: {fileID: 503825670635021484}
   amountText: {fileID: 0}
   key: 0
-  weapon: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 992f47c307c259d4aa0dc0a3f673d7aa, type: 2}
   slotIndex: 0
 --- !u!1 &9093006479759056869
 GameObject:

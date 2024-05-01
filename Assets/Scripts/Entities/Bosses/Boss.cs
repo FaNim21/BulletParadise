@@ -1,23 +1,30 @@
+using BulletParadise.Player;
+using BulletParadise.Visual.Drawing;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace BulletParadise.Entities.Bosses
 {
-    public class BossBehavior : MonoBehaviour
+    public class Boss : Entity
     {
         public Phase CurrentPhase { get { return phases[currentPhaseIndex].phase; } }
 
+        public Transform target;
+
         [HideInInspector] public Entity entity;
-        [HideInInspector] private Rigidbody2D rb;
 
         public BossPhase[] phases;
 
         [Header("Debug")]
         [SerializeField, ReadOnly] private byte currentPhaseIndex;
+        [ReadOnly] public Vector2 direction;
         [ReadOnly] public Vector2 arenaCenter;
 
 
-        private void Awake()
+        public override void Awake()
         {
+            base.Awake();
+
             entity = GetComponent<Entity>();
             rb = GetComponent<Rigidbody2D>();
 
@@ -26,18 +33,31 @@ namespace BulletParadise.Entities.Bosses
             for (int i = 0; i < phases.Length; i++)
                 phases[i].Initialize(this);
         }
-        private void Start()
+        public override void Start()
         {
+            base.Start();
             CurrentPhase.OnEnter();
+            GameManager.AddDrawable(this);
+
+            target = PlayerController.Instance.transform;
         }
 
-        private void Update()
+        public override void Update()
         {
-            CurrentPhase.Update();
+            base.Update();
+
+            direction = ((Vector2)target.position - position).normalized;
+            CurrentPhase.LogicUpdate(direction);
         }
-        private void FixedUpdate()
+        public override void FixedUpdate()
         {
-            CurrentPhase.FixedUpdate(rb);
+            CurrentPhase.PhysicsUpdate(rb);
+        }
+
+        public override void Draw()
+        {
+            GLDraw.DrawRay(position, direction * 3, Color.cyan);
+            CurrentPhase.Draw();
         }
 
         public void UpdatePhase(float healthRatio)

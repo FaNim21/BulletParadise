@@ -12,10 +12,15 @@ namespace BulletParadise.Entities
         public ProjectileBehavior behavior;
 
 
-        public void Setup(string layerMask, ProjectileBehavior behavior)
+        public void Setup(int layerMask, ProjectileBehavior behavior)
         {
-            gameObject.layer = LayerMask.NameToLayer(layerMask);
-            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer(layerMask);
+            if (gameObject.layer != layerMask)
+            {
+                gameObject.layer = layerMask;
+                for (int i = 0; i < transform.childCount; i++)
+                    transform.GetChild(i).gameObject.layer = layerMask;
+            }
+
             spriteRenderer.sprite = behavior.data.sprite;
 
             this.behavior = behavior;

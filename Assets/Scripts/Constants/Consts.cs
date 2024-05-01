@@ -27,6 +27,6 @@ namespace BulletParadise.Constants
             }
         }
 
-        public const string GameVersion = "0.0.1a";
+        public const string GameVersion = "0.3.0a";
     }
 }
