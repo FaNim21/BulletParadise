@@ -11,9 +11,9 @@ namespace BulletParadise.Entities
         [HideInInspector] public HealthManager healthManager;
         [HideInInspector] public new Transform transform;
 
-        [ReadOnly] public Vector2 position;
-        [ReadOnly] public float health;
-        public int maxHealth;
+        [HideInInspector] public Vector2 position;
+        [HideInInspector] public float health;
+        [HideInInspector] public int maxHealth;
 
         //TODO: 2 to bedzie zalezne od world managera dla ENTITY
         public bool CanDraw => true;

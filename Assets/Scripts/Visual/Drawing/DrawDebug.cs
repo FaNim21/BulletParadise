@@ -7,17 +7,18 @@ namespace BulletParadise.Visual.Drawing
     public class DrawDebug : MonoBehaviour
     {
         private readonly List<IDrawable> _drawables = new();
-        private IReadOnlyList<IDrawable> _drawablesReadOnly => _drawables;
+        private IReadOnlyList<IDrawable> DrawablesReadOnly => _drawables;
 
         private readonly List<IDrawable> _sceneDrawables = new();
-        private IReadOnlyList<IDrawable> _sceneDrawablesReadOnly => _sceneDrawables;
+        private IReadOnlyList<IDrawable> SceneDrawablesReadOnly => _sceneDrawables;
 
 
         [Header("Values")]
         [SerializeField] private Material material;
+        [SerializeField] private bool isDebugMode;
 
         [Header("Debug")]
-        [SerializeField] private bool isDebugMode;
+        [SerializeField, ReadOnly] private int drawableCount;
 
 
         private void OnPostRender()
@@ -26,22 +27,21 @@ namespace BulletParadise.Visual.Drawing
 
             Draw();
         }
-
         private void Draw()
         {
             material.SetPass(0);
 
-            for (int i = 0; i < _drawablesReadOnly.Count; i++)
+            for (int i = 0; i < DrawablesReadOnly.Count; i++)
             {
-                var current = _drawablesReadOnly[i];
+                var current = DrawablesReadOnly[i];
                 if (!current.CanDraw) continue;
 
                 current.Draw();
             }
 
-            for (int i = 0; i < _sceneDrawablesReadOnly.Count; i++)
+            for (int i = 0; i < SceneDrawablesReadOnly.Count; i++)
             {
-                var current = _sceneDrawablesReadOnly[i];
+                var current = SceneDrawablesReadOnly[i];
                 if (!current.CanDraw) continue;
 
                 current.Draw();
@@ -51,19 +51,28 @@ namespace BulletParadise.Visual.Drawing
         public void AddGlobalDrawable(IDrawable drawable)
         {
             _drawables.Add(drawable);
+            UpdateDrawableCount();
         }
         public void RemoveGlobalDrawable(IDrawable drawable)
         {
             _drawables.Remove(drawable);
+            UpdateDrawableCount();
         }
 
         public void AddSceneDrawable(IDrawable drawable)
         {
             _sceneDrawables.Add(drawable);
+            UpdateDrawableCount();
         }
         public void RemoveSceneDrawable(IDrawable drawable)
         {
             _sceneDrawables.Remove(drawable);
+            UpdateDrawableCount();
+        }
+
+        private void UpdateDrawableCount()
+        {
+            drawableCount = SceneDrawablesReadOnly.Count + DrawablesReadOnly.Count;
         }
 
         public void SwitchDebugMode()

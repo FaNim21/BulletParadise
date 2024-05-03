@@ -2,7 +2,7 @@ using BulletParadise.Shooting;
 using BulletParadise.UI;
 using UnityEngine;
 
-namespace BulletParadise
+namespace BulletParadise.World.Components
 {
     public class StandController : MonoBehaviour
     {

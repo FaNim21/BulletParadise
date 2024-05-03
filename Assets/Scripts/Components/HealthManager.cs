@@ -11,6 +11,7 @@ namespace BulletParadise.Components
         [Header("Obiekty")]
         public HealthBar mainHealthBar;
         public Transform healthBar;
+        public GameObject invulnerabilityIcon;
 
         [Header("Debug")]
         [ReadOnly, SerializeField] private bool isInvulnerable;
@@ -88,6 +89,7 @@ namespace BulletParadise.Components
         public void SetInvunerability(bool value)
         {
             isInvulnerable = value;
+            if (invulnerabilityIcon != null) invulnerabilityIcon.SetActive(value);
         }
     }
 }

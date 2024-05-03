@@ -1,7 +1,6 @@
 using BulletParadise.Player;
 using BulletParadise.Visual.Drawing;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace BulletParadise.Entities.Bosses
 {
@@ -40,6 +39,10 @@ namespace BulletParadise.Entities.Bosses
             GameManager.AddDrawable(this);
 
             target = PlayerController.Instance.transform;
+        }
+        public void OnDestroy()
+        {
+            GameManager.RemoveDrawable(this);
         }
 
         public override void Update()

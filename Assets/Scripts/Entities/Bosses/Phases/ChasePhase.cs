@@ -1,8 +1,6 @@
 using BulletParadise.Entities.Bosses;
 using BulletParadise.Player;
-using BulletParadise.Visual.Drawing;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace BulletParadise
 {

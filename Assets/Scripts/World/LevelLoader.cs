@@ -1,5 +1,4 @@
-﻿using BulletParadise.Misc;
-using BulletParadise.Player;
+﻿using BulletParadise.Player;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -41,10 +40,8 @@ namespace BulletParadise.World
             loadingSlider.value = 1;
 
             yield return null;
-
             SetUpOnNewScene();
-
-            Time.timeScale = 1f;
+            yield return null;
 
             //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
             background.SetActive(false);
@@ -56,6 +53,8 @@ namespace BulletParadise.World
 
             PlayerController.Instance.Restart();
             PlayerController.Instance.SetResponding(true);
+
+            Time.timeScale = 1f;
         }
     }
 }

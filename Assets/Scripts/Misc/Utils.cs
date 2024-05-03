@@ -46,6 +46,7 @@ namespace BulletParadise.Misc
         }
         public static bool PreventSpawnBox(Vector2 CheckingPosition, Vector2[] readyPositions, Vector2 size)
         {
+            //SO OLD
             if (readyPositions == null || readyPositions.Length == 0) return false;
 
             for (int i = 0; i < readyPositions.Length; i++)

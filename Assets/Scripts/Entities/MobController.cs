@@ -1,7 +1,7 @@
+using BulletParadise.Components;
 using BulletParadise.Player;
 using BulletParadise.Shooting;
 using BulletParadise.Visual.Drawing;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +13,7 @@ namespace BulletParadise.Entities
 
         [Header("Komponenty")]
         public BoxCollider2D boxCollider;
+        public ShootingManager shootingManager;
 
         [Header("Obiekty")]
         public Transform target;
@@ -26,17 +27,16 @@ namespace BulletParadise.Entities
         public int exp;
 
         [Header("Debug")]
-        //[SerializeField, ReadOnly] private bool isShooting;
         [SerializeField, ReadOnly] private Vector2 direction;
         [SerializeField, ReadOnly] private float toTargetAngle;
         [SerializeField, ReadOnly] private float currentAngle;
-
-        //private readonly string _layerMask = "ProjectileMob";
 
 
         public override void Awake()
         {
             base.Awake();
+
+            shootingManager = GetComponent<ShootingManager>();
 
             mobs.Add(this);
         }
@@ -44,6 +44,10 @@ namespace BulletParadise.Entities
         {
             target = PlayerController.Instance.transform;
             GameManager.AddDrawable(this);
+        }
+        public void OnDestroy()
+        {
+            GameManager.RemoveDrawable(this);
         }
 
         public override void Update()
@@ -53,7 +57,7 @@ namespace BulletParadise.Entities
             direction = ((Vector2)target.position - position).normalized;
             toTargetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            //if (IsTargetInDistance(chaseRange) && !isShooting) StartCoroutine(Shooting());
+            if (IsTargetInDistance(chaseRange)) shootingManager.Shoot(weapon, toTargetAngle);
         }
         public override void FixedUpdate()
         {
@@ -74,67 +78,8 @@ namespace BulletParadise.Entities
         public override void OnDeath()
         {
             mobs.Remove(this);
-            //PlayerController.Instance.levelSystem.AddExp(exp);
             Destroy(gameObject);
         }
-
-        /*public virtual IEnumerator Shooting()
-        {
-            isShooting = true;
-
-            currentAngle += 5f;
-            if (weapon != null)
-                weapon.Shoot(_layerMask, position, currentAngle);
-
-            *//*var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, toTargetAngle));
-            projectile.Setup(_layerMask, Quaternion.Euler(0, 0, toTargetAngle) * Vector2.right, projectileSpeed, damage);*/
-
-            /*float degree = 0;
-            int j = 6;
-            float differenceDegree = 30;
-
-            currentAngle += 8;
-
-            for (int i = 1; i <= 12; i++)
-            {
-                degree = (differenceDegree * (j - (i - 1))) - (differenceDegree / 2);
-                degree += currentAngle;
-
-                Quaternion eulerAngle = Quaternion.Euler(0, 0, degree);
-                var projectile = Instantiate(GameManager.Projectile, position, eulerAngle);
-                projectile.Setup(_layerMask, eulerAngle * Vector2.right, projectileSpeed, damage);
-            }*/
-
-            /*for (int i = 1; i <= data.shots; i++)
-            {
-                if (isArc)
-                {
-                    if (data.shots % 2 == 0) degree = (data.degree * (j - (i - 1))) - (data.degree / 2);
-                    else degree = data.degree * (j - (i - 1));
-                }
-                else if (isParametric && data.shots > 1)
-                {
-                    if (i % 2 == 0) degree = -33.75f + 22.5f * (j - (i - 1)) + ((i <= j) ? 90f : 0);
-                    else degree = -33.75f + 22.5f * (j - (i - 1)) + ((i <= j) ? 0 : -90f);
-                }
-
-                var bullet = Instantiate(AdventureManager.ProjectilePrefab, mousePosition, Quaternion.Euler(0, 0, degree));
-                bullet.Setup(projectileMask, data.projectileSprite, (i % 2 == 0) ? 1 : -1, Random.Range(data.minDamage, data.maxDamage),
-                    Quaternion.AngleAxis(degree, Vector3.forward) * Vector3.right,
-                    0,
-                    data.speed,
-                    data.lifetime,
-                    data.frequency,
-                    (i % 2 == 0) ? -data.amplitude : data.amplitude,
-                    data.magnitude,
-                    data.shootType[0],
-                    isParametric ? ProjectileEffect.tracking : ProjectileEffect.none);
-            }*//*
-
-            yield return new WaitForSeconds(1f / weapon.frequency);
-
-            isShooting = false;
-        }*/
 
         public bool IsTargetInDistance(float distance)
         {

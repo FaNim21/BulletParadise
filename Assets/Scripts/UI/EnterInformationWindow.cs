@@ -1,3 +1,4 @@
+using BulletParadise.Entities;
 using BulletParadise.Player;
 using BulletParadise.World;
 using TMPro;
@@ -7,6 +8,8 @@ public class EnterInformationWindow : MonoBehaviour
 {
     [Header("Componenets")]
     public LevelLoader levelLoader;
+
+    [Header("Windows components")]
     public GameObject background;
     public TextMeshProUGUI titleText;
 
@@ -14,10 +17,14 @@ public class EnterInformationWindow : MonoBehaviour
     public string sceneName;
 
 
-    public void Setup(string sceneName)
+    private void Start()
     {
-        this.sceneName = sceneName;
-        titleText.SetText(sceneName);
+        levelLoader = FindFirstObjectByType<LevelLoader>();
+    }
+    public void Setup(Portal portal)
+    {
+        sceneName = portal.name;
+        LoadUpWindow(portal);
         background.SetActive(true);
     }
 
@@ -25,11 +32,16 @@ public class EnterInformationWindow : MonoBehaviour
     {
         background.SetActive(false);
     }
-
     public void OnEnter()
     {
         background.SetActive(false);
         PlayerController.Instance.isInLobby = false;
         levelLoader.LoadScene(sceneName);
+    }
+
+    private void LoadUpWindow(Portal portal)
+    {
+        titleText.SetText(sceneName);
+        //TODO: 0 Ladowac tu wszystkie informacje o bosie i achievementach zrobionych i do zrobienia w tym portalu
     }
 }

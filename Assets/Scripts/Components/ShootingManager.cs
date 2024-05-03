@@ -1,4 +1,3 @@
-using BulletParadise.Misc;
 using BulletParadise.Shooting;
 using System.Collections;
 using UnityEngine;
@@ -57,3 +56,61 @@ namespace BulletParadise.Components
         }
     }
 }
+
+/*public virtual IEnumerator Shooting()
+        {
+            isShooting = true;
+
+            currentAngle += 5f;
+            if (weapon != null)
+                weapon.Shoot(_layerMask, position, currentAngle);
+
+            *//*var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, toTargetAngle));
+            projectile.Setup(_layerMask, Quaternion.Euler(0, 0, toTargetAngle) * Vector2.right, projectileSpeed, damage);*/
+
+/*float degree = 0;
+int j = 6;
+float differenceDegree = 30;
+
+currentAngle += 8;
+
+for (int i = 1; i <= 12; i++)
+{
+    degree = (differenceDegree * (j - (i - 1))) - (differenceDegree / 2);
+    degree += currentAngle;
+
+    Quaternion eulerAngle = Quaternion.Euler(0, 0, degree);
+    var projectile = Instantiate(GameManager.Projectile, position, eulerAngle);
+    projectile.Setup(_layerMask, eulerAngle * Vector2.right, projectileSpeed, damage);
+}*/
+
+/*for (int i = 1; i <= data.shots; i++)
+{
+    if (isArc)
+    {
+        if (data.shots % 2 == 0) degree = (data.degree * (j - (i - 1))) - (data.degree / 2);
+        else degree = data.degree * (j - (i - 1));
+    }
+    else if (isParametric && data.shots > 1)
+    {
+        if (i % 2 == 0) degree = -33.75f + 22.5f * (j - (i - 1)) + ((i <= j) ? 90f : 0);
+        else degree = -33.75f + 22.5f * (j - (i - 1)) + ((i <= j) ? 0 : -90f);
+    }
+
+    var bullet = Instantiate(AdventureManager.ProjectilePrefab, mousePosition, Quaternion.Euler(0, 0, degree));
+    bullet.Setup(projectileMask, data.projectileSprite, (i % 2 == 0) ? 1 : -1, Random.Range(data.minDamage, data.maxDamage),
+        Quaternion.AngleAxis(degree, Vector3.forward) * Vector3.right,
+        0,
+        data.speed,
+        data.lifetime,
+        data.frequency,
+        (i % 2 == 0) ? -data.amplitude : data.amplitude,
+        data.magnitude,
+        data.shootType[0],
+        isParametric ? ProjectileEffect.tracking : ProjectileEffect.none);
+}*//*
+
+yield return new WaitForSeconds(1f / weapon.frequency);
+
+isShooting = false;
+}*/

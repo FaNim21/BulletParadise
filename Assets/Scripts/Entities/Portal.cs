@@ -1,4 +1,5 @@
 ﻿using BulletParadise.Player;
+using BulletParadise.World.Components;
 using UnityEngine;
 
 namespace BulletParadise.Entities
@@ -8,31 +9,29 @@ namespace BulletParadise.Entities
         public bool IsFocused { get; set; }
 
         public new string name;
-
-        [Header("Components")]
-        [SerializeField, ReadOnly] private EnterInformationWindow enterInformationWindow;
+        private PortalsController controller;
 
 
-        private void Start()
+        private void Awake()
         {
-            enterInformationWindow = PlayerController.Instance.canvasHandle.enterWindow;
-        }
-
-        public void Interact(PlayerController player)
-        {
-            enterInformationWindow.OnEnter();
+            controller = GetComponentInParent<PortalsController>();
         }
 
         public void Focus()
         {
             IsFocused = true;
-            enterInformationWindow.Setup(name);
+            controller.ShowPortalWindow(this);
         }
 
         public void LostFocus()
         {
             IsFocused = false;
-            enterInformationWindow.Exit();
+            controller.HidePortalWindow();
+        }
+
+        public void Interact(PlayerController player)
+        {
+            controller.EnterPortal();
         }
     }
 }

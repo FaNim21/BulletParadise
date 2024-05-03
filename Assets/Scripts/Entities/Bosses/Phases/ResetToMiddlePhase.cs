@@ -9,7 +9,6 @@ namespace BulletParadise
     {
         private Vector2 target;
         private Vector2 direction;
-        private float angle;
         private float timer;
 
         private const float speed = 7f;
@@ -26,7 +25,6 @@ namespace BulletParadise
         public override void LogicUpdate(Vector2 targetDirection)
         {
             direction = (target - boss.entity.position).normalized;
-            //angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             if (Vector2.Distance(boss.transform.position, target) <= 0.001f)
             {
