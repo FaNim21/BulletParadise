@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,18 +132,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 12
-        width: 128
-        height: 36
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a5e5762ad45b84df0800000000000000
-      internalID: -195707238748823974
+      spriteID: 459aad25ab0a6d84ba2400d4e80ce973
+      internalID: -505686553
       vertices: []
       indices: 
       edges: []
@@ -152,19 +152,19 @@ TextureImporter:
       name: ArenaTiles_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 63
-        height: 9
+        x: 16
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 608df26403f9c6560800000000000000
-      internalID: 7308391325000259590
+      spriteID: 87a85ba60a3f9fa41990037ca685c7f1
+      internalID: 1062737119
       vertices: []
       indices: 
       edges: []
@@ -173,19 +173,19 @@ TextureImporter:
       name: ArenaTiles_2
       rect:
         serializedVersion: 2
-        x: 65
-        y: 4
-        width: 14
-        height: 8
+        x: 32
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: da31e9680c8cebf90800000000000000
-      internalID: -6935885646886202451
+      spriteID: 5663641518aac1840bf12ca350c69ab8
+      internalID: 1842483925
       vertices: []
       indices: 
       edges: []
@@ -194,19 +194,19 @@ TextureImporter:
       name: ArenaTiles_3
       rect:
         serializedVersion: 2
-        x: 81
-        y: 4
-        width: 14
-        height: 8
+        x: 48
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2ad4c70f9d6eee9e0800000000000000
-      internalID: -1590079794698236510
+      spriteID: dc322bafd2f02f8488c24da5dfcc5939
+      internalID: -747116879
       vertices: []
       indices: 
       edges: []
@@ -215,19 +215,19 @@ TextureImporter:
       name: ArenaTiles_4
       rect:
         serializedVersion: 2
-        x: 97
-        y: 4
-        width: 14
-        height: 8
+        x: 64
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8a7b553b1c44d1930800000000000000
-      internalID: 4115521233214617512
+      spriteID: 0ae6dcde4d206234c8a6d8c8c2a56182
+      internalID: 810248676
       vertices: []
       indices: 
       edges: []
@@ -236,19 +236,397 @@ TextureImporter:
       name: ArenaTiles_5
       rect:
         serializedVersion: 2
-        x: 113
-        y: 4
-        width: 14
-        height: 8
+        x: 80
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 569ab78b1d0686db0800000000000000
-      internalID: -4798478949103720091
+      spriteID: c6f5aba0d93fcd24d995240780140587
+      internalID: -860138312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf9dbe4c32d75c41908e558945ee4e3
+      internalID: -1616622537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36751ae0437bb484ba9c3e6acf28f03b
+      internalID: -1953694480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12d0ff3ec328fa040939eb7c2eed1918
+      internalID: 777112075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c4e1a93ee681048b9b25efc92fdc38
+      internalID: 1341079811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31989f16040ad9945bdca84614f28d1b
+      internalID: -1001104217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33e4f41bcb44c8d47a3de5e5005b839a
+      internalID: -1839241496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d160cd59a57abfb46b712fe59b39faf0
+      internalID: 1107393156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_13
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4794ddd875b7b94a93abd706011d6bd
+      internalID: 1288103886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72af016242c8f34d9981e839199a8ff
+      internalID: -1985035837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6692f2972cf6dd944b17c05f4e6bee7e
+      internalID: -1975713460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 209d2360f1bd0884590ec5b8cdb7e775
+      internalID: 1341535128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcefd63eee4207843874229ed3dbc75f
+      internalID: -1247211073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7df74279de34bb4b9aff7bf9e64bccd
+      internalID: 965774168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98a9adf61a2fca545bd27d59543f2381
+      internalID: 1894494072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d6ff892a88b95408ffe079708cf07a
+      internalID: -1812324975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_21
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a068aaf2607138249b8aa029938043e9
+      internalID: 1845725712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3182cab43d959744a052eb4a9f63b2c
+      internalID: 940045045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_23
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce90be688fbd0624095e1f5c5dc0fabe
+      internalID: -163006335
       vertices: []
       indices: 
       edges: []
@@ -256,14 +634,38 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c84325fb9e5f0b743bfaf398157e979b
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ArenaTiles_0: -505686553
+      ArenaTiles_1: 1062737119
+      ArenaTiles_10: -1001104217
+      ArenaTiles_11: -1839241496
+      ArenaTiles_12: 1107393156
+      ArenaTiles_13: 1288103886
+      ArenaTiles_14: -1985035837
+      ArenaTiles_15: -1975713460
+      ArenaTiles_16: 1341535128
+      ArenaTiles_17: -1247211073
+      ArenaTiles_18: 965774168
+      ArenaTiles_19: 1894494072
+      ArenaTiles_2: 1842483925
+      ArenaTiles_20: -1812324975
+      ArenaTiles_21: 1845725712
+      ArenaTiles_22: 940045045
+      ArenaTiles_23: -163006335
+      ArenaTiles_3: -747116879
+      ArenaTiles_4: 810248676
+      ArenaTiles_5: -860138312
+      ArenaTiles_6: -1616622537
+      ArenaTiles_7: -1953694480
+      ArenaTiles_8: 777112075
+      ArenaTiles_9: 1341079811
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -47,5 +47,11 @@ namespace BulletParadise.Entities
 
             return new Vector2(Mathf.Cos(random), Mathf.Sin(random));
         }
+
+        public bool IsTargetInDistance(Vector2 target, float distance)
+        {
+            float sqrDistance = (target - position).sqrMagnitude;
+            return sqrDistance < distance * distance;
+        }
     }
 }

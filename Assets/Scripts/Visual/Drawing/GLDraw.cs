@@ -4,7 +4,7 @@ namespace BulletParadise.Visual.Drawing
 {
     public sealed class GLDraw
     {
-        public static void DrawLine(Vector2 start, Vector2 end, Color color, float width)
+        public static void DrawLine(Vector2 start, Vector2 end, Color color, float width = 0.01f)
         {
             GL.Begin(GL.QUADS);
             GL.Color(color);

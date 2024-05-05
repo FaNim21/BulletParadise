@@ -1,5 +1,6 @@
 using BulletParadise.Player;
 using BulletParadise.Shooting;
+using BulletParadise.Visual.Drawing;
 using UnityEngine;
 
 namespace BulletParadise.Entities.Bosses.Phases
@@ -20,24 +21,32 @@ namespace BulletParadise.Entities.Bosses.Phases
 
         public override void OnEnter()
         {
-            if (!SpawnMobsChase) return;
+            boss.SetSpeedAnim(chaseSpeed);
+            target = PlayerController.Instance.transform;
 
+            if (!SpawnMobsChase) return;
             for (int i = 0; i < mobsChaseAmount; i++)
                 Instantiate(chaseMobs, (Vector2)boss.transform.position + Random.insideUnitCircle * 2, Quaternion.identity);
         }
 
         public override void LogicUpdate(Weapon weapon, Vector2 targetDirection)
         {
-            target = PlayerController.Instance.transform;
-            direction = ((Vector2)target.position - boss.entity.position).normalized;
+            direction = ((Vector2)target.position - (Vector2)shootingManager.shootingOffset.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            shootingManager.Shoot(weapon, angle);
-            boss.SetSpeedAnim(chaseSpeed);
+            shootingManager.Shoot(weapon, angle, "shoot");
         }
 
         public override void PhysicsUpdate(Rigidbody2D rb)
         {
+            if (boss.IsTargetInDistance(target.position, 0.5f))
+            {
+                if (boss.GetSpeedAnim() != 0f) boss.SetSpeedAnim(0f);
+                return;
+            }
+            if (boss.GetSpeedAnim() != chaseSpeed) boss.SetSpeedAnim(chaseSpeed);
+            //it's not worth it to make it better
+
             rb.MovePosition(rb.position + chaseSpeed * Time.deltaTime * direction);
         }
 
@@ -48,7 +57,7 @@ namespace BulletParadise.Entities.Bosses.Phases
 
         public override void Draw()
         {
-            //GLDraw.DrawCircle(boss.position, chaseRange, Color.red);
+            GLDraw.DrawLine(boss.position, target.position, Color.red);
         }
 
         public override int CountAsRealPhase() => 1;

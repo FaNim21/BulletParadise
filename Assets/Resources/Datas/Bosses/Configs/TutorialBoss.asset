@@ -12,7 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757483ad2c5419b478971e5762186fff, type: 3}
   m_Name: TutorialBoss
   m_EditorClassIdentifier: 
-  name: Welcome Bullet
-  sprite: {fileID: -5483215198695101708, guid: 2d9c861bc012f2743b26773ea20b104f, type: 3}
+  name: Tomatoed
+  sprite: {fileID: -2230154348629426874, guid: 46f7a3f419a7a5644846c6d0aa8fb9c0, type: 3}
+  bodyOffset: {x: 0, y: 0}
+  animatorController: {fileID: 9100000, guid: 57f00e4be2002ab4b9eb25a47ca624a1, type: 2}
   maxHealth: 5000
-  phases: []
+  speed: 0
+  phases:
+  - phase: {fileID: 11400000, guid: 7e3c4f2a19ddd8e499ab6074d59b8698, type: 2}
+    weapon: {fileID: 11400000, guid: 01ba13cf6a642c54aaa05a98eae7ac2f, type: 2}
+    percentage: {x: 0.9, y: 1}
+  - phase: {fileID: 11400000, guid: c18157a33f4694149baad38a4bc6c201, type: 2}
+    weapon: {fileID: 0}
+    percentage: {x: 0, y: 0.9}
+  - phase: {fileID: 11400000, guid: 7e3c4f2a19ddd8e499ab6074d59b8698, type: 2}
+    weapon: {fileID: 11400000, guid: eacc8254f0962814d926e198ef83627c, type: 2}
+    percentage: {x: 0, y: 0.75}

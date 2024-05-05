@@ -10,7 +10,7 @@ namespace BulletParadise.Entities
 {
     public class MobController : Entity
     {
-        public static List<MobController> mobs = new();
+        public static List<Entity> mobs = new();
 
         private CircleCollider2D circleCollider;
         protected ShootingManager shootingManager;
@@ -91,12 +91,6 @@ namespace BulletParadise.Entities
         public bool IsTargetInDistance(float distance)
         {
             float sqrDistance = ((Vector2)target.position - position).sqrMagnitude;
-            return sqrDistance < distance * distance;
-        }
-
-        public bool IsTargetInDistance(Vector2 target, float distance)
-        {
-            float sqrDistance = (target - position).sqrMagnitude;
             return sqrDistance < distance * distance;
         }
 

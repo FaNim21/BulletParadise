@@ -1,5 +1,6 @@
 using BulletParadise.Components;
 using BulletParadise.Datas;
+using BulletParadise.Misc;
 using BulletParadise.Player;
 using BulletParadise.Visual.Drawing;
 using System.Collections;
@@ -54,10 +55,16 @@ namespace BulletParadise.Entities.Bosses
             config.Initialize(this);
             _spriteRenderer.sprite = config.sprite;
             maxHealth = config.maxHealth;
+            health = maxHealth;
             animator.runtimeAnimatorController = config.animatorController;
+            if (config.bodyOffset != Vector2.zero)
+            {
+                _shootingManager.ChangeShootingOffset(config.bodyOffset);
+            }
 
-            isWorking = true;
             target = PlayerController.Instance.transform;
+            isWorking = true;
+            healthManager.Initialize();
             CurrentPhase.OnEnter();
         }
         public void OnDestroy()
@@ -138,7 +145,14 @@ namespace BulletParadise.Entities.Bosses
         {
             if (animator == null) return;
 
+            Utils.Log($"Changed speed to: {speed}");
+
+            animator.SetBool("moving", speed != 0f);
             animator.SetFloat("Speed", speed);
+        }
+        public float GetSpeedAnim()
+        {
+            return animator.GetFloat("Speed");
         }
     }
 }

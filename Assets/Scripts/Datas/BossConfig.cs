@@ -9,6 +9,7 @@ namespace BulletParadise.Datas
     {
         public new string name;
         public Sprite sprite;
+        public Vector2 bodyOffset;
 
         public AnimatorController animatorController;
 

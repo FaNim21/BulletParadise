@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ee78d40ace9f347b5186980d7dd9e7, type: 3}
   m_Name: TutorialPortalData
   m_EditorClassIdentifier: 
+  name: Begginer Arena
   sceneName: Tutorial
   sprite: {fileID: 1952661135, guid: c929996f23d7093408dd85678c2d60f0, type: 3}
   bossData: {fileID: 11400000, guid: 1f63fb5b693e6c4449dd6d2b2ff9f118, type: 2}

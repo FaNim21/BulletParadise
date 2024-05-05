@@ -21,14 +21,15 @@ namespace BulletParadise.Entities.Bosses.Phases
             boss.entity.healthManager.SetInvulnerability(true);
             timer = 0f;
             target = boss.arenaCenter;
+
+            boss.SetSpeedAnim(speed);
         }
 
         public override void LogicUpdate(Weapon weapon, Vector2 targetDirection)
         {
-            boss.SetSpeedAnim(speed);
-
             if (Vector2.Distance(boss.transform.position, target) <= tolerance)
             {
+                boss.SetSpeedAnim(0f);
                 if (timer >= timeForRestart)
                     boss.GoToNextPhase();
 

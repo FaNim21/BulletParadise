@@ -52,7 +52,7 @@ namespace BulletParadise.Entities.Mobs
         }
         public override void FixedUpdate()
         {
-            rb.MovePosition(rb.position + Separation() * 2f + currentSpeed * Time.deltaTime * direction);
+            rb.MovePosition(rb.position + Avoidance() * 4f + currentSpeed * Time.deltaTime * direction);
         }
 
         private void Chase()

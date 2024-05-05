@@ -7,7 +7,7 @@ namespace BulletParadise.Components
     public class ShootingManager : MonoBehaviour
     {
         private Animator _animator;
-        [SerializeField] private Transform shootingOffset;
+        [SerializeField] public Transform shootingOffset;
 
         public int layerMask;
 
@@ -24,16 +24,20 @@ namespace BulletParadise.Components
             _animator = transform.Find("Body").GetComponent<Animator>();
         }
 
-        public void Shoot(Weapon weapon, float angle)
+        public void Shoot(Weapon weapon, float angle, string animTriggerName = "")
         {
             if (_isShooting || weapon == null || !_canShoot) return;
 
-            StartCoroutine(ShootCoroutine(weapon, angle));
+            StartCoroutine(ShootCoroutine(weapon, angle, animTriggerName));
         }
-        private IEnumerator ShootCoroutine(Weapon weapon, float angle)
+        private IEnumerator ShootCoroutine(Weapon weapon, float angle, string animTriggerName)
         {
             _isShooting = true;
-            if (_animator != null) _animator.SetTrigger("shoots");
+            if (_animator != null && !string.IsNullOrEmpty(animTriggerName))
+            {
+                _animator.SetFloat("shootSpeed", Mathf.Max(weapon.frequency / 3f, 1f));
+                _animator.SetTrigger(animTriggerName);
+            }
 
             weapon.Shoot(layerMask, shootingOffset.position, angle);
 
@@ -58,6 +62,11 @@ namespace BulletParadise.Components
         public void CanShoot(bool value)
         {
             _canShoot = value;
+        }
+
+        public void ChangeShootingOffset(Vector2 offset)
+        {
+            shootingOffset.transform.localPosition = new(offset.x, offset.y, 0);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace BulletParadise.Entities
             _textMeshPro = GetComponentInChildren<TextMeshPro>();
 
             _spriteRenderer.sprite = data.sprite;
-            _textMeshPro.SetText(data.sceneName);
+            _textMeshPro.SetText(data.name);
         }
 
         public void Focus()

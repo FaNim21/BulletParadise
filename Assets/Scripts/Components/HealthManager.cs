@@ -24,7 +24,7 @@ namespace BulletParadise.Components
         {
             entity = GetComponent<Entity>();
         }
-        private void Start()
+        public void Initialize()
         {
             if (mainHealthBar == null) return;
             mainHealthBar.Initialize();

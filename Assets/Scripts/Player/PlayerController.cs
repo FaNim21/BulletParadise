@@ -69,7 +69,6 @@ namespace BulletParadise.Player
             isResponding = true;
 
             _animator.SetFloat("moveY", -1);
-            _animator.SetFloat("shootSpeed", 3f);
 
             maxHealth = config.maxHealth;
 
@@ -79,10 +78,13 @@ namespace BulletParadise.Player
             base.Start();
 
             _cameraController = CameraController.Instance;
+            MobController.mobs.Add(this);
+            healthManager.Initialize();
         }
         public void OnDestroy()
         {
             gameManager.drawDebug.RemoveGlobalDrawable(this);
+            MobController.mobs.Remove(this);
         }
 
         public override void Update()
@@ -163,7 +165,7 @@ namespace BulletParadise.Player
         private void HandleShooting()
         {
             if ((Mouse.current.leftButton.isPressed && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject()) || autoFire)
-                shootingManager.Shoot(quickBar.weapon, aimAngle);
+                shootingManager.Shoot(quickBar.weapon, aimAngle, "shoots");
         }
 
         public void Interact(InputAction.CallbackContext context)
@@ -206,6 +208,7 @@ namespace BulletParadise.Player
             _circleCollider.enabled = false;
             canvasHandle.OpenWindow<DeathScreen>();
             _animator.SetTrigger("died");
+            _animator.ResetTrigger("died");
             Utils.Log("DIED");
         }
 
@@ -214,6 +217,7 @@ namespace BulletParadise.Player
             transform.position = gameManager.worldManager.playerSpawnPosition.position;
             _circleCollider.enabled = true;
             _cameraController.Restart();
+            shootingManager.Restart();
             healthManager.Restart();
             quickBar.ResetSlots();
         }
@@ -221,7 +225,6 @@ namespace BulletParadise.Player
         public void SetResponding(bool option)
         {
             isResponding = option;
-            shootingManager.CanShoot(option);
             if (!option)
             {
                 StopMovement();
@@ -231,6 +234,7 @@ namespace BulletParadise.Player
         public void ReturnToLobby()
         {
             levelLoader.LoadScene("Lobby");
+            _animator.ResetTrigger("died");
             _animator.Rebind();
             canvasHandle.CloseWindow<DeathScreen>();
             isInLobby = true;
