@@ -15,11 +15,11 @@ namespace BulletParadise.Components
         public int chance;
     }
 
+    /// <summary>
+    /// TODO: 0 Do zmiany
+    /// </summary>
     public sealed class MobSpawner : SceneObject
     {
-        /// <summary>
-        /// TODO: 0 Do zmiany
-        /// </summary>
         private PlayerController target;
 
         public List<MobSpawnChanceData> mobs = new();

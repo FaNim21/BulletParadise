@@ -13,7 +13,7 @@ namespace BulletParadise.Components
 
         [Header("Debug")]
         [SerializeField, ReadOnly] private bool _isShooting;
-        [SerializeField, ReadOnly] private bool _canShoot;
+        private bool _canShoot = true;
 
         private Coroutine _shootingCoroutine;
         private Coroutine _restartShootingCoroutine;
@@ -53,6 +53,11 @@ namespace BulletParadise.Components
             if (_shootingCoroutine != null) StopCoroutine(_shootingCoroutine);
             _isShooting = false;
             _canShoot = true;
+        }
+
+        public void CanShoot(bool value)
+        {
+            _canShoot = value;
         }
     }
 }

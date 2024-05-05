@@ -4,21 +4,20 @@ using UnityEngine;
 
 namespace BulletParadise.Components
 {
-    public class HealthManager : MonoBehaviour, IDamageable, IHealable
+    public class HealthManager : MonoBehaviour, IDamageable
     {
         private Entity entity;
 
         [Header("Obiekty")]
-        public HealthBar mainHealthBar;
-        public Transform healthBar;
-        public GameObject invulnerabilityIcon;
+        [SerializeField] private HealthBar mainHealthBar;
+        [SerializeField] private Transform healthBar;
+        [SerializeField] private GameObject invulnerabilityIcon;
 
         [Header("Debug")]
         [ReadOnly, SerializeField] private bool isInvulnerable;
         [ReadOnly, SerializeField] private bool canRegenerate;
         [ReadOnly, SerializeField] private bool isDead;
         [ReadOnly, SerializeField] private bool isSick; //TODO: 5 temp do momentu jak zrobie juz po bosach debuff system
-        //[ReadOnly, SerializeField] private int vitality = 50;
 
 
         private void Awake()
@@ -27,6 +26,7 @@ namespace BulletParadise.Components
         }
         private void Start()
         {
+            if (mainHealthBar == null) return;
             mainHealthBar.Initialize();
         }
 
@@ -42,6 +42,7 @@ namespace BulletParadise.Components
             if (damage <= 0 || isInvulnerable || isDead) return;
 
             entity.health -= damage;
+            entity.OnHit();
             if (entity.health <= 0f) OnDeath();
 
             Popup.Create(entity.position, damage.ToString(), Color.red);
@@ -76,6 +77,7 @@ namespace BulletParadise.Components
         private void OnDeath()
         {
             isDead = true;
+            entity.health = 0f;
             entity.OnDeath();
         }
 
@@ -86,10 +88,11 @@ namespace BulletParadise.Components
             UpdateHealthBar();
         }
 
-        public void SetInvunerability(bool value)
+        public void SetInvulnerability(bool value)
         {
             isInvulnerable = value;
             if (invulnerabilityIcon != null) invulnerabilityIcon.SetActive(value);
         }
+        public bool IsInvulnerable() => isInvulnerable;
     }
 }

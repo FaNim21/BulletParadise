@@ -1,4 +1,5 @@
 using BulletParadise.Components;
+using BulletParadise.Datas;
 using BulletParadise.Player;
 using BulletParadise.Shooting;
 using BulletParadise.Visual.Drawing;
@@ -11,24 +12,23 @@ namespace BulletParadise.Entities
     {
         public static List<MobController> mobs = new();
 
-        [Header("Komponenty")]
-        public BoxCollider2D boxCollider;
-        public ShootingManager shootingManager;
+        private CircleCollider2D circleCollider;
+        protected ShootingManager shootingManager;
+        private SpriteRenderer spriteRenderer;
 
         [Header("Obiekty")]
         public Transform target;
         public Transform body;
 
         [Header("Wartosci")]
+        public MobConfig config;
         public Weapon weapon;
-        public float chaseRange;
-        public float moveSpeed;
-
-        public int exp;
 
         [Header("Debug")]
-        [SerializeField, ReadOnly] private Vector2 direction;
-        [SerializeField, ReadOnly] private float toTargetAngle;
+        [SerializeField, ReadOnly] protected float currentSpeed;
+        [SerializeField, ReadOnly] protected Vector2 direction;
+        [SerializeField, ReadOnly] protected Vector2 playerDirection;
+        [SerializeField, ReadOnly] private float toPlayerAngle;
         [SerializeField, ReadOnly] private float currentAngle;
 
 
@@ -37,8 +37,14 @@ namespace BulletParadise.Entities
             base.Awake();
 
             shootingManager = GetComponent<ShootingManager>();
+            circleCollider = body.GetComponent<CircleCollider2D>();
+            spriteRenderer = body.GetComponent<SpriteRenderer>();
 
             mobs.Add(this);
+
+            maxHealth = config.maxHealth;
+            health = maxHealth;
+            spriteRenderer.sprite = config.sprite;
         }
         public override void Start()
         {
@@ -54,15 +60,17 @@ namespace BulletParadise.Entities
         {
             base.Update();
 
-            direction = ((Vector2)target.position - position).normalized;
-            toTargetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            playerDirection = ((Vector2)target.position - position).normalized;
+            toPlayerAngle = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
 
-            if (IsTargetInDistance(chaseRange)) shootingManager.Shoot(weapon, toTargetAngle);
+            //if (IsTargetInDistance(chaseRange)) shootingManager.Shoot(weapon, toTargetAngle);
         }
         public override void FixedUpdate()
         {
-            if (IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
+            /*if (IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
+            {
                 rb.MovePosition(rb.position + Separation() * 2f + moveSpeed * Time.deltaTime * direction);
+            }*/
         }
 
         public override void Draw()
@@ -70,9 +78,8 @@ namespace BulletParadise.Entities
             if (transform == null) return;
 
             GLDraw.DrawRay(position, direction * 3, Color.cyan);
-            GLDraw.DrawCircle(position, chaseRange, Color.red);
 
-            GLDraw.DrawBox((Vector2)body.position + boxCollider.offset, boxCollider.size, Color.green, 0.01f);
+            GLDraw.DrawCircle((Vector2)body.position + circleCollider.offset, circleCollider.radius, Color.green);
         }
 
         public override void OnDeath()
@@ -87,9 +94,12 @@ namespace BulletParadise.Entities
             return sqrDistance < distance * distance;
         }
 
-        /// <summary>
-        /// Unikanie mobów od siebie metod¹ ucieczki od siebie
-        /// </summary>
+        public bool IsTargetInDistance(Vector2 target, float distance)
+        {
+            float sqrDistance = (target - position).sqrMagnitude;
+            return sqrDistance < distance * distance;
+        }
+
         public Vector2 Avoidance()
         {
             Vector2 avoidVector = Vector2.zero;
@@ -104,10 +114,6 @@ namespace BulletParadise.Entities
 
             return avoidVector.normalized * Time.deltaTime;
         }
-
-        /// <summary>
-        /// Oddzielanie mobów od siebie tworz¹c dystans pomiêdzy
-        /// </summary>
         public Vector2 Separation()
         {
             Vector2 separateVector = Vector2.zero;

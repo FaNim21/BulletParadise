@@ -27,6 +27,8 @@ namespace BulletParadise.Shooting
     [System.Serializable]
     public struct ProjectileAdditionalData
     {
+        public float angle;
+
         public float frequency;
         public float amplitude;
         public float magnitude;
@@ -56,6 +58,8 @@ namespace BulletParadise.Shooting
             UpdateLogicFromEnum();
             UpdatePhysicsFromEnum();
         }
+
+        public ProjectileAdditionalData GetAdditionalData() => additionalData;
 
         public ProjectileBehavior GetBehavior(Vector2 velocity)
         {

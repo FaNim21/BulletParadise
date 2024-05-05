@@ -7,7 +7,7 @@ namespace BulletParadise.Shooting
     {
         public ProjectileBehaviorData[] projectiles;
 
-        public int frequency = 1;
+        public float frequency = 1;
 
 
         public virtual void Initialize()
@@ -20,6 +20,7 @@ namespace BulletParadise.Shooting
 
         protected void SendProjectile(ProjectileBehaviorData current, int layerMask, Vector2 shootingPosition, float degree)
         {
+            degree += current.GetAdditionalData().angle;
             Quaternion quaternionAngle = Quaternion.Euler(0, 0, degree);
             var projectile = Instantiate(GameManager.Projectile, shootingPosition, quaternionAngle);
             ProjectileBehavior behavior = current.GetBehavior(quaternionAngle * Vector2.right);

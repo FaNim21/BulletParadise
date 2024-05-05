@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3823235757617459bc30b06a88b483, type: 3}
   m_Name: MetalicSpoon
   m_EditorClassIdentifier: 
-  sprite: {fileID: 33093609, guid: 809ed85ea9899814d91eeba32b2c6f7a, type: 3}
+  sprite: {fileID: -1321813068, guid: 809ed85ea9899814d91eeba32b2c6f7a, type: 3}
   damage: 250
   lifeTime: 15
   speed: 3
-  frequency: 0
-  amplitude: 0
-  magnitude: 0

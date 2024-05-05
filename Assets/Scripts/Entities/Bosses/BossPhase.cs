@@ -1,3 +1,4 @@
+using BulletParadise.Components;
 using BulletParadise.Shooting;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace BulletParadise.Entities.Bosses
 
         public void Initialize(Boss bossBehavior)
         {
-            phase.Initialize(bossBehavior, weapon);
+            phase.Initialize(bossBehavior);
         }
     }
 }

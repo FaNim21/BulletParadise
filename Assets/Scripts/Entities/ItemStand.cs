@@ -1,10 +1,9 @@
-using BulletParadise.Entities;
 using BulletParadise.Player;
 using BulletParadise.Shooting;
 using BulletParadise.World.Components;
 using UnityEngine;
 
-namespace BulletParadise
+namespace BulletParadise.Entities
 {
     public class ItemStand : MonoBehaviour, IInteractable
     {

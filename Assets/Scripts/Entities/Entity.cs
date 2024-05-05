@@ -36,8 +36,16 @@ namespace BulletParadise.Entities
 
         public abstract void Draw();
 
+        public virtual void OnHit() { }
         public virtual void OnDeath() { }
 
         public float GetHealthToMaxProportion() => Mathf.Clamp01(health / maxHealth);
+
+        public Vector2 GetRandomNormalizedUnitVector()
+        {
+            float random = Random.Range(0, 2 * Mathf.PI);
+
+            return new Vector2(Mathf.Cos(random), Mathf.Sin(random));
+        }
     }
 }

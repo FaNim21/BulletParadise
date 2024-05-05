@@ -120,7 +120,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 8
+        y: 24
         width: 8
         height: 8
       alignment: 0
@@ -141,7 +141,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 8
+        y: 24
         width: 8
         height: 8
       alignment: 0
@@ -162,7 +162,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 16
         width: 8
         height: 8
       alignment: 0
@@ -183,7 +183,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 0
+        y: 16
         width: 8
         height: 8
       alignment: 0
@@ -195,6 +195,27 @@ TextureImporter:
       bones: []
       spriteID: 6598e5dd1dfa5164aa4c3a39d20ade9c
       internalID: 802465016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stick
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ac701ead7126c4086f79659e452064
+      internalID: -1370382879
       vertices: []
       indices: 
       edges: []
@@ -214,6 +235,7 @@ TextureImporter:
       Broccoli: 802465016
       Egg: -1546843765
       Egg2: -483643079
+      Stick: -1370382879
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

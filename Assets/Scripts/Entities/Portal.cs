@@ -1,5 +1,7 @@
-﻿using BulletParadise.Player;
+﻿using BulletParadise.Datas;
+using BulletParadise.Player;
 using BulletParadise.World.Components;
+using TMPro;
 using UnityEngine;
 
 namespace BulletParadise.Entities
@@ -8,30 +10,39 @@ namespace BulletParadise.Entities
     {
         public bool IsFocused { get; set; }
 
-        public new string name;
-        private PortalsController controller;
+        private SpriteRenderer _spriteRenderer;
+        private PortalsController _controller;
+        private TextMeshPro _textMeshPro;
+
+        public PortalData data;
+        public bool canEnter = true;
 
 
         private void Awake()
         {
-            controller = GetComponentInParent<PortalsController>();
+            _controller = GetComponentInParent<PortalsController>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _textMeshPro = GetComponentInChildren<TextMeshPro>();
+
+            _spriteRenderer.sprite = data.sprite;
+            _textMeshPro.SetText(data.sceneName);
         }
 
         public void Focus()
         {
             IsFocused = true;
-            controller.ShowPortalWindow(this);
+            _controller.ShowPortalWindow(this);
         }
-
         public void LostFocus()
         {
             IsFocused = false;
-            controller.HidePortalWindow();
+            _controller.HidePortalWindow();
         }
 
         public void Interact(PlayerController player)
         {
-            controller.EnterPortal();
+            if (!canEnter) return;
+            _controller.EnterPortal();
         }
     }
 }

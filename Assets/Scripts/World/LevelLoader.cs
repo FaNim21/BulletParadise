@@ -1,4 +1,6 @@
-﻿using BulletParadise.Player;
+﻿using BulletParadise.Datas;
+using BulletParadise.Entities.Bosses;
+using BulletParadise.Player;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -7,16 +9,20 @@ using UnityEngine.UI;
 
 namespace BulletParadise.World
 {
-    public class LevelLoader : MonoBehaviour
+    public sealed class LevelLoader : MonoBehaviour
     {
         [Header("Objects")]
         [SerializeField] private TextMeshProUGUI loadingText;
         [SerializeField] private Slider loadingSlider;
         [SerializeField] private GameObject background;
 
+        [Header("Entering Scene vars")]
+        private BossConfig bossConfig;
 
-        public void LoadScene(string sceneName)
+
+        public void LoadScene(string sceneName, BossConfig bossConfig = null)
         {
+            this.bossConfig = bossConfig;
             PlayerController.Instance.SetResponding(false);
             background.SetActive(true);
             StartCoroutine(LoadSceneAsync(sceneName));
@@ -43,6 +49,14 @@ namespace BulletParadise.World
             SetUpOnNewScene();
             yield return null;
 
+            if (bossConfig != null)
+            {
+                Boss boss = FindAnyObjectByType<Boss>();
+                boss.SetupConfig(bossConfig);
+            }
+
+            PlayerController.Instance.SetResponding(true);
+
             //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
             background.SetActive(false);
         }
@@ -50,9 +64,7 @@ namespace BulletParadise.World
         private void SetUpOnNewScene()
         {
             GameManager.Instance.FindWorldManager();
-
             PlayerController.Instance.Restart();
-            PlayerController.Instance.SetResponding(true);
 
             Time.timeScale = 1f;
         }

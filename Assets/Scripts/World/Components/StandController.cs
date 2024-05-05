@@ -6,9 +6,13 @@ namespace BulletParadise.World.Components
 {
     public class StandController : MonoBehaviour
     {
-        [Header("Components")]
-        public WeaponInformationWindow weaponInformationWindow;
+        private WeaponInformationWindow weaponInformationWindow;
 
+
+        private void Awake()
+        {
+            weaponInformationWindow = GetComponentInChildren<WeaponInformationWindow>();
+        }
 
         public void ShowWeaponInfo(Weapon weapon)
         {

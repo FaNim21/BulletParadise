@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace BulletParadise.Misc.Graphs
+namespace BulletParadise.Misc
 {
     public class FpsMonitor : MonoBehaviour
     {

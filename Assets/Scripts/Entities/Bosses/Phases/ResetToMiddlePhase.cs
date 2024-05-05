@@ -1,35 +1,34 @@
-using BulletParadise.Entities.Bosses;
+using BulletParadise.Shooting;
 using BulletParadise.Visual.Drawing;
 using UnityEngine;
 
-namespace BulletParadise
+namespace BulletParadise.Entities.Bosses.Phases
 {
     [CreateAssetMenu(fileName = "ResetToMiddlePhase", menuName = "Boss/Phase/ResetToMiddle")]
     public class ResetToMiddlePhase : Phase
     {
+        public float speed;
+
         private Vector2 target;
-        private Vector2 direction;
         private float timer;
 
-        private const float speed = 7f;
         private const float timeForRestart = 2f;
+        private const float tolerance = 0.1f;
 
 
         public override void OnEnter()
         {
-            boss.entity.healthManager.SetInvunerability(true);
+            boss.entity.healthManager.SetInvulnerability(true);
             timer = 0f;
             target = boss.arenaCenter;
         }
 
-        public override void LogicUpdate(Vector2 targetDirection)
+        public override void LogicUpdate(Weapon weapon, Vector2 targetDirection)
         {
-            direction = (target - boss.entity.position).normalized;
+            boss.SetSpeedAnim(speed);
 
-            if (Vector2.Distance(boss.transform.position, target) <= 0.001f)
+            if (Vector2.Distance(boss.transform.position, target) <= tolerance)
             {
-                boss.transform.position = target;
-
                 if (timer >= timeForRestart)
                     boss.GoToNextPhase();
 
@@ -39,17 +38,20 @@ namespace BulletParadise
 
         public override void PhysicsUpdate(Rigidbody2D rb)
         {
-            rb.MovePosition(rb.position + speed * Time.deltaTime * direction);
+            Vector2 position = Vector2.MoveTowards(rb.position, target, speed * Time.deltaTime);
+            rb.MovePosition(position);
         }
 
         public override void OnExit()
         {
-            boss.entity.healthManager.SetInvunerability(false);
+            boss.entity.healthManager.SetInvulnerability(false);
         }
 
         public override void Draw()
         {
             GLDraw.DrawLine(boss.position, boss.arenaCenter, Color.yellow, 0.01f);
         }
+
+        public override int CountAsRealPhase() => 0;
     }
 }

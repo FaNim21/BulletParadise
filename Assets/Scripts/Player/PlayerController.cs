@@ -27,13 +27,14 @@ namespace BulletParadise.Player
         public CanvasHandle canvasHandle;
         public LevelLoader levelLoader;
         public ShootingManager shootingManager;
+        public DebugScreen debugScreen;
 
-        private Animator animator;
-        private CircleCollider2D circleCollider;
-        private CameraController cameraController;
+        private Animator _animator;
+        private CircleCollider2D _circleCollider;
+        private CameraController _cameraController;
 
-        private Transform body;
-        private Transform shootingOffset;
+        private Transform _body;
+        private Transform _shootingOffset;
 
         [Header("Debug")]
         [ReadOnly] public bool autoFire;
@@ -44,7 +45,7 @@ namespace BulletParadise.Player
         [ReadOnly] public Vector2 mousePosition;
         [ReadOnly] public Vector2 aimDirection;
 
-        private readonly List<IInteractable> interactables = new();
+        private readonly List<IInteractable> _interactables = new();
 
 
         public override void Awake()
@@ -57,18 +58,18 @@ namespace BulletParadise.Player
 
             base.Awake();
 
-            body = transform.Find("Body");
-            shootingOffset = transform.Find("ShootingOffset");
+            _body = transform.Find("Body");
+            _shootingOffset = transform.Find("ShootingOffset");
 
-            circleCollider = body.GetComponent<CircleCollider2D>();
-            animator = body.GetComponent<Animator>();
+            _circleCollider = _body.GetComponent<CircleCollider2D>();
+            _animator = _body.GetComponent<Animator>();
 
             gameManager.drawDebug.AddGlobalDrawable(this);
             isInLobby = true;
             isResponding = true;
 
-            animator.SetFloat("moveY", -1);
-            animator.SetFloat("shootSpeed", 3f);
+            _animator.SetFloat("moveY", -1);
+            _animator.SetFloat("shootSpeed", 3f);
 
             maxHealth = config.maxHealth;
 
@@ -77,7 +78,7 @@ namespace BulletParadise.Player
         {
             base.Start();
 
-            cameraController = CameraController.Instance;
+            _cameraController = CameraController.Instance;
         }
         public void OnDestroy()
         {
@@ -93,10 +94,10 @@ namespace BulletParadise.Player
             if (!isResponding) return;
 
             mousePosition = Utils.GetMouseWorldPosition();
-            aimDirection = (mousePosition - (Vector2)shootingOffset.position).normalized;
+            aimDirection = (mousePosition - (Vector2)_shootingOffset.position).normalized;
             aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-            animator.SetFloat("aimDirX", aimDirection.x);
-            animator.SetFloat("aimDirY", aimDirection.y);
+            _animator.SetFloat("aimDirX", aimDirection.x);
+            _animator.SetFloat("aimDirY", aimDirection.y);
 
             HandleShooting();
         }
@@ -109,11 +110,11 @@ namespace BulletParadise.Player
         {
             if (collision.TryGetComponent(out IInteractable interactable))
             {
-                foreach (var interaction in interactables)
+                foreach (var interaction in _interactables)
                     interaction.LostFocus();
 
                 interactable.Focus();
-                interactables.Add(interactable);
+                _interactables.Add(interactable);
             }
         }
         private void OnTriggerExit2D(Collider2D collision)
@@ -121,7 +122,7 @@ namespace BulletParadise.Player
             if (collision.TryGetComponent(out IInteractable interactable))
             {
                 interactable.LostFocus();
-                interactables.Remove(interactable);
+                _interactables.Remove(interactable);
             }
         }
 
@@ -130,10 +131,10 @@ namespace BulletParadise.Player
             if (transform == null) return;
 
             //kierunek patrzenia
-            GLDraw.DrawRay(shootingOffset.position, aimDirection * 1.5f, Color.blue);
+            GLDraw.DrawRay(_shootingOffset.position, aimDirection * 1.5f, Color.blue);
 
             //Kolizja gracza
-            GLDraw.DrawCircle((Vector2)body.position + circleCollider.offset, circleCollider.radius, Color.green);
+            GLDraw.DrawCircle((Vector2)_body.position + _circleCollider.offset, _circleCollider.radius, Color.green);
         }
 
         private void HandleInput()
@@ -153,8 +154,8 @@ namespace BulletParadise.Player
                 if (Keyboard.current.rKey.wasPressedThisFrame) ReturnToLobby();
             }
 
-            if (Keyboard.current.f1Key.wasPressedThisFrame) gameManager.drawDebug.SwitchDebugMode();
             if (Keyboard.current.iKey.wasPressedThisFrame) SwitchAutoFire();
+            if (Keyboard.current.f3Key.wasPressedThisFrame) debugScreen.SwitchVisibility();
 
             if (Consts.IsFocusedOnMainMenu) return;
             //TU BINDY KTORE NIE MOGA DZIALAC NA MAIN MENU
@@ -167,9 +168,9 @@ namespace BulletParadise.Player
 
         public void Interact(InputAction.CallbackContext context)
         {
-            if (context.phase != InputActionPhase.Performed || interactables == null || interactables.Count == 0) return;
+            if (context.phase != InputActionPhase.Performed || _interactables == null || _interactables.Count == 0) return;
 
-            interactables[^1].Interact(this);
+            _interactables[^1].Interact(this);
         }
 
         public void HandleMovement(InputAction.CallbackContext context)
@@ -182,7 +183,7 @@ namespace BulletParadise.Player
             inputDirection.y = _input.y;
             inputDirection = inputDirection.normalized;
 
-            animator.SetFloat("Speed", inputDirection.magnitude);
+            _animator.SetFloat("Speed", inputDirection.magnitude);
 
             if (context.phase == InputActionPhase.Performed)
             {
@@ -193,8 +194,8 @@ namespace BulletParadise.Player
 
                 if (inputDirection != Vector2.zero)
                 {
-                    animator.SetFloat("moveX", inputDirection.x);
-                    animator.SetFloat("moveY", inputDirection.y);
+                    _animator.SetFloat("moveX", inputDirection.x);
+                    _animator.SetFloat("moveY", inputDirection.y);
                 }
             }
         }
@@ -202,17 +203,17 @@ namespace BulletParadise.Player
         public override void OnDeath()
         {
             SetResponding(false);
-            circleCollider.enabled = false;
+            _circleCollider.enabled = false;
             canvasHandle.OpenWindow<DeathScreen>();
-            animator.SetTrigger("died");
+            _animator.SetTrigger("died");
             Utils.Log("DIED");
         }
 
         public void Restart()
         {
             transform.position = gameManager.worldManager.playerSpawnPosition.position;
-            circleCollider.enabled = true;
-            cameraController.Restart();
+            _circleCollider.enabled = true;
+            _cameraController.Restart();
             healthManager.Restart();
             quickBar.ResetSlots();
         }
@@ -220,6 +221,7 @@ namespace BulletParadise.Player
         public void SetResponding(bool option)
         {
             isResponding = option;
+            shootingManager.CanShoot(option);
             if (!option)
             {
                 StopMovement();
@@ -229,7 +231,7 @@ namespace BulletParadise.Player
         public void ReturnToLobby()
         {
             levelLoader.LoadScene("Lobby");
-            animator.Rebind();
+            _animator.Rebind();
             canvasHandle.CloseWindow<DeathScreen>();
             isInLobby = true;
         }
@@ -237,7 +239,7 @@ namespace BulletParadise.Player
         public void StopMovement()
         {
             inputDirection = Vector2.zero;
-            animator.SetFloat("Speed", 0);
+            _animator.SetFloat("Speed", 0);
         }
 
         public void SetWeapon(Weapon weapon)

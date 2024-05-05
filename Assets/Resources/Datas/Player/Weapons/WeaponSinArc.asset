@@ -24,6 +24,7 @@ MonoBehaviour:
     logicType: 0
     physicsType: 1
     additionalData:
+      angle: 0
       frequency: 2
       amplitude: 0.5
       magnitude: 0
@@ -37,6 +38,7 @@ MonoBehaviour:
     logicType: 0
     physicsType: 1
     additionalData:
+      angle: 0
       frequency: 2
       amplitude: -0.5
       magnitude: 0

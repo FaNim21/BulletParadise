@@ -74,6 +74,9 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
             EditorGUI.PropertyField(singleLineRect, logicType, true);
             singleLineRect.y += EditorGUIUtility.singleLineHeight * 1.1f;
 
+            EditorGUI.PropertyField(singleLineRect, additionalDataProperty.FindPropertyRelative("angle"));
+            singleLineRect.y += EditorGUIUtility.singleLineHeight * 1.1f;
+
             if ((ProjectileLogicType)logicType.boxedValue == ProjectileLogicType.Rotating)
             {
                 EditorGUI.PropertyField(singleLineRect, additionalDataProperty.FindPropertyRelative("rotationSpeed"));
@@ -136,7 +139,7 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         if (!property.isExpanded) return EditorGUIUtility.singleLineHeight;
-        float height = _headersAmount + 1.1f + (_headersAmount * 0.5f) + 5;
+        float height = _headersAmount + 1.1f + (_headersAmount * 0.5f) + 6;
 
         if (property.FindPropertyRelative("dataMultiplier").isExpanded)
             height += 3; // damage, lifetime, speed

@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99ab8bab9f85c264782d5f6ae50e482e
-      internalID: 945663313
+      spriteID: aabcbccfb2d52844faaff5ec77452b68
+      internalID: -499924123
       vertices: []
       indices: 
       edges: []
@@ -148,8 +148,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d0f4daec6a053442a56e6625560cfde
-      internalID: 33093609
+      spriteID: 02c47984ace41ff44ae5e3a3abf3fe10
+      internalID: -1321813068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallMetalicSpoon
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeee1cfb6f1f4d748ab7a144407b57de
+      internalID: 440092460
       vertices: []
       indices: 
       edges: []
@@ -165,8 +186,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MetalicSpoon: 33093609
-      WoodenSpoon: 945663313
+      MetalicSpoon: -1321813068
+      SmallMetalicSpoon: 440092460
+      WoodenSpoon: -499924123
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
