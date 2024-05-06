@@ -18,11 +18,11 @@ namespace BulletParadise.World.Components
         {
             _portalWindow.OnEnter();
         }
+
         public void ShowPortalWindow(Portal portal)
         {
             _portalWindow.Setup(portal);
         }
-
         public void HidePortalWindow()
         {
             _portalWindow.Exit();

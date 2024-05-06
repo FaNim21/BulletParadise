@@ -17,7 +17,7 @@ namespace BulletParadise.Entities
         private SpriteRenderer spriteRenderer;
 
         [Header("Obiekty")]
-        public Transform target;
+        public PlayerController target;
         public Transform body;
 
         [Header("Wartosci")]
@@ -48,7 +48,7 @@ namespace BulletParadise.Entities
         }
         public override void Start()
         {
-            target = PlayerController.Instance.transform;
+            target = PlayerController.Instance;
             GameManager.AddDrawable(this);
         }
         public void OnDestroy()
@@ -60,7 +60,7 @@ namespace BulletParadise.Entities
         {
             base.Update();
 
-            playerDirection = ((Vector2)target.position - position).normalized;
+            playerDirection = (target.GetToAimPosition() - position).normalized;
             toPlayerAngle = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
 
             //if (IsTargetInDistance(chaseRange)) shootingManager.Shoot(weapon, toTargetAngle);

@@ -2,14 +2,17 @@ using BulletParadise.Misc;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace BulletParadise.DataManagement
 {
-    //Without enryption
+    //Without enryption(not needed)
     public class SaveManager : MonoBehaviour
     {
+        public GameData GameData { get { return gameData; } }
+
         private GameManager gameManager;
 
         private List<ISavable> _savables = new();
@@ -29,20 +32,17 @@ namespace BulletParadise.DataManagement
 
             gameData = new();
             _savePath = Application.persistentDataPath + "/GameData.sav";
+        }
 
-            for (var i = 0; i < SceneManager.sceneCount; i++)
-            {
-                var rootObjs = SceneManager.GetSceneAt(i).GetRootGameObjects();
-                foreach (var root in rootObjs)
-                {
-                    _savables.AddRange(root.GetComponentsInChildren<ISavable>(true));
-                }
-            }
+        public void FindAllSavableObjects()
+        {
+            _savables.Clear();
+            _savables = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISavable>().ToList();
 
             Utils.Log("Savable objects count: " + _savables.Count);
-        }
-        private void Start()
-        {
+            foreach (var data in _savables)
+                Utils.Log("savable object name: " + data.GetType());
+
             LoadGame();
         }
 
@@ -70,6 +70,8 @@ namespace BulletParadise.DataManagement
             {
                 data.Load(gameData);
             }
+
+            Utils.LogWarning("Loaded data successfully");
         }
 
         private void OnApplicationQuit() => SaveGame();
@@ -113,6 +115,7 @@ namespace BulletParadise.DataManagement
             catch (Exception ex)
             {
                 Utils.LogError("Error while loading data: " + ex.ToString());
+                loadedCorrectly = false;
             }
         }
     }

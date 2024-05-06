@@ -96,8 +96,8 @@ MonoBehaviour:
     physicsType: 0
     additionalData:
       angle: 0
-      frequency: 0
-      amplitude: 0
+      frequency: 0.7
+      amplitude: -1.5
       magnitude: 0
       rotationSpeed: 0
   - name: Beef - 7
@@ -110,8 +110,36 @@ MonoBehaviour:
     physicsType: 0
     additionalData:
       angle: 0
-      frequency: 0
-      amplitude: 0
+      frequency: 2
+      amplitude: 1.5
+      magnitude: 0
+      rotationSpeed: 0
+  - name: Beef - 8
+    data: {fileID: 11400000, guid: 77122eee89eb44b40b7dde04a726642a, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+    logicType: 0
+    physicsType: 0
+    additionalData:
+      angle: 0
+      frequency: 2
+      amplitude: 1.5
+      magnitude: 0
+      rotationSpeed: 0
+  - name: Beef - 9
+    data: {fileID: 11400000, guid: 77122eee89eb44b40b7dde04a726642a, type: 2}
+    dataMultiplier:
+      damageMultiplier: 1
+      lifeTimeMultiplier: 1
+      speedMultiplier: 1
+    logicType: 0
+    physicsType: 0
+    additionalData:
+      angle: 0
+      frequency: 2
+      amplitude: 1.5
       magnitude: 0
       rotationSpeed: 0
   frequency: 3

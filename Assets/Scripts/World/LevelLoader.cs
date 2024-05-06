@@ -56,9 +56,11 @@ namespace BulletParadise.World
                 boss.SetupConfig(bossConfig);
             }
 
-            GameManager.Instance.saveManager.LoadGame();
-            //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
             background.SetActive(false);
+
+            Time.timeScale = 1f;
+            GameManager.Instance.worldManager.StartTimer();
+            //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
         }
 
         private void SetUpOnNewScene()
@@ -66,8 +68,6 @@ namespace BulletParadise.World
             GameManager.Instance.FindWorldManager();
             PlayerController.Instance.Restart();
             PlayerController.Instance.SetResponding(true);
-
-            Time.timeScale = 1f;
         }
     }
 }

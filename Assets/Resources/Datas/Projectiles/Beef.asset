@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Beef
   m_EditorClassIdentifier: 
   sprite: {fileID: 210475581, guid: 3fd52ccb8f3e0bf4b832690599510bc4, type: 3}
-  damage: 45
-  lifeTime: 0.4
-  speed: 9
+  damage: 60
+  lifeTime: 0.25
+  speed: 10

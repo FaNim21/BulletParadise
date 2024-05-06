@@ -15,14 +15,14 @@ namespace BulletParadise.Entities.Bosses.Phases
         public bool SpawnMobsChase;
         public int mobsChaseAmount;
 
-        private Transform target;
+        private PlayerController target;
         private Vector2 direction;
 
 
         public override void OnEnter()
         {
             boss.SetSpeedAnim(chaseSpeed);
-            target = PlayerController.Instance.transform;
+            target = PlayerController.Instance;
 
             if (!SpawnMobsChase) return;
             for (int i = 0; i < mobsChaseAmount; i++)
@@ -31,7 +31,7 @@ namespace BulletParadise.Entities.Bosses.Phases
 
         public override void LogicUpdate(Weapon weapon, Vector2 targetDirection)
         {
-            direction = ((Vector2)target.position - (Vector2)shootingManager.shootingOffset.position).normalized;
+            direction = (target.GetToAimPosition() - (Vector2)shootingManager.shootingOffset.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             shootingManager.Shoot(weapon, angle, "shoot");

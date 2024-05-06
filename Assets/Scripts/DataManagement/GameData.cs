@@ -2,20 +2,22 @@ using System.Collections.Generic;
 
 namespace BulletParadise.DataManagement
 {
+    [System.Serializable]
     public class TimerData
     {
-        public int hours;
         public int minutes;
         public int seconds;
         public int milliseconds;
 
+        public double totalMiliseconds;
+
 
         public TimerData()
         {
-            hours = 0;
             minutes = 0;
             seconds = 0;
             milliseconds = 0;
+            totalMiliseconds = 0d;
         }
     }
 

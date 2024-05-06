@@ -208,7 +208,7 @@ namespace BulletParadise.Player
             _circleCollider.enabled = false;
             canvasHandle.OpenWindow<DeathScreen>();
             _animator.SetTrigger("died");
-            _animator.ResetTrigger("died");
+            GameManager.Instance.GetEnteredPortalStats().deaths++;
             Utils.Log("DIED");
         }
 
@@ -237,6 +237,7 @@ namespace BulletParadise.Player
             _animator.ResetTrigger("died");
             _animator.Rebind();
             canvasHandle.CloseWindow<DeathScreen>();
+            canvasHandle.CloseWindow<SummaryScreen>();
             isInLobby = true;
         }
 
@@ -255,6 +256,11 @@ namespace BulletParadise.Player
         private void SwitchAutoFire()
         {
             autoFire = !autoFire;
+        }
+
+        public Vector2 GetToAimPosition()
+        {
+            return position + (Vector2)_body.localPosition + _circleCollider.offset;
         }
     }
 }

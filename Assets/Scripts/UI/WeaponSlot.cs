@@ -52,7 +52,7 @@ namespace BulletParadise.UI
             Weapon weapon = (Weapon)GameManager.Instance.GetItemFromID(itemID);
             if (weapon == null) return;
 
-            this.weapon = weapon;
+            SetItem(weapon);
         }
     }
 }

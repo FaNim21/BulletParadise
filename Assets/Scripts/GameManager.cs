@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Datas")]
     public List<Item> items;
-    public List<Portal> portals;
+    public int currentEnteredPortalID;
 
 
     private void Awake()
@@ -71,6 +71,17 @@ public class GameManager : MonoBehaviour
         {
             var current = items[i];
             if (current.id == id) return current;
+        }
+        return null;
+    }
+
+    public PortalStats GetEnteredPortalStats()
+    {
+        for (int i = 0; i < saveManager.GameData.portalStats.Count; i++)
+        {
+            var current = saveManager.GameData.portalStats[i];
+            if (current.portalID == currentEnteredPortalID)
+                return current;
         }
         return null;
     }

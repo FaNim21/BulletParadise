@@ -26,7 +26,6 @@ namespace BulletParadise.Entities
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _textMeshPro = GetComponentInChildren<TextMeshPro>();
 
-            stats.portalID = data.id;
             _spriteRenderer.sprite = data.sprite;
             _textMeshPro.SetText(data.name);
         }
@@ -52,20 +51,21 @@ namespace BulletParadise.Entities
         {
             for (int i = 0; i < gameData.portalStats.Count; i++)
             {
-                if (gameData.portalStats[i].portalID == stats.portalID)
+                if (gameData.portalStats[i].portalID == data.id)
                 {
                     gameData.portalStats[i] = stats;
                     return;
                 }
             }
 
+            stats.portalID = data.id;
             gameData.portalStats.Add(stats);
         }
         public void Load(GameData gameData)
         {
             for (int i = 0; i < gameData.portalStats.Count; i++)
             {
-                if (gameData.portalStats[i].portalID == stats.portalID)
+                if (gameData.portalStats[i].portalID == data.id)
                 {
                     stats = gameData.portalStats[i];
                     return;

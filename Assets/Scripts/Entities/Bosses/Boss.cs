@@ -2,6 +2,7 @@ using BulletParadise.Components;
 using BulletParadise.Datas;
 using BulletParadise.Misc;
 using BulletParadise.Player;
+using BulletParadise.UI.Windows;
 using BulletParadise.Visual.Drawing;
 using System.Collections;
 using UnityEngine;
@@ -101,6 +102,10 @@ namespace BulletParadise.Entities.Bosses
             base.OnDeath();
 
             //TODO: 0 zatrzymanie wszystkich timerow itp itd z zakonczeniem dungeona i podsumowaniem
+
+            GameManager.Instance.GetEnteredPortalStats().completions++;
+            PlayerController.Instance.canvasHandle.OpenWindow<SummaryScreen>();
+            //GameManager.Instance.worldManager.StopTimer();
             Destroy(gameObject);
         }
 
@@ -144,8 +149,6 @@ namespace BulletParadise.Entities.Bosses
         public void SetSpeedAnim(float speed)
         {
             if (animator == null) return;
-
-            Utils.Log($"Changed speed to: {speed}");
 
             animator.SetBool("moving", speed != 0f);
             animator.SetFloat("Speed", speed);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BulletParadise.UI.Windows
 {
-    public class DeathScreen : MonoBehaviour, IWindowControl
+    public class SummaryScreen : MonoBehaviour, IWindowControl
     {
         public bool IsActive => background.activeSelf;
 
@@ -31,6 +31,7 @@ namespace BulletParadise.UI.Windows
 
         public void Open()
         {
+            Time.timeScale = 0f;
             GameManager.Instance.worldManager.StopTimer();
             SetSummaryTimer(GameManager.Instance.worldManager.GetTimer());
             background.SetActive(true);
