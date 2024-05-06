@@ -1,5 +1,4 @@
 using BulletParadise.Entities.Bosses;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace BulletParadise.Datas
@@ -11,7 +10,7 @@ namespace BulletParadise.Datas
         public Sprite sprite;
         public Vector2 bodyOffset;
 
-        public AnimatorController animatorController;
+        public RuntimeAnimatorController animatorController;
 
         public int maxHealth;
         public float speed;

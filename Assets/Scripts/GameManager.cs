@@ -3,11 +3,13 @@ using BulletParadise.World;
 using BulletParadise.Visual.Drawing;
 using BulletParadise.Visual;
 using BulletParadise.Entities;
+using BulletParadise.DataManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public SaveManager saveManager;
     public WorldManager worldManager;
     public DrawDebug drawDebug;
     public static Popup Popup => Instance.prefabPopup;

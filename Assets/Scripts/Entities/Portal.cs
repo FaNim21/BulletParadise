@@ -1,4 +1,5 @@
-﻿using BulletParadise.Datas;
+﻿using BulletParadise.DataManagement;
+using BulletParadise.Datas;
 using BulletParadise.Player;
 using BulletParadise.World.Components;
 using TMPro;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace BulletParadise.Entities
 {
-    public class Portal : MonoBehaviour, IInteractable
+    public class Portal : MonoBehaviour, IInteractable, ISavable
     {
         public bool IsFocused { get; set; }
 
@@ -43,6 +44,15 @@ namespace BulletParadise.Entities
         {
             if (!canEnter) return;
             _controller.EnterPortal();
+        }
+
+        public void Save(GameData gameData)
+        {
+
+        }
+        public void Load(GameData gameData)
+        {
+
         }
     }
 }

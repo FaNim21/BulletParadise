@@ -51,7 +51,7 @@ namespace BulletParadise.UI
         private void LoadUpWindow()
         {
             sceneName = currentPortal.data.sceneName;
-            titleText.SetText(sceneName);
+            titleText.SetText(currentPortal.data.name);
 
             BossConfig boss = currentPortal.data.bossData;
             bossNameText.SetText(boss.name);
