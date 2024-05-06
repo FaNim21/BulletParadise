@@ -1,10 +1,11 @@
+using BulletParadise.DataManagement;
 using BulletParadise.Entities.Items;
 using BulletParadise.Shooting;
 using UnityEngine;
 
 namespace BulletParadise.UI
 {
-    public class WeaponSlot : Slot
+    public class WeaponSlot : Slot, ISavable
     {
         public Weapon weapon;
         [SerializeField] private int slotIndex;
@@ -35,6 +36,23 @@ namespace BulletParadise.UI
                 quickBar.weapon = weapon;
 
             base.SetItem(item);
+        }
+
+        public void Save(GameData gameData)
+        {
+            if (weapon == null || weapon.id < 0) return;
+
+            gameData.weaponsIdsInSlot[slotIndex] = weapon.id;
+        }
+        public void Load(GameData gameData)
+        {
+            int itemID = gameData.weaponsIdsInSlot[slotIndex];
+            if (itemID == -1) return;
+
+            Weapon weapon = (Weapon)GameManager.Instance.GetItemFromID(itemID);
+            if (weapon == null) return;
+
+            this.weapon = weapon;
         }
     }
 }

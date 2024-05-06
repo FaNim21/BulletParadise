@@ -23,11 +23,16 @@ namespace BulletParadise.Misc
             Debug.Log(message.ToString());
 #endif
         }
-
         public static void LogWarning(object message)
         {
 #if UNITY_EDITOR
             Debug.LogWarning(message.ToString());
+#endif
+        }
+        public static void LogError(object message)
+        {
+#if UNITY_EDITOR
+            Debug.LogError(message.ToString());
 #endif
         }
 

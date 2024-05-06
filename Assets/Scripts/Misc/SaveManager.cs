@@ -1,4 +1,5 @@
 using BulletParadise.Misc;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -9,16 +10,24 @@ namespace BulletParadise.DataManagement
     //Without enryption
     public class SaveManager : MonoBehaviour
     {
+        private GameManager gameManager;
+
         private List<ISavable> _savables = new();
 
         [Header("Data")]
-        public GameData gameData;
+        [SerializeField] private GameData gameData;
+
+        [Header("Debug")]
+        [SerializeField] private bool loadedCorrectly;
 
         private string _savePath;
 
 
         private void Awake()
         {
+            gameManager = GetComponent<GameManager>();
+
+            gameData = new();
             _savePath = Application.persistentDataPath + "/GameData.sav";
 
             for (var i = 0; i < SceneManager.sceneCount; i++)
@@ -30,7 +39,7 @@ namespace BulletParadise.DataManagement
                 }
             }
 
-            Utils.Log("Obiekty wczytuj¹ce i zapisuj¹ce dane: " + _savables.Count);
+            Utils.Log("Savable objects count: " + _savables.Count);
         }
         private void Start()
         {
@@ -39,27 +48,72 @@ namespace BulletParadise.DataManagement
 
         public void SaveGame()
         {
-            //string json = JsonConvert.SerializeObject(objectSave, _jsonSettings);
-            //File.WriteAllText(_savePath, json);
-
             foreach (var data in _savables)
             {
                 data.Save(gameData);
             }
+
+            Save();
         }
 
         public void LoadGame()
         {
+            Load();
+
+            if (!loadedCorrectly)
+            {
+                Utils.LogError("Couldn't load save...");
+                return;
+            }
+
             foreach (var data in _savables)
             {
                 data.Load(gameData);
             }
-
-            string json = File.ReadAllText(_savePath);
-            //JsonConvert.DeserializeObject<T>(json);
-
         }
 
         private void OnApplicationQuit() => SaveGame();
+
+        private void Save()
+        {
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(_savePath));
+                string dataToStore = JsonUtility.ToJson(gameData, true);
+
+                using (FileStream stream = new(_savePath, FileMode.Create))
+                {
+                    using (StreamWriter writer = new(stream))
+                    {
+                        writer.Write(dataToStore);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.LogError("Error while saving data: " + ex.ToString());
+            }
+        }
+        private void Load()
+        {
+            try
+            {
+                string dataToLoad = string.Empty;
+                using (FileStream stream = new(_savePath, FileMode.Open))
+                {
+                    using (StreamReader reader = new(stream))
+                    {
+                        dataToLoad = reader.ReadToEnd();
+                    }
+                }
+
+                gameData = JsonUtility.FromJson<GameData>(dataToLoad);
+                loadedCorrectly = true;
+            }
+            catch (Exception ex)
+            {
+                Utils.LogError("Error while loading data: " + ex.ToString());
+            }
+        }
     }
 }

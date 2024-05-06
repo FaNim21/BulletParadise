@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ee78d40ace9f347b5186980d7dd9e7, type: 3}
   m_Name: EggPortalData
   m_EditorClassIdentifier: 
+  id: 2
   name: Spoon Arena
   sceneName: Prototype
   sprite: {fileID: -1766381311, guid: c929996f23d7093408dd85678c2d60f0, type: 3}

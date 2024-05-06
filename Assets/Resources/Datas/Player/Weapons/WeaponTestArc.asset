@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f39a95c82bcc6140832f485dad89322, type: 3}
   m_Name: WeaponTestArc
   m_EditorClassIdentifier: 
+  id: 106
   name: Beef shotgun
   sprite: {fileID: -1397634407656637528, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   projectiles:

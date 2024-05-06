@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d76af60ce7805c4593f6c33f23aab5a, type: 3}
   m_Name: NormalHealthPotion
   m_EditorClassIdentifier: 
+  id: 201
+  name: Heal Potion
   sprite: {fileID: -1983673866153710992, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   maxCount: 5
   healAmount: 100

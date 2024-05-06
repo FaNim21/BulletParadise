@@ -16,6 +16,7 @@ namespace BulletParadise.Entities
         private TextMeshPro _textMeshPro;
 
         public PortalData data;
+        public PortalStats stats;
         public bool canEnter = true;
 
 
@@ -25,6 +26,7 @@ namespace BulletParadise.Entities
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _textMeshPro = GetComponentInChildren<TextMeshPro>();
 
+            stats.portalID = data.id;
             _spriteRenderer.sprite = data.sprite;
             _textMeshPro.SetText(data.name);
         }
@@ -48,11 +50,27 @@ namespace BulletParadise.Entities
 
         public void Save(GameData gameData)
         {
+            for (int i = 0; i < gameData.portalStats.Count; i++)
+            {
+                if (gameData.portalStats[i].portalID == stats.portalID)
+                {
+                    gameData.portalStats[i] = stats;
+                    return;
+                }
+            }
 
+            gameData.portalStats.Add(stats);
         }
         public void Load(GameData gameData)
         {
-
+            for (int i = 0; i < gameData.portalStats.Count; i++)
+            {
+                if (gameData.portalStats[i].portalID == stats.portalID)
+                {
+                    stats = gameData.portalStats[i];
+                    return;
+                }
+            }
         }
     }
 }

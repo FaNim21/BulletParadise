@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f39a95c82bcc6140832f485dad89322, type: 3}
   m_Name: WeaponMouseStick
   m_EditorClassIdentifier: 
+  id: 104
   name: Mouse Stick
   sprite: {fileID: 183075426328126886, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   projectiles:

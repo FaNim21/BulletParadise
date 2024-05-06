@@ -4,19 +4,28 @@ using BulletParadise.Visual.Drawing;
 using BulletParadise.Visual;
 using BulletParadise.Entities;
 using BulletParadise.DataManagement;
+using BulletParadise.Entities.Items;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [Header("Components")]
     public SaveManager saveManager;
     public WorldManager worldManager;
     public DrawDebug drawDebug;
+
+    [Header("Prefabs")]
     public static Popup Popup => Instance.prefabPopup;
     public Popup prefabPopup;
 
     public static Projectile Projectile => Instance.prefabProjectile;
     public Projectile prefabProjectile;
+
+    [Header("Datas")]
+    public List<Item> items;
+    public List<Portal> portals;
 
 
     private void Awake()
@@ -54,5 +63,15 @@ public class GameManager : MonoBehaviour
     {
         worldManager = GameObject.Find("WorldManager").GetComponent<WorldManager>();
         Popup.InitializePooling();
+    }
+
+    public Item GetItemFromID(int id)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            var current = items[i];
+            if (current.id == id) return current;
+        }
+        return null;
     }
 }

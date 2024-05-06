@@ -23,6 +23,7 @@ namespace BulletParadise.World
         public void LoadScene(string sceneName, BossConfig bossConfig = null)
         {
             this.bossConfig = bossConfig;
+            GameManager.Instance.saveManager.SaveGame();
             PlayerController.Instance.SetResponding(false);
             background.SetActive(true);
             StartCoroutine(LoadSceneAsync(sceneName));
@@ -55,6 +56,7 @@ namespace BulletParadise.World
                 boss.SetupConfig(bossConfig);
             }
 
+            GameManager.Instance.saveManager.LoadGame();
             //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
             background.SetActive(false);
         }
