@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3aad649b09415a4b97839ab3f052cb9, type: 3}
   m_Name: WeaponCircleSpoon
   m_EditorClassIdentifier: 
+  id: -1
   name: 
   sprite: {fileID: -1397634407656637528, guid: 2edf33f772f1c76489eac73d7a595013, type: 3}
   projectiles:

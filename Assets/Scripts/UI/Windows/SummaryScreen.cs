@@ -1,3 +1,4 @@
+using BulletParadise.Player;
 using System;
 using TMPro;
 using UnityEngine;
@@ -31,7 +32,8 @@ namespace BulletParadise.UI.Windows
 
         public void Open()
         {
-            Time.timeScale = 0f;
+            PlayerController.Instance.SetResponding(false);
+            PlayerController.Instance.healthManager.SetInvulnerability(true);
             GameManager.Instance.worldManager.StopTimer();
             SetSummaryTimer(GameManager.Instance.worldManager.GetTimer());
             background.SetActive(true);

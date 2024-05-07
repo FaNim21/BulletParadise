@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: ChasePhase
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  primaryWeaponAnimName: shoot1
+  primaryWeaponAnimTime: 1
+  primaryWeaponAnimDelay: 0.6666667
+  secondaryWeaponAnimName: 
+  secondaryWeaponAnimRestTime: 0
+  secondaryWeaponAnimDelay: 0
   chaseMobs: {fileID: 8721051932381034453, guid: 43200b21f32455642b44f0497654c11f, type: 3}
   SpawnMobsChase: 1
   mobsChaseAmount: 3

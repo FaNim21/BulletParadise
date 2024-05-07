@@ -1,34 +1,25 @@
 fileFormatVersion: 2
-guid: 4e6ae940c31aff443933d9fc9f570423
+guid: c08563bd29bfcec45859eaa13ec8c9bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2500464252717560946
-    second: SpoonAttack2_0
+      213: 6723703663798507107
+    second: ForkLordMove_0
   - first:
-      213: 8127178165833683652
-    second: SpoonAttack2_1
+      213: 8678746486733770827
+    second: ForkLordMove_1
   - first:
-      213: 502709958081179323
-    second: SpoonAttack2_2
+      213: -7597181442193137879
+    second: ForkLordMove_2
   - first:
-      213: -8446255825540697095
-    second: SpoonAttack2_3
+      213: -5207913629241994290
+    second: ForkLordMove_3
   - first:
-      213: -4565159035638420901
-    second: SpoonAttack2_4
+      213: -8635442904233231337
+    second: ForkLordMove_4
   - first:
-      213: -2189079677870658791
-    second: SpoonAttack2_5
-  - first:
-      213: -5387506956217985099
-    second: SpoonAttack2_6
-  - first:
-      213: 2236991296658754669
-    second: SpoonAttack2_7
-  - first:
-      213: 7677254315939634992
-    second: SpoonAttack2_8
+      213: 8510866972540663420
+    second: ForkLordMove_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -61,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,190 +128,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpoonAttack2_0
+      name: ForkLordMove_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 17
         y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e8b053b92019c4dd0800000000000000
-      internalID: -2500464252717560946
+      spriteID: 366d3b7cbd46f4d50800000000000000
+      internalID: 6723703663798507107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpoonAttack2_1
+      name: ForkLordMove_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 81
         y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4c2d3d07b7989c070800000000000000
-      internalID: 8127178165833683652
+      spriteID: b409f6d92f9117870800000000000000
+      internalID: 8678746486733770827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpoonAttack2_2
+      name: ForkLordMove_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 145
         y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbeea7c1b0cf9f600800000000000000
-      internalID: 502709958081179323
+      spriteID: 92f53ebdab3619690800000000000000
+      internalID: -7597181442193137879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpoonAttack2_3
+      name: ForkLordMove_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 209
         y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f3b29ca31fd8ca80800000000000000
-      internalID: -8446255825540697095
+      spriteID: ec39d1c9526c9b7b0800000000000000
+      internalID: -5207913629241994290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpoonAttack2_4
+      name: ForkLordMove_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 273
         y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5a6b995b0c45a0c0800000000000000
-      internalID: -4565159035638420901
+      spriteID: 71cb20f5e6eb82880800000000000000
+      internalID: -8635442904233231337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpoonAttack2_5
+      name: ForkLordMove_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 337
         y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91b2e7791a3de91e0800000000000000
-      internalID: -2189079677870658791
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpoonAttack2_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5b75ea1b7fabb35b0800000000000000
-      internalID: -5387506956217985099
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpoonAttack2_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d6c4cf27bb36b0f10800000000000000
-      internalID: 2236991296658754669
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpoonAttack2_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 03f9aefdf161b8a60800000000000000
-      internalID: 7677254315939634992
+      spriteID: c76f3e44b6cac1670800000000000000
+      internalID: 8510866972540663420
       vertices: []
       indices: 
       edges: []
@@ -328,23 +256,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d46268bb6619eaa478d4364e9554d1d1
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      SpoonAttack2_0: -2500464252717560946
-      SpoonAttack2_1: 8127178165833683652
-      SpoonAttack2_2: 502709958081179323
-      SpoonAttack2_3: -8446255825540697095
-      SpoonAttack2_4: -4565159035638420901
-      SpoonAttack2_5: -2189079677870658791
-      SpoonAttack2_6: -5387506956217985099
-      SpoonAttack2_7: 2236991296658754669
-      SpoonAttack2_8: 7677254315939634992
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

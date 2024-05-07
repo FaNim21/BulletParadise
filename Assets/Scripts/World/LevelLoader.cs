@@ -25,6 +25,7 @@ namespace BulletParadise.World
             this.bossConfig = bossConfig;
             GameManager.Instance.saveManager.SaveGame();
             PlayerController.Instance.SetResponding(false);
+            PlayerController.Instance.healthManager.SetInvulnerability(false);
             background.SetActive(true);
             StartCoroutine(LoadSceneAsync(sceneName));
         }

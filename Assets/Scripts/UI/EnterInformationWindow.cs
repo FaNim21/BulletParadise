@@ -67,14 +67,11 @@ namespace BulletParadise.UI
             string timerText = $"{currentPortal.stats.timer.minutes}:{currentPortal.stats.timer.seconds}.{currentPortal.stats.timer.milliseconds}";
             if (currentPortal.stats.completions == 0)
                 timerText = $"<color=red>UNFINISHED</color>({currentPortal.stats.timer.minutes}:{currentPortal.stats.timer.seconds}.{currentPortal.stats.timer.milliseconds})";
-            //<color=red></color>
 
             statsText.SetText($"Attempts: {currentPortal.stats.attempts}\n" +
                               $"Deaths: {currentPortal.stats.deaths}\n" +
                               $"Completions: {currentPortal.stats.completions}\n" +
                               $"Best time: {timerText}\n");
-
-            //TODO: 0 Ladowac tu wszystkie informacje o bosie i achievementach zrobionych i do zrobienia w tym portalu
         }
     }
 }

@@ -1,3 +1,4 @@
+using BulletParadise.Misc;
 using BulletParadise.Shooting;
 using System.Collections;
 using UnityEngine;
@@ -24,12 +25,16 @@ namespace BulletParadise.Components
             _animator = transform.Find("Body").GetComponent<Animator>();
         }
 
-        public void Shoot(Weapon weapon, float angle, string animTriggerName = "")
+        public void Shoot(Weapon weapon, float angle, string animTriggerName = "", float delay = 0, float animTime = 0)
         {
             if (_isShooting || weapon == null || !_canShoot) return;
 
-            StartCoroutine(ShootCoroutine(weapon, angle, animTriggerName));
+            if (delay == 0)
+                StartCoroutine(ShootCoroutine(weapon, angle, animTriggerName));
+            else
+                StartCoroutine(ShootCoroutineWithDelay(weapon, angle, animTriggerName, delay, animTime));
         }
+
         private IEnumerator ShootCoroutine(Weapon weapon, float angle, string animTriggerName)
         {
             _isShooting = true;
@@ -42,6 +47,28 @@ namespace BulletParadise.Components
             weapon.Shoot(layerMask, shootingOffset.position, angle);
 
             yield return new WaitForSeconds(1f / weapon.frequency);
+            _isShooting = false;
+        }
+        private IEnumerator ShootCoroutineWithDelay(Weapon weapon, float angle, string animTriggerName, float delay, float animTime)
+        {
+            _isShooting = true;
+            float shootSpeed = Mathf.Max(weapon.frequency, 1f);
+
+            _animator.SetFloat("shootSpeed", shootSpeed);
+            _animator.SetTrigger(animTriggerName);
+
+            float scaledDelay = delay / shootSpeed;
+            yield return new WaitForSeconds(scaledDelay);
+
+            weapon.Shoot(layerMask, shootingOffset.position, angle);
+
+            float scaledRestTime = (animTime / shootSpeed) - scaledDelay;
+            Utils.Log($"delay: {scaledDelay}, rest: {scaledRestTime}, overall: {animTime / shootSpeed}");
+            yield return new WaitForSeconds(scaledRestTime);
+
+            float weaponDelay = Mathf.Max((1f / weapon.frequency) - scaledDelay - scaledRestTime, 0);
+            Utils.Log($"Weapon delay: {weaponDelay}");
+            yield return new WaitForSeconds(weaponDelay);
             _isShooting = false;
         }
 
