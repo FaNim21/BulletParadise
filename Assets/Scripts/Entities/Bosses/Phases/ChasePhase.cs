@@ -5,18 +5,20 @@ using UnityEngine;
 
 namespace BulletParadise.Entities.Bosses.Phases
 {
-    [CreateAssetMenu(fileName = "ChasePhase", menuName = "Boss/Phase/Chase")]
+    [CreateAssetMenu(fileName = "new ChasePhase", menuName = "Boss/Phase/Chase")]
     public class ChasePhase : Phase
     {
         public float chaseSpeed;
 
+        public Weapon primaryWeapon;
         public string primaryWeaponAnimName;
         public float primaryWeaponAnimTime;
         public float primaryWeaponAnimDelay;
 
+        /*public Weapon secondaryWeapon;
         public string secondaryWeaponAnimName;
         public float secondaryWeaponAnimRestTime;
-        public float secondaryWeaponAnimDelay;
+        public float secondaryWeaponAnimDelay;*/
 
         [Header("On Enter")]
         public MobController chaseMobs;
@@ -42,7 +44,10 @@ namespace BulletParadise.Entities.Bosses.Phases
             direction = (target.GetToAimPosition() - (Vector2)shootingManager.shootingOffset.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            shootingManager.Shoot(weapon, angle, primaryWeaponAnimName, primaryWeaponAnimDelay, primaryWeaponAnimTime);
+            if (primaryWeapon != null)
+            {
+                shootingManager.Shoot(primaryWeapon, angle, null, primaryWeaponAnimName, primaryWeaponAnimDelay, primaryWeaponAnimTime);
+            }
         }
 
         public override void PhysicsUpdate(Rigidbody2D rb)
@@ -67,7 +72,5 @@ namespace BulletParadise.Entities.Bosses.Phases
         {
             GLDraw.DrawLine(boss.position, target.position, Color.red);
         }
-
-        public override int CountAsRealPhase() => 1;
     }
 }

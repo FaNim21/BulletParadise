@@ -20934,6 +20934,7 @@ GameObject:
   - component: {fileID: 1021948129}
   - component: {fileID: 1021948130}
   - component: {fileID: 1021948131}
+  - component: {fileID: 1021948132}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20950,7 +20951,7 @@ Transform:
   m_GameObject: {fileID: 1021948128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05292988, y: 0.14069584, z: 0.08912458}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20999,6 +21000,18 @@ MonoBehaviour:
     weaponsIdsInSlot: 0000000000000000
     portalStats: []
   loadedCorrectly: 0
+--- !u!114 &1021948132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021948128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96e400c3db41184bab412d927b98d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1072722181
 GameObject:
   m_ObjectHideFlags: 0
@@ -21908,7 +21921,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Left Mouse - Shoot
 
-    W, S, A, D - Moving
+    W, S, A, D - Move
 
     E - Interaction
 
@@ -21919,8 +21932,10 @@ MonoBehaviour:
 
     Q - Health Potion
 
-    F3 - debug screen
+    F3 - Debug screen
     (on/off)
+
+    F4 - Debug Lines (on/off)
 
 
 '
@@ -21956,7 +21971,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535

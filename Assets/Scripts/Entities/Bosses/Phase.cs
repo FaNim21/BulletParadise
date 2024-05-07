@@ -21,8 +21,8 @@ namespace BulletParadise.Entities.Bosses
         public abstract void PhysicsUpdate(Rigidbody2D rb);
         public abstract void OnExit();
 
-        public abstract void Draw();
+        public virtual void Draw() { }
 
-        public abstract int CountAsRealPhase();
+        public virtual int CountAsRealPhase() => 1;
     }
 }

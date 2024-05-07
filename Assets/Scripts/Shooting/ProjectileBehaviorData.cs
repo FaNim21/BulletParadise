@@ -1,3 +1,4 @@
+using BulletParadise.Entities;
 using BulletParadise.Shooting.Logic;
 using BulletParadise.Shooting.Physics;
 using UnityEngine;
@@ -42,6 +43,7 @@ namespace BulletParadise.Shooting
         public string name = "ELEMENT";
 
         public ProjectileData data;
+        public Entity entity;
         public ProjectileDataMultiplier dataMultiplier;
 
         public ProjectileLogicType logicType;

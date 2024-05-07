@@ -21,7 +21,7 @@ namespace BulletParadise.DataManagement
         [SerializeField] private GameData gameData;
 
         [Header("Debug")]
-        [SerializeField] private bool loadedCorrectly;
+        [SerializeField, ReadOnly] private bool loadedCorrectly;
 
         private string _savePath;
 

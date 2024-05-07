@@ -1,10 +1,12 @@
 using BulletParadise.Misc;
 using BulletParadise.Shooting;
+using System;
 using System.Collections;
 using UnityEngine;
 
 namespace BulletParadise.Components
 {
+    /*Make this multi ShootingManager*/
     public class ShootingManager : MonoBehaviour
     {
         private Animator _animator;
@@ -25,9 +27,11 @@ namespace BulletParadise.Components
             _animator = transform.Find("Body").GetComponent<Animator>();
         }
 
-        public void Shoot(Weapon weapon, float angle, string animTriggerName = "", float delay = 0, float animTime = 0)
+        public void Shoot(Weapon weapon, float angle, Action OnShoot = null, string animTriggerName = "", float delay = 0, float animTime = 0)
         {
             if (_isShooting || weapon == null || !_canShoot) return;
+
+            OnShoot?.Invoke();
 
             if (delay == 0)
                 StartCoroutine(ShootCoroutine(weapon, angle, animTriggerName));
@@ -63,11 +67,13 @@ namespace BulletParadise.Components
             weapon.Shoot(layerMask, shootingOffset.position, angle);
 
             float scaledRestTime = (animTime / shootSpeed) - scaledDelay;
-            Utils.Log($"delay: {scaledDelay}, rest: {scaledRestTime}, overall: {animTime / shootSpeed}");
             yield return new WaitForSeconds(scaledRestTime);
 
             float weaponDelay = Mathf.Max((1f / weapon.frequency) - scaledDelay - scaledRestTime, 0);
+
+            Utils.Log($"delay: {scaledDelay}, rest: {scaledRestTime}, overall: {animTime / shootSpeed}");
             Utils.Log($"Weapon delay: {weaponDelay}");
+
             yield return new WaitForSeconds(weaponDelay);
             _isShooting = false;
         }

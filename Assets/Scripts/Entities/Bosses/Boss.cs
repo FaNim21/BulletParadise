@@ -101,8 +101,6 @@ namespace BulletParadise.Entities.Bosses
         {
             base.OnDeath();
 
-            //TODO: 0 zatrzymanie wszystkich timerow itp itd z zakonczeniem dungeona i podsumowaniem
-
             GameManager.Instance.GetEnteredPortalStats().completions++;
             PlayerController.Instance.canvasHandle.OpenWindow<SummaryScreen>();
             Destroy(gameObject);

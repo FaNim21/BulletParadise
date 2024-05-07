@@ -11,6 +11,7 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
     private int logicFieldsAmount;
     private int physicsFieldsAmount;
 
+    private bool useEntity = false;
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
@@ -18,6 +19,8 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
         EditorGUI.BeginChangeCheck();
         Rect foldoutRect = new(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
         property.isExpanded = EditorGUI.Foldout(foldoutRect, property.isExpanded, label);
+        string propertyName = "";
+
 
         GUIStyle headerStyle = new()
         {
@@ -32,12 +35,25 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
 
             singleLineRect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.LabelField(singleLineRect, "Components", headerStyle);
+
+            singleLineRect.y += EditorGUIUtility.singleLineHeight;
+            useEntity = EditorGUI.ToggleLeft(singleLineRect, "Is using entity", useEntity);
             singleLineRect.y += EditorGUIUtility.singleLineHeight * 1f;
 
-            SerializedProperty dataProperty = property.FindPropertyRelative("data");
-            string propertyName = dataProperty.objectReferenceValue != null ? dataProperty.objectReferenceValue.name : null;
-            EditorGUI.PropertyField(singleLineRect, dataProperty);
-            singleLineRect.y += EditorGUIUtility.singleLineHeight * 1.1f;
+            if (!useEntity)
+            {
+                SerializedProperty dataProperty = property.FindPropertyRelative("data");
+                propertyName = dataProperty.objectReferenceValue != null ? dataProperty.objectReferenceValue.name : null;
+                EditorGUI.PropertyField(singleLineRect, dataProperty);
+                singleLineRect.y += EditorGUIUtility.singleLineHeight * 1.1f;
+            }
+            else
+            {
+                SerializedProperty dataProperty = property.FindPropertyRelative("entity");
+                propertyName = dataProperty.objectReferenceValue != null ? dataProperty.objectReferenceValue.name : null;
+                EditorGUI.PropertyField(singleLineRect, dataProperty);
+                singleLineRect.y += EditorGUIUtility.singleLineHeight * 1.1f;
+            }
 
             #region Data Multipliers
             singleLineRect.y += EditorGUIUtility.singleLineHeight * 0.5f;
@@ -139,7 +155,7 @@ public class ProjectileBehaviorDataDrawer : PropertyDrawer
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         if (!property.isExpanded) return EditorGUIUtility.singleLineHeight;
-        float height = _headersAmount + 1.1f + (_headersAmount * 0.5f) + 6;
+        float height = _headersAmount + 1.1f + (_headersAmount * 0.5f) + 7;
 
         if (property.FindPropertyRelative("dataMultiplier").isExpanded)
             height += 3; // damage, lifetime, speed

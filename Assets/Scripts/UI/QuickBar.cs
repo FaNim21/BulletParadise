@@ -25,11 +25,11 @@ namespace BulletParadise.UI
 
         private void Start()
         {
-            weaponSlots[0].SetupKeybind(playerInput.actionMaps[0].actions[3].ToString());
-            weaponSlots[1].SetupKeybind(playerInput.actionMaps[0].actions[4].ToString());
+            weaponSlots[0].SetupKeybind(playerInput.actionMaps[0].actions[2].ToString());
+            weaponSlots[1].SetupKeybind(playerInput.actionMaps[0].actions[3].ToString());
 
-            consumableSlots[0].SetupKeybind(playerInput.actionMaps[0].actions[5].ToString());
-            consumableSlots[1].SetupKeybind(playerInput.actionMaps[0].actions[6].ToString());
+            consumableSlots[0].SetupKeybind(playerInput.actionMaps[0].actions[4].ToString());
+            consumableSlots[1].SetupKeybind(playerInput.actionMaps[0].actions[5].ToString());
 
             SelectSlot(0);
         }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89ee78d40ace9f347b5186980d7dd9e7, type: 3}
-  m_Name: EggPortalData
+  m_Name: SpoonBossPortalData
   m_EditorClassIdentifier: 
   id: 2
   name: Spoon Arena

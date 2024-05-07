@@ -37,6 +37,7 @@ namespace BulletParadise.Player
         private Transform _shootingOffset;
 
         [Header("Debug")]
+        [SerializeField, ReadOnly] private bool gameMaster;
         [ReadOnly] public bool autoFire;
         [ReadOnly] public bool isInLobby;
         [ReadOnly] public bool isResponding;
@@ -157,7 +158,6 @@ namespace BulletParadise.Player
             }
 
             if (Keyboard.current.iKey.wasPressedThisFrame) SwitchAutoFire();
-            if (Keyboard.current.f3Key.wasPressedThisFrame) debugScreen.SwitchVisibility();
 
             if (Consts.IsFocusedOnMainMenu) return;
             //TU BINDY KTORE NIE MOGA DZIALAC NA MAIN MENU
@@ -165,7 +165,7 @@ namespace BulletParadise.Player
         private void HandleShooting()
         {
             if ((Mouse.current.leftButton.isPressed && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject()) || autoFire)
-                shootingManager.Shoot(quickBar.weapon, aimAngle, "shoots");
+                shootingManager.Shoot(quickBar.weapon, aimAngle, null, "shoots");
         }
 
         public void Interact(InputAction.CallbackContext context)
@@ -204,6 +204,8 @@ namespace BulletParadise.Player
 
         public override void OnDeath()
         {
+            if (gameMaster) return;
+
             SetResponding(false);
             _circleCollider.enabled = false;
             canvasHandle.OpenWindow<DeathScreen>();
@@ -261,6 +263,11 @@ namespace BulletParadise.Player
         public Vector2 GetToAimPosition()
         {
             return position + (Vector2)_body.localPosition + _circleCollider.offset;
+        }
+
+        public void SwitchGM()
+        {
+            gameMaster = !gameMaster;
         }
     }
 }

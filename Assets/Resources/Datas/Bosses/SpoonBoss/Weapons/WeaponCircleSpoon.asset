@@ -18,6 +18,7 @@ MonoBehaviour:
   projectiles:
   - name: WoodenSpoon - 1
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -32,6 +33,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 2
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -46,6 +48,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 3
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -60,6 +63,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 4
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -74,6 +78,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 5
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -88,6 +93,7 @@ MonoBehaviour:
       rotationSpeed: 5000
   - name: WoodenSpoon - 6
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -102,6 +108,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 7
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -116,6 +123,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 8
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -130,6 +138,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 9
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -144,6 +153,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 10
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -158,6 +168,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 1
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -172,6 +183,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: WoodenSpoon - 2
     data: {fileID: 11400000, guid: d6dc84569574b354f9f83023efd3af12, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2434a22052b7aa844856022d4d3893bc, type: 3}
+  m_Name: WeaponEntitySpawner
+  m_EditorClassIdentifier: 
+  id: -1
+  name: 
+  sprite: {fileID: 0}
+  projectiles:
+  - name: RandomChaser - 1
+    data: {fileID: 0}
+    entity: {fileID: 8721051932381034453, guid: 43200b21f32455642b44f0497654c11f, type: 3}
+    dataMultiplier:
+      damageMultiplier: 0
+      lifeTimeMultiplier: 0
+      speedMultiplier: 0
+    logicType: 0
+    physicsType: 0
+    additionalData:
+      angle: 0
+      frequency: 0
+      amplitude: 0
+      magnitude: 0
+      rotationSpeed: 0
+  - name: RandomChaser - 2
+    data: {fileID: 0}
+    entity: {fileID: 8721051932381034453, guid: 43200b21f32455642b44f0497654c11f, type: 3}
+    dataMultiplier:
+      damageMultiplier: 0
+      lifeTimeMultiplier: 0
+      speedMultiplier: 0
+    logicType: 0
+    physicsType: 0
+    additionalData:
+      angle: 0
+      frequency: 0
+      amplitude: 0
+      magnitude: 0
+      rotationSpeed: 0
+  - name: RandomChaser - 3
+    data: {fileID: 0}
+    entity: {fileID: 8721051932381034453, guid: 43200b21f32455642b44f0497654c11f, type: 3}
+    dataMultiplier:
+      damageMultiplier: 0
+      lifeTimeMultiplier: 0
+      speedMultiplier: 0
+    logicType: 0
+    physicsType: 0
+    additionalData:
+      angle: 0
+      frequency: 0
+      amplitude: 0
+      magnitude: 0
+      rotationSpeed: 0
+  frequency: 0.15

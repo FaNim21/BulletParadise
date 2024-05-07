@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Inventory",
-                    "type": "Button",
-                    "id": "cf1fccc6-c6c1-4363-a400-8fe6522423e6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interaction",
                     "type": "Button",
                     "id": "a0d0586c-4ee4-4853-8001-197ee0e7d2cd",
@@ -63,6 +54,24 @@
                     "name": "ConsumableSlot2",
                     "type": "Button",
                     "id": "feda984d-54e9-4869-9e33-a5bf60d76f68",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchDebugLinesVisibility",
+                    "type": "Button",
+                    "id": "b29273d1-3008-4c06-9159-89afebc69c77",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchDebugScreenVisiblity",
+                    "type": "Button",
+                    "id": "3935b510-eb37-4584-b0df-139631324c64",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -127,17 +136,6 @@
                 },
                 {
                     "name": "",
-                    "id": "2eec7004-592d-4657-a1ea-2a20dad52d05",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1fba3af6-ca86-44c4-b28f-1c26a6604281",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -188,6 +186,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ConsumableSlot2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4a5b01d-f486-4787-9236-6dacb0eccfe1",
+                    "path": "<Keyboard>/f4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchDebugLinesVisibility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "271ef457-daf6-4040-9b22-460ca3f84ac8",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchDebugScreenVisiblity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
