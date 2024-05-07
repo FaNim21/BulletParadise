@@ -34,7 +34,7 @@ namespace BulletParadise.Components
         {
             if (!canRegenerate || isSick) return;
 
-            //TODO: 0 regenerowanie hp
+            //TODO: 4 regenerowanie hp?
         }
 
         public void TakeDamage(int damage)

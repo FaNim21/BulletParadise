@@ -15,7 +15,6 @@ namespace BulletParadise.Entities
         [HideInInspector] public float health;
         [HideInInspector] public int maxHealth;
 
-        //TODO: 2 to bedzie zalezne od world managera dla ENTITY
         public bool CanDraw => true;
 
 

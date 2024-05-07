@@ -19907,7 +19907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  isDebugMode: 1
+  isDebugMode: 0
   drawableCount: 0
 --- !u!1 &555761619
 GameObject:
@@ -21896,8 +21896,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.07, y: 30.2048}
-  m_SizeDelta: {x: 40.4223, y: 78.5847}
+  m_AnchoredPosition: {x: -7.7968, y: 30.2048}
+  m_SizeDelta: {x: 48.9687, y: 78.5847}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1745541620
 MonoBehaviour:
@@ -21935,7 +21935,8 @@ MonoBehaviour:
     F3 - Debug screen
     (on/off)
 
-    F4 - Debug Lines (on/off)
+    F4 - Debug Lines (on/off) - This turns off all progression during
+    the run
 
 
 '

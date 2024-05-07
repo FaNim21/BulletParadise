@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StationarySpoon
   m_EditorClassIdentifier: 
   primaryWeapon: {fileID: 11400000, guid: eacc8254f0962814d926e198ef83627c, type: 2}
-  primaryWeaponAnimName: shoot1
-  primaryWeaponAnimTime: 1
-  primaryWeaponAnimDelay: 0.6666667
+  primaryWeaponAnimName: shoot2
+  primaryWeaponAnimTime: 0.6666667
+  primaryWeaponAnimDelay: 0.4166667
   angleIncrease: 5

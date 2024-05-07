@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef603df6ad11b94585cf5d1b8539c00, type: 3}
-  m_Name: TomatoedChasePhase
+  m_Script: {fileID: 11500000, guid: c5f747a0f1f6fa9448ec603e7be38313, type: 3}
+  m_Name: TomatoRoamFromMiddlePhase
   m_EditorClassIdentifier: 
-  chaseSpeed: 0.9
-  primaryWeapon: {fileID: 11400000, guid: c579d2b5236541b49a5475ac599ed489, type: 2}
+  speed: 7
+  roamRange: 7
+  timeOnDestination: 2
+  primaryWeapon: {fileID: 11400000, guid: 5786cbec167f0e348ab044b3e04718af, type: 2}
   primaryWeaponAnimName: 
   primaryWeaponAnimTime: 0
   primaryWeaponAnimDelay: 0
-  chaseMobs: {fileID: 0}
-  SpawnMobsChase: 0
-  mobsChaseAmount: 0

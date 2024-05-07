@@ -20,7 +20,7 @@ namespace BulletParadise.UI
 
         [Header("Debug")]
         [ReadOnly] public bool isPointerOverGameObject;
-        [ReadOnly] public bool isCanvasEnabled; //TODO: 0 to nic nie robi lol
+        [ReadOnly] public bool isCanvasEnabled;
         [ReadOnly] public bool isDragging;
 
 

@@ -5,9 +5,7 @@ namespace BulletParadise.Entities.Mobs
 {
     public class ChaserMob : MobController
     {
-        [Header("Chaser")]
-
-        [Header("Debug")]
+        [Header("Chaser Debug")]
         [ReadOnly] public bool isNotRoaming;
         [ReadOnly] public bool isChasing;
         [ReadOnly] public float chaseTimer;
@@ -16,8 +14,8 @@ namespace BulletParadise.Entities.Mobs
         [ReadOnly] public Vector2 toRoamPosition;
         [ReadOnly] public Vector2 toRoamDirection;
 
-        private const float chaseTime = 1f;
-        private const float roamTime = 3f;
+        private const float _chaseTime = 1f;
+        private const float _roamTime = 3f;
 
 
         public override void Awake()
@@ -60,7 +58,7 @@ namespace BulletParadise.Entities.Mobs
             chaseTimer += Time.deltaTime;
             direction = playerDirection;
 
-            if (chaseTimer >= chaseTime)
+            if (chaseTimer >= _chaseTime)
             {
                 isChasing = false;
                 chaseTimer = 0f;
@@ -81,7 +79,7 @@ namespace BulletParadise.Entities.Mobs
             toRoamAngle = Mathf.Atan2(toRoamDirection.y, toRoamDirection.x) * Mathf.Rad2Deg;
             direction = toRoamDirection;
 
-            if (IsTargetInDistance(toRoamPosition, 1) || roamTimer >= roamTime)
+            if (IsTargetInDistance(toRoamPosition, 1) || roamTimer >= _roamTime)
             {
                 isNotRoaming = true;
                 isChasing = true;

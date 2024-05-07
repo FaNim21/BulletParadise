@@ -44,5 +44,18 @@ namespace BulletParadise.World
         {
             return dungeonManager.GetTimer();
         }
+
+        public void RunCheated()
+        {
+            if (dungeonManager == null) return;
+
+            dungeonManager.Cheated();
+        }
+        public bool WasRunCheated()
+        {
+            if (dungeonManager == null) return false;
+
+            return dungeonManager.WasCheated();
+        }
     }
 }

@@ -62,7 +62,6 @@ namespace BulletParadise.World
 
             Time.timeScale = 1f;
             GameManager.Instance.worldManager.StartTimer();
-            //TODO: 0 Zrobic tutaj wyjscie z ladowania i zarazem jako aktywowanie sceny w formie press any to continue
         }
 
         private void SetUpOnNewScene()

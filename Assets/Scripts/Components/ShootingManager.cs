@@ -71,8 +71,8 @@ namespace BulletParadise.Components
 
             float weaponDelay = Mathf.Max((1f / weapon.frequency) - scaledDelay - scaledRestTime, 0);
 
-            Utils.Log($"delay: {scaledDelay}, rest: {scaledRestTime}, overall: {animTime / shootSpeed}");
-            Utils.Log($"Weapon delay: {weaponDelay}");
+            //Utils.Log($"delay: {scaledDelay}, rest: {scaledRestTime}, overall: {animTime / shootSpeed}");
+            //Utils.Log($"Weapon delay: {weaponDelay}");
 
             yield return new WaitForSeconds(weaponDelay);
             _isShooting = false;

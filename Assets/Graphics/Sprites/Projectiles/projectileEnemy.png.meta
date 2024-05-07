@@ -175,6 +175,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: tomato
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d74717ec4118a1845bda727e157b4736
+      internalID: 731098621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatoSlice
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0402ba25a6ac1d469b17826a9126eb2
+      internalID: -2124162029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -189,6 +231,8 @@ TextureImporter:
       MetalicSpoon: -1321813068
       SmallMetalicSpoon: 440092460
       WoodenSpoon: -499924123
+      tomato: 731098621
+      tomatoSlice: -2124162029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

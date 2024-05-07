@@ -15,11 +15,6 @@ namespace BulletParadise.Entities.Bosses.Phases
         public float primaryWeaponAnimTime;
         public float primaryWeaponAnimDelay;
 
-        /*public Weapon secondaryWeapon;
-        public string secondaryWeaponAnimName;
-        public float secondaryWeaponAnimRestTime;
-        public float secondaryWeaponAnimDelay;*/
-
         [Header("On Enter")]
         public MobController chaseMobs;
         public bool SpawnMobsChase;

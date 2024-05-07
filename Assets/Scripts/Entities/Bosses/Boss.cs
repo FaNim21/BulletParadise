@@ -101,14 +101,15 @@ namespace BulletParadise.Entities.Bosses
         {
             base.OnDeath();
 
-            GameManager.Instance.GetEnteredPortalStats().completions++;
+            if (!GameManager.Instance.worldManager.WasRunCheated())
+                GameManager.Instance.GetEnteredPortalStats().completions++;
             PlayerController.Instance.canvasHandle.OpenWindow<SummaryScreen>();
             Destroy(gameObject);
         }
 
         public void UpdatePhase(float healthRatio)
         {
-            if (!isWorking) return;
+            if (!isWorking || !CurrentPhase.UpdatePhaseOnHit()) return;
 
             for (byte i = (byte)(currentPhaseIndex + 1); i < config.phases.Length; i++)
             {
@@ -160,15 +161,14 @@ namespace BulletParadise.Entities.Bosses
 /*
 ----- Spoon King (Ka¿dy atak fazy tego bossa jak i przysz³ego jest symbolizowany czerwon¹ lampk¹, dla zilustrowania zagro¿enia)
 
-- 100% - Pocz¹tek: King strzela z siebie potrójnymi pociskami z odstêpem 1sek. pod¹¿a za graczem 
+- 100% - pierwsza faza: King strzela z siebie potrójnymi pociskami z odstêpem 1sek. pod¹¿a za graczem 
 (TO JEST PODSTAWOWY ATAK, KTÓRY JEST W KA¯DEJ FAZIE)
 
-- 75% - Pierwsza faza: King wraca na œrodek i nastepnie, Stoj¹c w miejscu uderza lask¹ (attack2) 
+- 75% - druga faza: King wraca na œrodek i nastepnie, Stoj¹c w miejscu uderza lask¹ (attack2) 
 i 10-20 pocisków wokó³ niego zaraz po uderzeniu w ziemiê, (powtarza 3 razy z rzêdu i mo¿e powtarzaæ ten atak ale nie czêœæiej ni¿ co 10 sekund). 
 Po skoñczeniu fazy wraca do pocz¹tku (podst. atak)
 
-- 50% - Druga faza: King wraca na œrodek areny i zostaje tam do rozpoczêcia ostatniej fazy. 
+- 50% - trzecia faza: King wraca na œrodek areny i zostaje tam do rozpoczêcia ostatniej fazy. 
 King zaczyna respiæ moby[500hp] (attack1), ka¿de wykonanie ataku respi 3 moby raz na 6sek.
 
-- 25% - Trzecia faza: King ostatni raz respi 3 moby i otrzymuje wszystkie ataki z poprzednich faz 
-oraz otrzymuje nowy atak, ale ze spowolnionymi pociskami wed³ug uznania ; ) (stara 1 i 3 faza) który trwa ca³y czas, do jego zabicia*/
+- 25% - czwarta faza: King ostatni raz respi 3 moby (atak 1)*/

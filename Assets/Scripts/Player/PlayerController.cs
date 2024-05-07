@@ -204,7 +204,11 @@ namespace BulletParadise.Player
 
         public override void OnDeath()
         {
-            if (gameMaster) return;
+            if (gameMaster)
+            {
+                healthManager.Restart();
+                return;
+            }
 
             SetResponding(false);
             _circleCollider.enabled = false;

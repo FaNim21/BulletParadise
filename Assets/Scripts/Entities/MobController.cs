@@ -62,16 +62,8 @@ namespace BulletParadise.Entities
 
             playerDirection = (target.GetToAimPosition() - position).normalized;
             toPlayerAngle = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
-
-            //if (IsTargetInDistance(chaseRange)) shootingManager.Shoot(weapon, toTargetAngle);
         }
-        public override void FixedUpdate()
-        {
-            /*if (IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
-            {
-                rb.MovePosition(rb.position + Separation() * 2f + moveSpeed * Time.deltaTime * direction);
-            }*/
-        }
+        public override void FixedUpdate() { }
 
         public override void Draw()
         {

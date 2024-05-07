@@ -16,15 +16,15 @@ MonoBehaviour:
   sprite: {fileID: -2230154348629426874, guid: 46f7a3f419a7a5644846c6d0aa8fb9c0, type: 3}
   bodyOffset: {x: 0, y: 0}
   animatorController: {fileID: 9100000, guid: 57f00e4be2002ab4b9eb25a47ca624a1, type: 2}
-  maxHealth: 5000
+  maxHealth: 25000
   speed: 0
   phases:
-  - phase: {fileID: 11400000, guid: 7e3c4f2a19ddd8e499ab6074d59b8698, type: 2}
-    weapon: {fileID: 11400000, guid: 01ba13cf6a642c54aaa05a98eae7ac2f, type: 2}
-    percentage: {x: 0.9, y: 1}
-  - phase: {fileID: 11400000, guid: c18157a33f4694149baad38a4bc6c201, type: 2}
+  - phase: {fileID: 11400000, guid: 045283e9e03f9f544b94ab1e26fecdd0, type: 2}
     weapon: {fileID: 0}
-    percentage: {x: 0, y: 0.9}
+    percentage: {x: 0.2, y: 1}
+  - phase: {fileID: 11400000, guid: 9daf00f3080aa394abc351fc1600aca8, type: 2}
+    weapon: {fileID: 0}
+    percentage: {x: 0, y: 0.2}
   - phase: {fileID: 11400000, guid: 7e3c4f2a19ddd8e499ab6074d59b8698, type: 2}
-    weapon: {fileID: 11400000, guid: eacc8254f0962814d926e198ef83627c, type: 2}
-    percentage: {x: 0, y: 0.75}
+    weapon: {fileID: 0}
+    percentage: {x: 0, y: 0.2}

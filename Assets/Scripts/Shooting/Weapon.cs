@@ -13,6 +13,8 @@ namespace BulletParadise.Shooting
 
         public virtual void Initialize()
         {
+            if (projectiles == null || projectiles.Length == 0) return;
+
             foreach (var item in projectiles)
                 item.Initialize();
         }

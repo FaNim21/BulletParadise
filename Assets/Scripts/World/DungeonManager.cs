@@ -7,15 +7,17 @@ namespace BulletParadise.World
 {
     public class DungeonManager : MonoBehaviour
     {
-        public TextMeshProUGUI timerText;
-
         private TimeSpan timerSpan;
 
         [Header("Debug")]
+        [SerializeField, ReadOnly] private bool wasCheated;
         [SerializeField, ReadOnly] private float timer;
         [SerializeField, ReadOnly] private bool isWorking;
 
-
+        private void Start()
+        {
+            wasCheated = GameManager.Instance.drawDebug.AreDebugLinesVisible();
+        }
         private void Update()
         {
             if (!isWorking) return;
@@ -34,6 +36,8 @@ namespace BulletParadise.World
 
             PortalStats stats = GameManager.Instance.GetEnteredPortalStats();
             timerSpan = TimeSpan.FromSeconds(timer);
+
+            if (GameManager.Instance.worldManager.WasRunCheated()) return;
 
             if (stats.completions == 0)
             {
@@ -54,5 +58,8 @@ namespace BulletParadise.World
         {
             return TimeSpan.FromSeconds(timer);
         }
+
+        public void Cheated() => wasCheated = true;
+        public bool WasCheated() => wasCheated;
     }
 }

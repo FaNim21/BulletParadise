@@ -23,6 +23,7 @@ namespace BulletParadise.Entities.Bosses
 
         public virtual void Draw() { }
 
+        public virtual bool UpdatePhaseOnHit() => true;
         public virtual int CountAsRealPhase() => 1;
     }
 }

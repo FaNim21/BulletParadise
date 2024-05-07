@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d344089ade1b0438dc4637453cb4f1, type: 3}
-  m_Name: ResetToMiddlePhase
+  m_Script: {fileID: 11500000, guid: 7b3823235757617459bc30b06a88b483, type: 3}
+  m_Name: TomatoSlice
   m_EditorClassIdentifier: 
-  speed: 7
-  timeToRestart: 3
-  timeToVulnerability: 1
+  sprite: {fileID: -2124162029, guid: 809ed85ea9899814d91eeba32b2c6f7a, type: 3}
+  damage: 25
+  lifeTime: 1.5
+  speed: 15

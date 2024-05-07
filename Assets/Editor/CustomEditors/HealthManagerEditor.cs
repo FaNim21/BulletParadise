@@ -22,6 +22,11 @@ public class HealthManagerEditor : Editor
             healthManager.SetInvulnerability(_invulnerability);
         }
 
+        if (EditorApplication.isPlaying && GUILayout.Button("KILL"))
+        {
+            healthManager.TakeDamage(99999999);
+        }
+
         EditorUtility.SetDirty(healthManager);
         serializedObject.ApplyModifiedProperties();
     }

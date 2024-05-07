@@ -1,4 +1,3 @@
-using BulletParadise.Misc;
 using BulletParadise.World;
 using TMPro;
 using UnityEngine;
@@ -23,6 +22,10 @@ namespace BulletParadise.UI.Windows
             background = transform.GetChild(0).gameObject;
 
             activeProjectilesText.SetText("Active projectiles: 0");
+        }
+        private void Start()
+        {
+            background.SetActive(false);
         }
 
         private void Update()
@@ -50,7 +53,6 @@ namespace BulletParadise.UI.Windows
 
             background.SetActive(!background.activeSelf);
         }
-
         public void SwitchLinesVisibility(InputAction.CallbackContext context)
         {
             if (context.phase != InputActionPhase.Canceled) return;

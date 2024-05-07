@@ -78,6 +78,8 @@ namespace BulletParadise.Visual.Drawing
         public void SwitchDebugMode()
         {
             isDebugMode = !isDebugMode;
+            if (isDebugMode) GameManager.Instance.worldManager.RunCheated();
         }
+        public bool AreDebugLinesVisible() => isDebugMode;
     }
 }

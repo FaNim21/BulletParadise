@@ -13,6 +13,7 @@ namespace BulletParadise.UI.Windows
         [SerializeField] private CanvasHandle canvasHandle;
         [SerializeField] private GameObject background;
         [SerializeField] private TextMeshProUGUI timerSpendText;
+        [SerializeField] private GameObject cheatedText;
 
 
         private void Awake()
@@ -36,6 +37,8 @@ namespace BulletParadise.UI.Windows
             PlayerController.Instance.healthManager.SetInvulnerability(true);
             GameManager.Instance.worldManager.StopTimer();
             SetSummaryTimer(GameManager.Instance.worldManager.GetTimer());
+            if (GameManager.Instance.worldManager.WasRunCheated()) cheatedText.SetActive(true);
+
             background.SetActive(true);
         }
         public void Close()
