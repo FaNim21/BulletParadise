@@ -18,14 +18,15 @@ namespace BulletParadise.Entities
 
         public void Setup(int layerMask, ProjectileBehavior behavior, Vector2 position, Quaternion rotation)
         {
-            transform.SetPositionAndRotation(position, rotation);
-
             if (gameObject.layer != layerMask)
             {
                 gameObject.layer = layerMask;
                 for (int i = 0; i < transform.childCount; i++)
                     transform.GetChild(i).gameObject.layer = layerMask;
             }
+
+            transform.SetPositionAndRotation(position, rotation);
+            _rb.rotation = transform.eulerAngles.z;
 
             _spriteRenderer.sprite = behavior.data.sprite;
             _aliveTimer = 0;
@@ -38,18 +39,27 @@ namespace BulletParadise.Entities
 
         private void Update()
         {
+            if (behavior == null) return;
+
             _aliveTimer += Time.deltaTime;
             if (_aliveTimer >= behavior.data.lifeTime)
             {
                 Destroy();
+                return;
             }
 
             behavior.logic.OnUpdate(behavior);
         }
-        private void FixedUpdate() => behavior.physics.OnUpdate(behavior);
+        private void FixedUpdate()
+        {
+            if (behavior == null) return;
+            behavior.physics.OnUpdate(behavior);
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (behavior == null) return;
+
             if (collision.transform.parent.TryGetComponent<IDamageable>(out var entity))
             {
                 entity.TakeDamage(behavior.data.damage);
@@ -57,9 +67,18 @@ namespace BulletParadise.Entities
             }
         }
 
-        private void Destroy()
+        public void Destroy()
         {
-            ProjectilePooler.Instance.Release(this);
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
+            //ProjectilePooler.Instance.Release(this);
         }
+
+        /*public void Restart()
+        {
+            _aliveTimer = 0f;
+            transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            behavior = null;
+        }*/
     }
 }

@@ -1,5 +1,5 @@
 using BulletParadise.Entities;
-using BulletParadise.Misc;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -9,6 +9,8 @@ namespace BulletParadise.World
     public class ProjectilePooler : MonoBehaviour
     {
         public static ProjectilePooler Instance { get; private set; }
+
+        public int initializeCount = 200;
 
         private ObjectPool<Projectile> _pool;
         private List<Projectile> _activeProjectiles = new();
@@ -21,28 +23,33 @@ namespace BulletParadise.World
             else
                 Destroy(this);
         }
-        private void Start()
+        private IEnumerator Start()
         {
-            Utils.LogWarning("Creating pool for projectiles");
+            yield return null;
+            /*Utils.LogWarning("Creating pool for projectiles");
             _pool = new ObjectPool<Projectile>(() =>
             {
                 return Instantiate(GameManager.Projectile, transform);
             }, null, projectile =>
             {
-                projectile.gameObject.SetActive(false);
-            }, null, false, 200, 1000);
+                projectile.Restart();
+            }, null, false, initializeCount, 1000);
 
-            List<Projectile> startupProjectiles = new();
-            for (int i = 0; i < 200; i++)
+            yield return null;*/
+
+            /*List<Projectile> startupProjectiles = new();
+            for (int i = 0; i < initializeCount; i++)
             {
                 var projectile = _pool.Get();
                 startupProjectiles.Add(projectile);
+                yield return null;
             }
 
             foreach (var projectile in startupProjectiles)
             {
                 _pool.Release(projectile);
-            }
+                yield return null;
+            }*/
         }
 
         public Projectile GetProjectile()
@@ -62,7 +69,7 @@ namespace BulletParadise.World
         {
             for (int i = 0; i < _activeProjectiles.Count; i++)
             {
-                _pool.Release(_activeProjectiles[i]);
+                _activeProjectiles[i].Destroy();
             }
         }
 

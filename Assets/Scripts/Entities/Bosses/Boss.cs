@@ -62,6 +62,7 @@ namespace BulletParadise.Entities.Bosses
             {
                 _shootingManager.ChangeShootingOffset(config.bodyOffset);
             }
+            _circleCollider.radius = config.colliderRadius;
 
             target = PlayerController.Instance.transform;
             isWorking = true;

@@ -33,7 +33,6 @@ namespace BulletParadise.World
         private IEnumerator LoadSceneAsync(string sceneName)
         {
             Time.timeScale = 0f;
-            ProjectilePooler.Instance.ReleaseAll();
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 
             while (!operation.isDone)
@@ -51,6 +50,8 @@ namespace BulletParadise.World
             yield return null;
             SetUpOnNewScene();
             yield return null;
+            //ProjectilePooler.Instance.ReleaseAll();
+            //yield return null;
 
             if (bossConfig != null)
             {

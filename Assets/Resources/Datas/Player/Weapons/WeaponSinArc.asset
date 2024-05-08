@@ -18,6 +18,7 @@ MonoBehaviour:
   projectiles:
   - name: Broccoli - 1
     data: {fileID: 11400000, guid: 847c844fd46331842a0e3ea015a6c945, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1
@@ -32,6 +33,7 @@ MonoBehaviour:
       rotationSpeed: 0
   - name: Broccoli - 2
     data: {fileID: 11400000, guid: 847c844fd46331842a0e3ea015a6c945, type: 2}
+    entity: {fileID: 0}
     dataMultiplier:
       damageMultiplier: 1
       lifeTimeMultiplier: 1

@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Tomatoed
   sprite: {fileID: -2230154348629426874, guid: 46f7a3f419a7a5644846c6d0aa8fb9c0, type: 3}
   bodyOffset: {x: 0, y: 0}
+  colliderRadius: 0.5
   animatorController: {fileID: 9100000, guid: 57f00e4be2002ab4b9eb25a47ca624a1, type: 2}
   maxHealth: 25000
   speed: 0

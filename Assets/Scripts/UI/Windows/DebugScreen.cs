@@ -32,7 +32,7 @@ namespace BulletParadise.UI.Windows
         {
             if (!background.activeSelf) return;
 
-            int allProjectiles = ProjectilePooler.Instance.GetProjectilesInPool();
+            /*int allProjectiles = ProjectilePooler.Instance.GetProjectilesInPool();
             if (allProjectiles != _allProjectiles)
             {
                 _allProjectiles = allProjectiles;
@@ -44,7 +44,7 @@ namespace BulletParadise.UI.Windows
             {
                 _activeProjectiles = activeProjectiles;
                 activeProjectilesText.SetText("Active projectiles: " + _activeProjectiles.ToString());
-            }
+            }*/
         }
 
         public void SwitchScreenVisibility(InputAction.CallbackContext context)
