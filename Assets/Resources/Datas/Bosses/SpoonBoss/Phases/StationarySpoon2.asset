@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4204464d4d3cc75448f217d1ef115a29, type: 3}
   m_Name: StationarySpoon2
   m_EditorClassIdentifier: 
+  weaponShootingData:
+    weapon: {fileID: 11400000, guid: eacc8254f0962814d926e198ef83627c, type: 2}
+    animData: {fileID: 11400000, guid: 61574f52d13d3f047ac9fd4dbf1c989c, type: 2}
+    animTrigger: shoot2
   primaryWeapon: {fileID: 11400000, guid: eacc8254f0962814d926e198ef83627c, type: 2}
   primaryWeaponAnimName: shoot2
   primaryWeaponAnimTime: 0.6666667

@@ -16,14 +16,9 @@ namespace BulletParadise.World
         {
             dungeonManager = GetComponent<DungeonManager>();
         }
-        private void Start()
-        {
-            StartCoroutine(FindAfterEndOfFrame());
-        }
-        private IEnumerator FindAfterEndOfFrame()
+        private IEnumerator Start()
         {
             yield return null;
-            Utils.LogWarning("Loading in world manager");
             GameManager.Instance.saveManager.FindAllSavableObjects();
         }
 

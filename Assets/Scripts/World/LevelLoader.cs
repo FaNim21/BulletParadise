@@ -22,14 +22,12 @@ namespace BulletParadise.World
 
         public void LoadScene(string sceneName, BossConfig bossConfig = null)
         {
-            this.bossConfig = bossConfig;
-            GameManager.Instance.saveManager.SaveGame();
-            PlayerController.Instance.SetResponding(false);
-            PlayerController.Instance.healthManager.SetInvulnerability(false);
             background.SetActive(true);
+
+            this.bossConfig = bossConfig;
+            BeforeLoadingScene();
             StartCoroutine(LoadSceneAsync(sceneName));
         }
-
         private IEnumerator LoadSceneAsync(string sceneName)
         {
             Time.timeScale = 0f;
@@ -48,10 +46,8 @@ namespace BulletParadise.World
             loadingSlider.value = 1;
 
             yield return null;
-            SetUpOnNewScene();
+            AfterSceneLoaded();
             yield return null;
-            //ProjectilePooler.Instance.ReleaseAll();
-            //yield return null;
 
             if (bossConfig != null)
             {
@@ -60,16 +56,20 @@ namespace BulletParadise.World
             }
 
             background.SetActive(false);
-
             Time.timeScale = 1f;
             GameManager.Instance.worldManager.StartTimer();
         }
 
-        private void SetUpOnNewScene()
+        private void BeforeLoadingScene()
+        {
+            GameManager.Instance.saveManager.SaveGame();
+            PlayerController.Instance.SetResponding(false);
+            PlayerController.Instance.healthManager.SetInvulnerability(false);
+        }
+        private void AfterSceneLoaded()
         {
             GameManager.Instance.FindWorldManager();
             PlayerController.Instance.Restart();
-            PlayerController.Instance.SetResponding(true);
         }
     }
 }

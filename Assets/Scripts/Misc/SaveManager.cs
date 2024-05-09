@@ -40,8 +40,8 @@ namespace BulletParadise.DataManagement
             _savables = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISavable>().ToList();
 
             Utils.Log("Savable objects count: " + _savables.Count);
-            foreach (var data in _savables)
-                Utils.Log("savable object name: " + data.GetType());
+            /*foreach (var data in _savables)
+                Utils.Log("savable object name: " + data.GetType());*/
 
             LoadGame();
         }

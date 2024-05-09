@@ -222,6 +222,7 @@ namespace BulletParadise.Player
         {
             transform.position = gameManager.worldManager.playerSpawnPosition.position;
             _circleCollider.enabled = true;
+            SetResponding(true);
             _cameraController.Restart();
             shootingManager.Restart();
             healthManager.Restart();

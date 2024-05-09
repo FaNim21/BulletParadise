@@ -1,25 +1,40 @@
 fileFormatVersion: 2
-guid: c08563bd29bfcec45859eaa13ec8c9bc
+guid: 907873c98192165458b800118a4e38fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6723703663798507107
-    second: ForkLordMove_0
+      213: 806090252629874804
+    second: ForkLordAttack1_0
   - first:
-      213: 8678746486733770827
-    second: ForkLordMove_1
+      213: 7182438614256744723
+    second: ForkLordAttack1_1
   - first:
-      213: -7597181442193137879
-    second: ForkLordMove_2
+      213: -535457642217499339
+    second: ForkLordAttack1_2
   - first:
-      213: -5207913629241994290
-    second: ForkLordMove_3
+      213: -9153962865131541896
+    second: ForkLordAttack1_3
   - first:
-      213: -8635442904233231337
-    second: ForkLordMove_4
+      213: -4117994456178188779
+    second: ForkLordAttack1_4
   - first:
-      213: 8510866972540663420
-    second: ForkLordMove_5
+      213: 2430960827382107407
+    second: ForkLordAttack1_5
+  - first:
+      213: 3951943995078791003
+    second: ForkLordAttack1_6
+  - first:
+      213: -3924095652039719315
+    second: ForkLordAttack1_7
+  - first:
+      213: -3382822475172381423
+    second: ForkLordAttack1_8
+  - first:
+      213: 7478256079799196766
+    second: ForkLordAttack1_9
+  - first:
+      213: -1706641615656387138
+    second: ForkLordAttack1_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -128,7 +143,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ForkLordMove_0
+      name: ForkLordAttack1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 366d3b7cbd46f4d50800000000000000
-      internalID: 6723703663798507107
+      spriteID: 47898ec50decf2b00800000000000000
+      internalID: 806090252629874804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ForkLordMove_1
+      name: ForkLordAttack1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -163,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b409f6d92f9117870800000000000000
-      internalID: 8678746486733770827
+      spriteID: 31972df8dd52da360800000000000000
+      internalID: 7182438614256744723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ForkLordMove_2
+      name: ForkLordAttack1_2
       rect:
         serializedVersion: 2
         x: 128
@@ -184,14 +199,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92f53ebdab3619690800000000000000
-      internalID: -7597181442193137879
+      spriteID: 5359b538c1ca198f0800000000000000
+      internalID: -535457642217499339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ForkLordMove_3
+      name: ForkLordAttack1_3
       rect:
         serializedVersion: 2
         x: 192
@@ -205,14 +220,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec39d1c9526c9b7b0800000000000000
-      internalID: -5207913629241994290
+      spriteID: 87aa7b0264796f080800000000000000
+      internalID: -9153962865131541896
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ForkLordMove_4
+      name: ForkLordAttack1_4
       rect:
         serializedVersion: 2
         x: 256
@@ -226,14 +241,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71cb20f5e6eb82880800000000000000
-      internalID: -8635442904233231337
+      spriteID: 51e98743cd1f9d6c0800000000000000
+      internalID: -4117994456178188779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ForkLordMove_5
+      name: ForkLordAttack1_5
       rect:
         serializedVersion: 2
         x: 320
@@ -247,8 +262,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c76f3e44b6cac1670800000000000000
-      internalID: 8510866972540663420
+      spriteID: f0d00032ef18cb120800000000000000
+      internalID: 2430960827382107407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForkLordAttack1_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5fc8ee002028d630800000000000000
+      internalID: 3951943995078791003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForkLordAttack1_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6684839bcfca89c0800000000000000
+      internalID: -3924095652039719315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForkLordAttack1_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11d742db1eccd01d0800000000000000
+      internalID: -3382822475172381423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForkLordAttack1_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5c16d7784a18c760800000000000000
+      internalID: 7478256079799196766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForkLordAttack1_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebdf6e32e7ac058e0800000000000000
+      internalID: -1706641615656387138
       vertices: []
       indices: 
       edges: []
@@ -256,7 +376,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 82b869b431bb8ef4ba4ccba117437600
+    spriteID: aff0d586d5d2c6e498d9858704713182
     internalID: 0
     vertices: []
     indices: 
@@ -264,12 +384,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ForkLordMove_0: 6723703663798507107
-      ForkLordMove_1: 8678746486733770827
-      ForkLordMove_2: -7597181442193137879
-      ForkLordMove_3: -5207913629241994290
-      ForkLordMove_4: -8635442904233231337
-      ForkLordMove_5: 8510866972540663420
+      ForkLordAttack1_0: 806090252629874804
+      ForkLordAttack1_1: 7182438614256744723
+      ForkLordAttack1_10: -1706641615656387138
+      ForkLordAttack1_2: -535457642217499339
+      ForkLordAttack1_3: -9153962865131541896
+      ForkLordAttack1_4: -4117994456178188779
+      ForkLordAttack1_5: 2430960827382107407
+      ForkLordAttack1_6: 3951943995078791003
+      ForkLordAttack1_7: -3924095652039719315
+      ForkLordAttack1_8: -3382822475172381423
+      ForkLordAttack1_9: 7478256079799196766
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

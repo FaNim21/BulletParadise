@@ -1,3 +1,4 @@
+using BulletParadise.Components;
 using BulletParadise.Player;
 using BulletParadise.Shooting;
 using BulletParadise.Visual.Drawing;
@@ -10,10 +11,7 @@ namespace BulletParadise.Entities.Bosses.Phases
     {
         public float chaseSpeed;
 
-        public Weapon primaryWeapon;
-        public string primaryWeaponAnimName;
-        public float primaryWeaponAnimTime;
-        public float primaryWeaponAnimDelay;
+        public WeaponShootBossData weaponShootingData;
 
         [Header("On Enter")]
         public MobController chaseMobs;
@@ -39,10 +37,7 @@ namespace BulletParadise.Entities.Bosses.Phases
             direction = (target.GetToAimPosition() - (Vector2)shootingManager.shootingOffset.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            if (primaryWeapon != null)
-            {
-                shootingManager.Shoot(primaryWeapon, angle, null, primaryWeaponAnimName, primaryWeaponAnimDelay, primaryWeaponAnimTime);
-            }
+            shootingManager.Shoot(weaponShootingData, angle);
         }
 
         public override void PhysicsUpdate(Rigidbody2D rb)

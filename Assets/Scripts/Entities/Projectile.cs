@@ -58,8 +58,6 @@ namespace BulletParadise.Entities
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (behavior == null) return;
-
             if (collision.transform.parent.TryGetComponent<IDamageable>(out var entity))
             {
                 entity.TakeDamage(behavior.data.damage);

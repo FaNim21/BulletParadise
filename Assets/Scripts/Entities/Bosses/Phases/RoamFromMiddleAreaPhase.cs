@@ -1,4 +1,5 @@
-﻿using BulletParadise.Shooting;
+﻿using BulletParadise.Components;
+using BulletParadise.Shooting;
 using BulletParadise.Visual.Drawing;
 using UnityEngine;
 using UnityEngine.XR;
@@ -12,10 +13,7 @@ namespace BulletParadise.Entities.Bosses.Phases
         public float roamRange = 2;
         public float timeOnDestination = 1f;
 
-        public Weapon primaryWeapon;
-        public string primaryWeaponAnimName;
-        public float primaryWeaponAnimTime;
-        public float primaryWeaponAnimDelay;
+        public WeaponShootBossData weaponShootingData;
 
         private float _currentSpeed;
         private bool _reachedDestination;
@@ -53,16 +51,14 @@ namespace BulletParadise.Entities.Bosses.Phases
                     _toRoamPosition = _arenaCenter + boss.GetRandomNormalizedUnitVector() * roamRange;
                     _currentSpeed = speed;
                     boss.SetSpeedAnim(_currentSpeed);
-                    if (primaryWeapon != null)
-                    {
-                        shootingManager.Shoot(primaryWeapon, 0, null, primaryWeaponAnimName, primaryWeaponAnimDelay, primaryWeaponAnimTime);
-                    }
+
+                    shootingManager.Shoot(weaponShootingData, 0);
                     return;
                 }
 
-                if (primaryWeapon != null && _shoot)
+                if (_shoot)
                 {
-                    shootingManager.Shoot(primaryWeapon, 0, null, primaryWeaponAnimName, primaryWeaponAnimDelay, primaryWeaponAnimTime);
+                    shootingManager.Shoot(weaponShootingData, 0);
                     _shoot = false;
                 }
                 return;

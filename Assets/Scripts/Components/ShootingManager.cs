@@ -1,4 +1,4 @@
-using BulletParadise.Misc;
+using BulletParadise.Datas;
 using BulletParadise.Shooting;
 using System;
 using System.Collections;
@@ -6,6 +6,14 @@ using UnityEngine;
 
 namespace BulletParadise.Components
 {
+    [System.Serializable]
+    public struct WeaponShootBossData
+    {
+        public Weapon weapon;
+        public BossShootAnimData animData;
+        public string animTrigger;
+    }
+
     /*Make this multi ShootingManager*/
     public class ShootingManager : MonoBehaviour
     {
@@ -33,13 +41,22 @@ namespace BulletParadise.Components
 
             OnShoot?.Invoke();
 
-            if (delay == 0)
-                StartCoroutine(ShootCoroutine(weapon, angle, animTriggerName));
-            else
-                StartCoroutine(ShootCoroutineWithDelay(weapon, angle, animTriggerName, delay, animTime));
+            StartCoroutine(ShootCoroutine(weapon, angle, animTriggerName));
+        }
+        public void Shoot(WeaponShootBossData data, float angle, Action OnShoot = null)
+        {
+            if (_isShooting || data.weapon == null || !_canShoot) return;
+            OnShoot?.Invoke();
+
+            if (data.animData == null)
+            {
+                StartCoroutine(ShootCoroutine(data.weapon, angle));
+                return;
+            }
+            StartCoroutine(ShootingBossCoroutine(data, angle));
         }
 
-        private IEnumerator ShootCoroutine(Weapon weapon, float angle, string animTriggerName)
+        private IEnumerator ShootCoroutine(Weapon weapon, float angle, string animTriggerName = null)
         {
             _isShooting = true;
             if (_animator != null && !string.IsNullOrEmpty(animTriggerName))
@@ -53,28 +70,22 @@ namespace BulletParadise.Components
             yield return new WaitForSeconds(1f / weapon.frequency);
             _isShooting = false;
         }
-        private IEnumerator ShootCoroutineWithDelay(Weapon weapon, float angle, string animTriggerName, float delay, float animTime)
+        private IEnumerator ShootingBossCoroutine(WeaponShootBossData data, float angle)
         {
             _isShooting = true;
-            float shootSpeed = Mathf.Max(weapon.frequency, 1f);
+
+            float shootSpeed = Mathf.Max(data.weapon.frequency, 1f);
+            float scaledDelay = data.animData.shootDelay / shootSpeed;
+            float scaledRestTime = (data.animData.clip.length / shootSpeed) - scaledDelay;
+            float weaponDelay = Mathf.Max((1f / data.weapon.frequency) - scaledDelay - scaledRestTime, 0);
 
             _animator.SetFloat("shootSpeed", shootSpeed);
-            _animator.SetTrigger(animTriggerName);
+            _animator.SetTrigger(data.animTrigger);
 
-            float scaledDelay = delay / shootSpeed;
             yield return new WaitForSeconds(scaledDelay);
+            data.weapon.Shoot(layerMask, shootingOffset.position, angle);
+            yield return new WaitForSeconds(scaledRestTime + weaponDelay);
 
-            weapon.Shoot(layerMask, shootingOffset.position, angle);
-
-            float scaledRestTime = (animTime / shootSpeed) - scaledDelay;
-            yield return new WaitForSeconds(scaledRestTime);
-
-            float weaponDelay = Mathf.Max((1f / weapon.frequency) - scaledDelay - scaledRestTime, 0);
-
-            //Utils.Log($"delay: {scaledDelay}, rest: {scaledRestTime}, overall: {animTime / shootSpeed}");
-            //Utils.Log($"Weapon delay: {weaponDelay}");
-
-            yield return new WaitForSeconds(weaponDelay);
             _isShooting = false;
         }
 

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99aa0b6c5c8840b4fadcca4eda35f8ff, type: 3}
+  m_Name: SpoonShooting2Data
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: 192428f8a4e2d854cbfcfb2931a80d51, type: 2}
+  shootDelay: 0.4166667

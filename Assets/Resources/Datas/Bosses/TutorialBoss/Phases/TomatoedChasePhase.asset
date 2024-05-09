@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: TomatoedChasePhase
   m_EditorClassIdentifier: 
   chaseSpeed: 0.9
+  weaponShootingData:
+    weapon: {fileID: 11400000, guid: c579d2b5236541b49a5475ac599ed489, type: 2}
+    animData: {fileID: 0}
+    animTrigger: 
   primaryWeapon: {fileID: 11400000, guid: c579d2b5236541b49a5475ac599ed489, type: 2}
   primaryWeaponAnimName: 
   primaryWeaponAnimTime: 0

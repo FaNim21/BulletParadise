@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f026a7e294426974092e382721884c3c
+timeCreated: 1500131430
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 95622
+  packageName: Script And Code Line Calculator
+  packageVersion: 1.0.1
+  assetPath: Assets/Plugins/ScriptCalculator/Readme.txt
+  uploadId: 378506
