@@ -14,7 +14,6 @@ namespace BulletParadise.Components
         public string animTrigger;
     }
 
-    /*Make this multi ShootingManager*/
     public class ShootingManager : MonoBehaviour
     {
         private Animator _animator;
@@ -59,15 +58,13 @@ namespace BulletParadise.Components
         private IEnumerator ShootCoroutine(Weapon weapon, float angle, string animTriggerName = null)
         {
             _isShooting = true;
-            if (_animator != null && !string.IsNullOrEmpty(animTriggerName))
-            {
-                _animator.SetFloat("shootSpeed", Mathf.Max(weapon.frequency / 3f, 1f));
-                _animator.SetTrigger(animTriggerName);
-            }
 
-            weapon.Shoot(layerMask, shootingOffset.position, angle);
+            float shotSpeed = Mathf.Max(weapon.frequency / 3f, 1f);
+            StartShootingAnimation(shotSpeed, animTriggerName);
 
+            yield return weapon.Shoot(layerMask, shootingOffset, angle);
             yield return new WaitForSeconds(1f / weapon.frequency);
+
             _isShooting = false;
         }
         private IEnumerator ShootingBossCoroutine(WeaponShootBossData data, float angle)
@@ -79,14 +76,21 @@ namespace BulletParadise.Components
             float scaledRestTime = (data.animData.clip.length / shootSpeed) - scaledDelay;
             float weaponDelay = Mathf.Max((1f / data.weapon.frequency) - scaledDelay - scaledRestTime, 0);
 
-            _animator.SetFloat("shootSpeed", shootSpeed);
-            _animator.SetTrigger(data.animTrigger);
+            StartShootingAnimation(shootSpeed, data.animTrigger);
 
             yield return new WaitForSeconds(scaledDelay);
-            data.weapon.Shoot(layerMask, shootingOffset.position, angle);
+            yield return data.weapon.Shoot(layerMask, shootingOffset, angle);
             yield return new WaitForSeconds(scaledRestTime + weaponDelay);
 
             _isShooting = false;
+        }
+
+        private void StartShootingAnimation(float speed, string animTrigger)
+        {
+            if (_animator == null || string.IsNullOrEmpty(animTrigger)) return;
+
+            _animator.SetFloat("shootSpeed", speed);
+            _animator.SetTrigger(animTrigger);
         }
 
         public void Restart()

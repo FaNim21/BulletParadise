@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace BulletParadise.Shooting.Weapons
@@ -5,7 +6,7 @@ namespace BulletParadise.Shooting.Weapons
     [CreateAssetMenu(fileName = "new WeaponSpawnEntity", menuName = "Weapons/WeaponType/EntitySpawn")]
     public class WeaponSpawnEntity : Weapon
     {
-        public override void Shoot(int layerMask, Vector2 shootingPosition, float shootingAngle)
+        public override IEnumerator Shoot(int layerMask, Transform shootingPosition, float shootingAngle)
         {
             int length = projectiles.Length;
 
@@ -13,8 +14,10 @@ namespace BulletParadise.Shooting.Weapons
             {
                 var current = projectiles[i];
 
-                SendProjectile(current, layerMask, shootingPosition, 0);
+                SendProjectile(current, layerMask, shootingPosition.position, 0);
             }
+
+            yield break;
         }
 
         protected override void SendProjectile(ProjectileBehaviorData current, int layerMask, Vector2 shootingPosition, float degree)

@@ -20,12 +20,12 @@ MonoBehaviour:
   maxHealth: 25000
   speed: 0
   phases:
-  - phase: {fileID: 11400000, guid: 045283e9e03f9f544b94ab1e26fecdd0, type: 2}
-    weapon: {fileID: 0}
+  - name: 
+    phase: {fileID: 11400000, guid: 045283e9e03f9f544b94ab1e26fecdd0, type: 2}
     percentage: {x: 0.2, y: 1}
-  - phase: {fileID: 11400000, guid: 9daf00f3080aa394abc351fc1600aca8, type: 2}
-    weapon: {fileID: 0}
+  - name: 
+    phase: {fileID: 11400000, guid: 9daf00f3080aa394abc351fc1600aca8, type: 2}
     percentage: {x: 0, y: 0.2}
-  - phase: {fileID: 11400000, guid: 7e3c4f2a19ddd8e499ab6074d59b8698, type: 2}
-    weapon: {fileID: 0}
+  - name: 
+    phase: {fileID: 11400000, guid: 7e3c4f2a19ddd8e499ab6074d59b8698, type: 2}
     percentage: {x: 0, y: 0.2}

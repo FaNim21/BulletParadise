@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace BulletParadise.Shooting.Weapons
@@ -5,7 +6,7 @@ namespace BulletParadise.Shooting.Weapons
     [CreateAssetMenu(fileName = "new WeaponCircle", menuName = "Weapons/WeaponType/Circle")]
     public class WeaponAOECircle : Weapon
     {
-        public override void Shoot(int layerMask, Vector2 shootingPosition, float shootingAngle)
+        public override IEnumerator Shoot(int layerMask, Transform shootingPosition, float shootingAngle)
         {
             int length = projectiles.Length;
             float degree;
@@ -17,8 +18,10 @@ namespace BulletParadise.Shooting.Weapons
 
                 degree = shootingAngle + (i * arcDegree);
 
-                SendProjectile(current, layerMask, shootingPosition, degree);
+                SendProjectile(current, layerMask, shootingPosition.position, degree);
             }
+
+            yield break;
         }
     }
 }

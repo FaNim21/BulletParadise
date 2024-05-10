@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace BulletParadise.Shooting.Weapons
@@ -9,7 +10,7 @@ namespace BulletParadise.Shooting.Weapons
         [SerializeField] private float angle;
 
 
-        public override void Shoot(int layerMask, Vector2 shootingPosition, float shootingAngle)
+        public override IEnumerator Shoot(int layerMask, Transform shootingPosition, float shootingAngle)
         {
             float degree;
             int length = projectiles.Length;
@@ -23,8 +24,10 @@ namespace BulletParadise.Shooting.Weapons
 
                 degree = baseAngle + (angle * (halfLength - i)) - halfAngle - (halfAngle * (length % 2 * -1));
 
-                SendProjectile(current, layerMask, shootingPosition, degree);
+                SendProjectile(current, layerMask, shootingPosition.position, degree);
             }
+
+            yield break;
         }
     }
 }

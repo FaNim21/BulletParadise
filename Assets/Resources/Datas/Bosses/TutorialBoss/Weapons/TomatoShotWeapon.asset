@@ -226,4 +226,4 @@ MonoBehaviour:
       amplitude: 0
       magnitude: 0
       rotationSpeed: 0
-  frequency: 1
+  frequency: 10

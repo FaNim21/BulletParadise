@@ -1,4 +1,5 @@
 ﻿using BulletParadise.Entities.Items;
+using System.Collections;
 using UnityEngine;
 
 namespace BulletParadise.Shooting
@@ -18,7 +19,7 @@ namespace BulletParadise.Shooting
                 item.Initialize();
         }
 
-        public abstract void Shoot(int layerMask, Vector2 shootingPosition, float shootingAngle);
+        public abstract IEnumerator Shoot(int layerMask, Transform shootingPosition, float shootingAngle);
 
         protected virtual void SendProjectile(ProjectileBehaviorData current, int layerMask, Vector2 shootingPosition, float degree)
         {

@@ -11,15 +11,18 @@ namespace BulletParadise
         public float delayBetweenShots;
 
 
-        public override void Shoot(int layerMask, Vector2 shootingPosition, float shootingAngle)
+        public override IEnumerator Shoot(int layerMask, Transform shootingPosition, float shootingAngle)
         {
             int length = weapons.Length;
             for (int i = 0; i < length; i++)
             {
                 var current = weapons[i];
 
-                current.Shoot(layerMask, shootingPosition, shootingAngle);
+                yield return current.Shoot(layerMask, shootingPosition, shootingAngle);
+                yield return new WaitForSeconds(delayBetweenShots);
             }
+
+            yield break;
         }
     }
 }
