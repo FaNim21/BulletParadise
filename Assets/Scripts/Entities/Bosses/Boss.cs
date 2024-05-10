@@ -80,7 +80,7 @@ namespace BulletParadise.Entities.Bosses
             base.Update();
 
             direction = ((Vector2)target.position - position).normalized;
-            CurrentPhase.LogicUpdate(config.phases[currentPhaseIndex].weapon, direction);
+            CurrentPhase.LogicUpdate(direction);
         }
         public override void FixedUpdate()
         {
@@ -102,6 +102,7 @@ namespace BulletParadise.Entities.Bosses
         {
             base.OnDeath();
 
+            GameManager.Instance.worldManager.CompleteDungeon();
             if (!GameManager.Instance.worldManager.WasRunCheated())
                 GameManager.Instance.GetEnteredPortalStats().completions++;
             PlayerController.Instance.canvasHandle.OpenWindow<SummaryScreen>();

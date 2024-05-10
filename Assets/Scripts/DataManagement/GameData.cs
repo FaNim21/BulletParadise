@@ -3,25 +3,6 @@ using System.Collections.Generic;
 namespace BulletParadise.DataManagement
 {
     [System.Serializable]
-    public class TimerData
-    {
-        public int minutes;
-        public int seconds;
-        public int milliseconds;
-
-        public double totalMiliseconds;
-
-
-        public TimerData()
-        {
-            minutes = 0;
-            seconds = 0;
-            milliseconds = 0;
-            totalMiliseconds = 0d;
-        }
-    }
-
-    [System.Serializable]
     public class PortalStats
     {
         public int portalID;
@@ -30,7 +11,7 @@ namespace BulletParadise.DataManagement
         public int deaths;
         public int completions;
 
-        public TimerData timer;
+        public double timerMiliseconds;
 
 
         public PortalStats()
@@ -38,8 +19,7 @@ namespace BulletParadise.DataManagement
             attempts = 0;
             deaths = 0;
             completions = 0;
-
-            timer = new TimerData();
+            timerMiliseconds = 0d;
         }
     }
 

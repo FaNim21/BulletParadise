@@ -1,5 +1,4 @@
 using BulletParadise.Components;
-using BulletParadise.Shooting;
 using UnityEngine;
 
 namespace BulletParadise.Entities.Bosses
@@ -17,7 +16,7 @@ namespace BulletParadise.Entities.Bosses
         }
 
         public abstract void OnEnter();
-        public abstract void LogicUpdate(Weapon weapon, Vector2 targetDirection);
+        public abstract void LogicUpdate(Vector2 targetDirection);
         public abstract void PhysicsUpdate(Rigidbody2D rb);
         public abstract void OnExit();
 

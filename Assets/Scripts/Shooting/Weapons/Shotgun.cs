@@ -1,0 +1,25 @@
+using BulletParadise.Shooting;
+using System.Collections;
+using UnityEngine;
+
+namespace BulletParadise
+{
+    [CreateAssetMenu(fileName = "new Shotgun", menuName = "Weapons/WeaponType/Shotgun")]
+    public class Shotgun : Weapon
+    {
+        public Weapon[] weapons;
+        public float delayBetweenShots;
+
+
+        public override void Shoot(int layerMask, Vector2 shootingPosition, float shootingAngle)
+        {
+            int length = weapons.Length;
+            for (int i = 0; i < length; i++)
+            {
+                var current = weapons[i];
+
+                current.Shoot(layerMask, shootingPosition, shootingAngle);
+            }
+        }
+    }
+}

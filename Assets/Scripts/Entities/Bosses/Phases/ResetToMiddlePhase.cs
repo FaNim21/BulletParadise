@@ -1,4 +1,3 @@
-using BulletParadise.Shooting;
 using BulletParadise.Visual.Drawing;
 using UnityEngine;
 
@@ -26,7 +25,7 @@ namespace BulletParadise.Entities.Bosses.Phases
             boss.SetSpeedAnim(speed);
         }
 
-        public override void LogicUpdate(Weapon weapon, Vector2 targetDirection)
+        public override void LogicUpdate(Vector2 targetDirection)
         {
             if (Vector2.Distance(boss.transform.position, _target) <= _tolerance)
             {

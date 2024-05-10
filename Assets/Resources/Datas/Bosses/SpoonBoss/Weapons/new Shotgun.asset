@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69a7881a67517145b4a7fc618419c20, type: 3}
+  m_Name: new Shotgun
+  m_EditorClassIdentifier: 
+  id: -1
+  name: 
+  sprite: {fileID: 0}
+  projectiles: []
+  frequency: 1
+  weapons:
+  - {fileID: 11400000, guid: ed32c189afcd78f47aad0a5666306eb4, type: 2}
+  - {fileID: 11400000, guid: eacc8254f0962814d926e198ef83627c, type: 2}
+  delayBetweenShots: 1

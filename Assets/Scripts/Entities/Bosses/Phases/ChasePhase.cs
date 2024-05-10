@@ -32,12 +32,13 @@ namespace BulletParadise.Entities.Bosses.Phases
                 Instantiate(chaseMobs, (Vector2)boss.transform.position + Random.insideUnitCircle * 2, Quaternion.identity);
         }
 
-        public override void LogicUpdate(Weapon weapon, Vector2 targetDirection)
+        public override void LogicUpdate(Vector2 targetDirection)
         {
             direction = (target.GetToAimPosition() - (Vector2)shootingManager.shootingOffset.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            shootingManager.Shoot(weaponShootingData, angle);
+            //shootingManager.Shoot(weaponShootingData, angle);
+            shootingManager.Shoot(weaponShootingData.weapon, angle);
         }
 
         public override void PhysicsUpdate(Rigidbody2D rb)

@@ -1,5 +1,4 @@
 using BulletParadise.Entities.Bosses;
-using BulletParadise.Shooting;
 using UnityEngine;
 
 namespace BulletParadise
@@ -20,7 +19,7 @@ namespace BulletParadise
             boss.SetSpeedAnim(0);
         }
 
-        public override void LogicUpdate(Weapon weapon, Vector2 targetDirection)
+        public override void LogicUpdate(Vector2 targetDirection)
         {
             if (_timer >= _timeToVulnerability && boss.entity.healthManager.IsInvulnerable())
                 boss.entity.healthManager.SetInvulnerability(false);

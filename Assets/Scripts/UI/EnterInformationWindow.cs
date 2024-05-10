@@ -2,6 +2,7 @@ using BulletParadise.Datas;
 using BulletParadise.Entities;
 using BulletParadise.Player;
 using BulletParadise.World;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,9 +65,10 @@ namespace BulletParadise.UI
                                         $"Phases amount: {boss.GetRealPhaseCount()}\n" +
                                         $"");
 
-            string timerText = $"{currentPortal.stats.timer.minutes}:{currentPortal.stats.timer.seconds}.{currentPortal.stats.timer.milliseconds}";
+            TimeSpan timer = TimeSpan.FromMilliseconds(currentPortal.stats.timerMiliseconds);
+            string timerText = string.Format("{0:D2}:{1:D2}:{2:D3}", timer.Minutes, timer.Seconds, timer.Milliseconds);
             if (currentPortal.stats.completions == 0)
-                timerText = $"<color=red>UNFINISHED</color>({currentPortal.stats.timer.minutes}:{currentPortal.stats.timer.seconds}.{currentPortal.stats.timer.milliseconds})";
+                timerText = $"<color=red>UNFINISHED</color>({timerText})";
 
             statsText.SetText($"Attempts: {currentPortal.stats.attempts}\n" +
                               $"Deaths: {currentPortal.stats.deaths}\n" +

@@ -1,5 +1,4 @@
 using BulletParadise.Components;
-using BulletParadise.Shooting;
 using UnityEngine;
 
 namespace BulletParadise.Entities.Bosses.Phases
@@ -17,7 +16,7 @@ namespace BulletParadise.Entities.Bosses.Phases
             _angle = 0;
         }
 
-        public override void LogicUpdate(Weapon weapon, Vector2 targetDirection)
+        public override void LogicUpdate(Vector2 targetDirection)
         {
             shootingManager.Shoot(weaponShootingData, _angle, IncreaseAngle);
         }

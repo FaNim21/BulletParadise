@@ -1,6 +1,5 @@
 using BulletParadise.DataManagement;
 using System;
-using TMPro;
 using UnityEngine;
 
 namespace BulletParadise.World
@@ -10,9 +9,10 @@ namespace BulletParadise.World
         private TimeSpan timerSpan;
 
         [Header("Debug")]
-        [SerializeField, ReadOnly] private bool wasCheated;
         [SerializeField, ReadOnly] private float timer;
+        [SerializeField, ReadOnly] private bool wasCheated;
         [SerializeField, ReadOnly] private bool isWorking;
+        [SerializeField, ReadOnly] private bool isCompleted;
 
         private void Start()
         {
@@ -39,19 +39,10 @@ namespace BulletParadise.World
 
             if (GameManager.Instance.worldManager.WasRunCheated()) return;
 
-            if (stats.completions == 0)
-            {
-                if (stats.timer.totalMiliseconds > timerSpan.TotalMilliseconds) return;
-            }
-            else if (stats.completions > 1)
-            {
-                if (stats.timer.totalMiliseconds <= timerSpan.TotalMilliseconds) return;
-            }
+            bool canSaveTimer = (stats.completions == 0 && stats.timerMiliseconds <= timerSpan.TotalMilliseconds) ||
+                (isCompleted && (stats.completions == 1 || stats.timerMiliseconds > timerSpan.TotalMilliseconds));
 
-            stats.timer.minutes = timerSpan.Minutes + (timerSpan.Hours * 60);
-            stats.timer.seconds = timerSpan.Seconds;
-            stats.timer.milliseconds = timerSpan.Milliseconds;
-            stats.timer.totalMiliseconds = timerSpan.TotalMilliseconds;
+            if (canSaveTimer) stats.timerMiliseconds = timerSpan.TotalMilliseconds;
         }
 
         public TimeSpan GetTimer()
@@ -61,5 +52,8 @@ namespace BulletParadise.World
 
         public void Cheated() => wasCheated = true;
         public bool WasCheated() => wasCheated;
+
+        public void Completed() => isCompleted = true;
+
     }
 }

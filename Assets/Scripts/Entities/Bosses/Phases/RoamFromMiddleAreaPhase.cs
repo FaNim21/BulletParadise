@@ -1,8 +1,6 @@
 ﻿using BulletParadise.Components;
-using BulletParadise.Shooting;
 using BulletParadise.Visual.Drawing;
 using UnityEngine;
-using UnityEngine.XR;
 
 namespace BulletParadise.Entities.Bosses.Phases
 {
@@ -38,7 +36,7 @@ namespace BulletParadise.Entities.Bosses.Phases
             _toRoamPosition = _arenaCenter + boss.GetRandomNormalizedUnitVector() * roamRange;
         }
 
-        public override void LogicUpdate(Weapon weapon, Vector2 targetDirection)
+        public override void LogicUpdate(Vector2 targetDirection)
         {
             if (_reachedDestination)
             {

@@ -1,5 +1,3 @@
-using BulletParadise.Components;
-using BulletParadise.Shooting;
 using UnityEngine;
 
 namespace BulletParadise.Entities.Bosses
@@ -7,8 +5,8 @@ namespace BulletParadise.Entities.Bosses
     [System.Serializable]
     public class BossPhase
     {
+        public string name;
         public Phase phase;
-        public Weapon weapon;
 
         [MinMaxRange(0f, 1f)] public Vector2 percentage;
 

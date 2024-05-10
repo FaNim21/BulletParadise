@@ -35,7 +35,7 @@ namespace BulletParadise.Components
             _animator = transform.Find("Body").GetComponent<Animator>();
         }
 
-        public void Shoot(Weapon weapon, float angle, Action OnShoot = null, string animTriggerName = "", float delay = 0, float animTime = 0)
+        public void Shoot(Weapon weapon, float angle, Action OnShoot = null, string animTriggerName = "")
         {
             if (_isShooting || weapon == null || !_canShoot) return;
 

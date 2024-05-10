@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponShootingData:
     weapon: {fileID: 11400000, guid: b2a333a38872df84bb89a834d38da65a, type: 2}
     animData: {fileID: 11400000, guid: cbcacdc76c9bb3d45ac98274842a362f, type: 2}
-    animTrigger: 
+    animTrigger: shoot1
   chaseMobs: {fileID: 8721051932381034453, guid: 43200b21f32455642b44f0497654c11f, type: 3}
   SpawnMobsChase: 0
   mobsChaseAmount: 3

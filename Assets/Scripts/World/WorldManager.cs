@@ -1,4 +1,3 @@
-using BulletParadise.Misc;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -51,6 +50,13 @@ namespace BulletParadise.World
             if (dungeonManager == null) return false;
 
             return dungeonManager.WasCheated();
+        }
+
+        public void CompleteDungeon()
+        {
+            if (dungeonManager == null) return;
+
+            dungeonManager.Completed();
         }
     }
 }
