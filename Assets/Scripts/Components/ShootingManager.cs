@@ -62,7 +62,7 @@ namespace BulletParadise.Components
             float shotSpeed = Mathf.Max(weapon.frequency / 3f, 1f);
             StartShootingAnimation(shotSpeed, animTriggerName);
 
-            yield return weapon.Shoot(layerMask, shootingOffset, angle);
+            weapon.Shoot(layerMask, shootingOffset, angle);
             yield return new WaitForSeconds(1f / weapon.frequency);
 
             _isShooting = false;
@@ -79,7 +79,7 @@ namespace BulletParadise.Components
             StartShootingAnimation(shootSpeed, data.animTrigger);
 
             yield return new WaitForSeconds(scaledDelay);
-            yield return data.weapon.Shoot(layerMask, shootingOffset, angle);
+            data.weapon.Shoot(layerMask, shootingOffset, angle);
             yield return new WaitForSeconds(scaledRestTime + weaponDelay);
 
             _isShooting = false;

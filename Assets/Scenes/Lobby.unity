@@ -197,6 +197,88 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 58.9292, y: 1.6421261}
   m_EdgeRadius: 0
+--- !u!1001 &132361949
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2031768833}
+    m_Modifications:
+    - target: {fileID: 3692839820794557590, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_Name
+      value: WeaponStand (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692839820794557590, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558426983324020741, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1101604472619698217, guid: 901140a63426f5446b8171b03335a305, type: 3}
+    - target: {fileID: 7558426983324020741, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697300972676016800, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558116634083389263, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ab6b75385b9fa546be2014fedc37a77, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+--- !u!4 &132361950 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5109806252230610553, guid: be4ea7da4d409a04381171bd3041bcc1, type: 3}
+  m_PrefabInstance: {fileID: 132361949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &148025440
 GameObject:
   m_ObjectHideFlags: 0
@@ -20983,6 +21065,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f291da36c95d7404e8cf77bcc7f799d2, type: 2}
   - {fileID: 11400000, guid: 5cdabc5bab7892e4dbdecf10f820f73c, type: 2}
   - {fileID: 11400000, guid: 673a6c6ede969f2498073f0d259b6600, type: 2}
+  - {fileID: 11400000, guid: 2ab6b75385b9fa546be2014fedc37a77, type: 2}
   currentEnteredPortalID: 0
 --- !u!114 &1021948131
 MonoBehaviour:
@@ -22253,6 +22336,7 @@ Transform:
   - {fileID: 2137668326}
   - {fileID: 1583709375}
   - {fileID: 687065733}
+  - {fileID: 132361950}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2031768834
